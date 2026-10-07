@@ -1,0 +1,146 @@
+{
+  "table": "nat_table_raw",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/staging/nat_table_raw.parquet",
+  "n_rows": 3447,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "source_file",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 7,
+      "sample_values": [
+        "nat_page_0.html",
+        "nat_page_1.html",
+        "nat_page_2.html",
+        "nat_page_3.html",
+        "nat_page_4.html"
+      ],
+      "min_value": "nat_page_0.html",
+      "max_value": "nat_page_6.html"
+    },
+    {
+      "name": "occupational_title",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3427,
+      "sample_values": [
+        "Accountant",
+        "Auditor",
+        "Cost Accountant",
+        "Associate \u2013 Transactional Finance & Accounting",
+        "Associate \u2013 Finance & Accounting Complex"
+      ],
+      "min_value": "(Letter Box Peon) Post Man",
+      "max_value": "Zoologist, General"
+    },
+    {
+      "name": "nco_2015",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3436,
+      "sample_values": [
+        "2411.0100",
+        "2411.0200",
+        "2411.0300",
+        "2411.0101",
+        "2411.0201"
+      ],
+      "min_value": "1111.0100",
+      "max_value": "9629.9900"
+    },
+    {
+      "name": "nco_2004",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 762,
+      "pct_null": 22.11,
+      "n_unique": 2672,
+      "sample_values": [
+        "2411.10",
+        "2411.20",
+        "2411.30",
+        "4121.60",
+        "4121.70"
+      ],
+      "min_value": "1111.10",
+      "max_value": "9333.90"
+    },
+    {
+      "name": "division_title",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "Professionals",
+        "Clerks/Clerical Support Workers",
+        "Managers",
+        "Craft and Related Trades Workers",
+        "Technicians and Associate Professionals"
+      ],
+      "min_value": "Clerks/Clerical Support Workers",
+      "max_value": "Technicians and Associate Professionals"
+    },
+    {
+      "name": "sub_division_title",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 40,
+      "sample_values": [
+        "Business and Administrative Professionals",
+        "Numerical and Material Recording Clerks",
+        "Legal, Social and Cultural Professionals",
+        "Administrative and Commercial Managers",
+        "Production and Specialized Services Managers"
+      ],
+      "min_value": "Administrative and Commercial Managers",
+      "max_value": "Teaching Professionals"
+    },
+    {
+      "name": "group_title",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 126,
+      "sample_values": [
+        "Finance Professionals",
+        "Numerical Clerks",
+        "Creative and Performing Artists",
+        "Sales, Marketing and Public Relations Professionals",
+        "Sales, Marketing and Development Managers"
+      ],
+      "min_value": "Administration Professionals",
+      "max_value": "Wood Treaters, Cabinet Makers and Related Trades Workers"
+    },
+    {
+      "name": "family_title",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 371,
+      "sample_values": [
+        "Accountants",
+        "Accounting and Bookkeeping Clerks",
+        "Actors",
+        "Advertising and Marketing Professionals",
+        "Advertising and Public Relation Managers"
+      ],
+      "min_value": "Accountants",
+      "max_value": "Wood Working Machine Tool Setters and Operators"
+    }
+  ],
+  "duplicate_full_rows": 8,
+  "notes": []
+}

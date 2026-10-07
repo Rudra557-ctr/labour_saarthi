@@ -1,0 +1,342 @@
+{
+  "table": "map_trade_to_nco",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/map_trade_to_nco.parquet",
+  "n_rows": 4,
+  "n_cols": 24,
+  "columns": [
+    {
+      "name": "mapping_id",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "DGTCTS_DGT1001_7411.0100",
+        "DGTCTS_DGT1001_7412.0200",
+        "DGTCTS_DGT1002_7233.0100",
+        "DGTCTS_DGT1002_7233.0200"
+      ],
+      "min_value": "DGTCTS_DGT1001_7411.0100",
+      "max_value": "DGTCTS_DGT1002_7233.0200"
+    },
+    {
+      "name": "dgt_trade_code",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "DGT/1001",
+        "DGT/1002"
+      ],
+      "min_value": "DGT/1001",
+      "max_value": "DGT/1002"
+    },
+    {
+      "name": "dgt_trade_name_as_curriculum",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "ELECTRICIAN",
+        "FITTER"
+      ],
+      "min_value": "ELECTRICIAN",
+      "max_value": "FITTER"
+    },
+    {
+      "name": "trade_id",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "DGT_S1_14",
+        "DGT_S1_18"
+      ],
+      "min_value": "DGT_S1_14",
+      "max_value": "DGT_S1_18"
+    },
+    {
+      "name": "trade_name_as_register",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "Electrician",
+        "Fitter"
+      ],
+      "min_value": "Electrician",
+      "max_value": "Fitter"
+    },
+    {
+      "name": "nco_2015_code",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "7411.0100",
+        "7412.0200",
+        "7233.0100",
+        "7233.0200"
+      ],
+      "min_value": "7233.0100",
+      "max_value": "7412.0200"
+    },
+    {
+      "name": "nco_2015_title_as_curriculum",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "Electrician General",
+        "Electrical Fitter",
+        "Fitter, General",
+        "Fitter, Bench"
+      ],
+      "min_value": "Electrical Fitter",
+      "max_value": "Fitter, General"
+    },
+    {
+      "name": "nco_2015_title_in_master",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "Electrician, General",
+        "Electrical Fitter",
+        "Fitter, General",
+        "Fitter, Bench"
+      ],
+      "min_value": "Electrical Fitter",
+      "max_value": "Fitter, General"
+    },
+    {
+      "name": "nco_mapping_level",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCO_OCCUPATION"
+      ],
+      "min_value": "NCO_OCCUPATION",
+      "max_value": "NCO_OCCUPATION"
+    },
+    {
+      "name": "is_multi_nco",
+      "dtype": "bool",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "nco_codes_for_trade",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "7411.0100, 7412.0200",
+        "7233.0100, 7233.0200"
+      ],
+      "min_value": "7233.0100, 7233.0200",
+      "max_value": "7411.0100, 7412.0200"
+    },
+    {
+      "name": "reference_nos_codes",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 2,
+      "pct_null": 50.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PSS/N2001; PSS/N0108; PSS/N6001"
+      ],
+      "min_value": "PSS/N2001; PSS/N0108; PSS/N6001",
+      "max_value": "PSS/N2001; PSS/N0108; PSS/N6001"
+    },
+    {
+      "name": "mapping_status",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OFFICIAL_MULTI_NCO"
+      ],
+      "min_value": "OFFICIAL_MULTI_NCO",
+      "max_value": "OFFICIAL_MULTI_NCO"
+    },
+    {
+      "name": "mapping_authority",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OFFICIAL"
+      ],
+      "min_value": "OFFICIAL",
+      "max_value": "OFFICIAL"
+    },
+    {
+      "name": "mapping_method",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DGT_CTS_CURRICULUM_GENERAL_INFORMATION_NCO_2015_FIELD"
+      ],
+      "min_value": "DGT_CTS_CURRICULUM_GENERAL_INFORMATION_NCO_2015_FIELD",
+      "max_value": "DGT_CTS_CURRICULUM_GENERAL_INFORMATION_NCO_2015_FIELD"
+    },
+    {
+      "name": "mapping_confidence",
+      "dtype": "float64",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1.0"
+      ],
+      "min_value": "1.0",
+      "max_value": "1.0"
+    },
+    {
+      "name": "link_method",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "EXACT_TRADE_NAME_WITHIN_CTS_SCHEME"
+      ],
+      "min_value": "EXACT_TRADE_NAME_WITHIN_CTS_SCHEME",
+      "max_value": "EXACT_TRADE_NAME_WITHIN_CTS_SCHEME"
+    },
+    {
+      "name": "evidence_field",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "GENERAL INFORMATION table: 'Trade Code' and 'NCO - 2015'"
+      ],
+      "min_value": "GENERAL INFORMATION table: 'Trade Code' and 'NCO - 2015'",
+      "max_value": "GENERAL INFORMATION table: 'Trade Code' and 'NCO - 2015'"
+    },
+    {
+      "name": "evidence_reference",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "Electrician_CTS2.0_NSQF-4.pdf (DGT CTS curriculum)",
+        "Fitter_CTS3.0_NSQF-4.pdf (DGT CTS curriculum)"
+      ],
+      "min_value": "Electrician_CTS2.0_NSQF-4.pdf (DGT CTS curriculum)",
+      "max_value": "Fitter_CTS3.0_NSQF-4.pdf (DGT CTS curriculum)"
+    },
+    {
+      "name": "nco_code_resolves_in_master",
+      "dtype": "bool",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "title_matches_master",
+      "dtype": "bool",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DGT_CTS_CURRICULUM"
+      ],
+      "min_value": "DGT_CTS_CURRICULUM",
+      "max_value": "DGT_CTS_CURRICULUM"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "Electrician_CTS2.0_NSQF-4.pdf",
+        "Fitter_CTS3.0_NSQF-4.pdf"
+      ],
+      "min_value": "Electrician_CTS2.0_NSQF-4.pdf",
+      "max_value": "Fitter_CTS3.0_NSQF-4.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

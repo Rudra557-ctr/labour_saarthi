@@ -1,0 +1,191 @@
+{
+  "table": "dim_period",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/dim_period.parquet",
+  "n_rows": 132,
+  "n_cols": 11,
+  "columns": [
+    {
+      "name": "period_id",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 132,
+      "sample_values": [
+        "M201701",
+        "M201702",
+        "M201703",
+        "M201704",
+        "M201705"
+      ],
+      "min_value": "M201701",
+      "max_value": "M202712"
+    },
+    {
+      "name": "period_start",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 132,
+      "sample_values": [
+        "2017-01-01",
+        "2017-02-01",
+        "2017-03-01",
+        "2017-04-01",
+        "2017-05-01"
+      ],
+      "min_value": "2017-01-01",
+      "max_value": "2027-12-01"
+    },
+    {
+      "name": "period_end",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 132,
+      "sample_values": [
+        "2017-01-31",
+        "2017-02-28",
+        "2017-03-31",
+        "2017-04-30",
+        "2017-05-31"
+      ],
+      "min_value": "2017-01-31",
+      "max_value": "2027-12-31"
+    },
+    {
+      "name": "period_grain",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "M"
+      ],
+      "min_value": "M",
+      "max_value": "M"
+    },
+    {
+      "name": "calendar_year",
+      "dtype": "int64",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 11,
+      "sample_values": [
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021"
+      ],
+      "min_value": "2017",
+      "max_value": "2027"
+    },
+    {
+      "name": "calendar_month",
+      "dtype": "int64",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "calendar_quarter",
+      "dtype": "int64",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "min_value": "1",
+      "max_value": "4"
+    },
+    {
+      "name": "fiscal_year",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "2016-17",
+        "2017-18",
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "min_value": "2016-17",
+      "max_value": "2027-28"
+    },
+    {
+      "name": "fiscal_quarter",
+      "dtype": "int64",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "4",
+        "1",
+        "2",
+        "3"
+      ],
+      "min_value": "1",
+      "max_value": "4"
+    },
+    {
+      "name": "academic_year",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "2016-17",
+        "2017-18",
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "min_value": "2016-17",
+      "max_value": "2027-28"
+    },
+    {
+      "name": "label_en",
+      "dtype": "str",
+      "n_rows": 132,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 132,
+      "sample_values": [
+        "Jan 2017",
+        "Feb 2017",
+        "Mar 2017",
+        "Apr 2017",
+        "May 2017"
+      ],
+      "min_value": "Apr 2017",
+      "max_value": "Sep 2027"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

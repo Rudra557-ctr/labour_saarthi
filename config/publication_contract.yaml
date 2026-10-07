@@ -1,0 +1,542 @@
+# LMIS publication contract — implements the APPROVED Step 7.1 decision.
+#
+# This file declares WHAT may be published and under WHICH label. It never carries
+# an analytical VALUE: every number in a published envelope is derived from the
+# warehouse at build time (see `coverage_sources`), so the contract cannot drift
+# away from the data it describes.
+#
+# Governing documents: docs/step7.1_indicator_publication_decision.md,
+# docs/decisions/ADR-0011-indicator-publication-policy.md
+
+contract_version: "7.3.1"
+approved_on: "2026-10-05"
+amended_on: "2026-10-05"
+amendment: "Step 7.3.1 - recognise the SUPPORTING publication tier; lock allocation-signal terminology for outputs B and C; codify the circularity, residual and vintage rules."
+
+# ---------------------------------------------------------------------------
+# Publication tiers.
+#
+# A tier is the ROLE an output plays in the product. It is NOT the evidence
+# status, which is always read from the output's own data column (Step 7.2
+# principle, preserved). The two are orthogonal and the analytical layer has
+# modelled them separately since Step 3.0: `observation_status` carries evidence
+# (OBSERVED | SUPPORTING, Pandera-enforced in src/lmis/validate/schemas.py) while
+# `not_a_demand_measure` carries the role. PLFS is OBSERVED evidence that is not a
+# demand measure; the Udyam and Census structures are SUPPORTING.
+# ---------------------------------------------------------------------------
+publication_tiers:
+  OBSERVED:
+    definition: "A published figure attributable to a named official source document, carried through with no inferential step."
+    may_be_primary_measure: true
+  ESTIMATED:
+    definition: "A derived or allocated analytical value. The method is named, the transformation depth recorded, and the value is never presented as observed."
+    may_be_primary_measure: true
+  SUPPORTING:
+    definition: >-
+      An observed or otherwise evidence-backed contextual dataset, useful for
+      interpreting labour-market conditions, that is NOT the primary demand
+      measure, NOT the primary supply measure, NOT a vacancy estimate, and NOT a
+      shortage or gap measure. Displaying it does not make it a demand or supply
+      conclusion, and it may not be combined, scaled or re-grained to produce one.
+    may_be_primary_measure: false
+    requires_data_flag: not_a_demand_measure   # must be TRUE on every row
+    prohibited_uses:
+      - MANUFACTURE_STATE_OR_DISTRICT_DEMAND
+      - CREATE_A_DEMAND_SUPPLY_GAP
+      - SERVE_AS_OCCUPATION_LEVEL_SUPPLY
+      - REPRESENT_AS_VACANCY_DATA
+      - INDEPENDENT_CORROBORATION_OF_A_DERIVED_OUTPUT
+  UNAVAILABLE:
+    definition: "A quantity or capability that cannot currently be computed or published. Distinct from SUPPORTING: SUPPORTING data exists and is shown as context, UNAVAILABLE data does not exist and is shown as a reason."
+    may_be_primary_measure: false
+
+mode:
+  OFFICIAL_ANALYTICAL_MODE: OPTION_A
+  HYBRID_PRESSURE_INDICATOR: EXPERIMENTAL_ONLY
+  NUMERIC_GAP: NOT_IDENTIFIABLE
+  MEASURED_SHORTAGE: false
+  FORECASTING: NOT_SUPPORTED_YET
+  DEFAULT_DISTRICT_RANKING: WITHIN_STATE
+
+# ---------------------------------------------------------------------------
+# Coverage facts. Each is RESOLVED from the warehouse, never written here.
+# `derive` = 'value' takes the metric as published; 'complement' takes 1 - value.
+# ---------------------------------------------------------------------------
+coverage_sources:
+  state_attributable_share:
+    table: demand_coverage_summary
+    metric: ncs_state_attributable_share
+    derive: value
+    label: "state-attributable share of published NCS vacancies"
+  pan_india_residual_share:
+    table: demand_coverage_summary
+    metric: ncs_state_attributable_share
+    derive: complement
+    label: "PAN-India / multiple-state residual, NOT allocated to any state or district"
+  districts_with_relative_signal:
+    table: demand_coverage_summary
+    metric: districts_with_relative_signal
+    derive: value
+    label: "districts with a relative demand signal"
+  districts_with_occupation_signal:
+    table: demand_coverage_summary
+    metric: districts_with_occupation_signal
+    derive: value
+    label: "districts with Census occupation structure"
+  districts_census_not_acquired:
+    table: demand_coverage_summary
+    metric: districts_census_not_acquired
+    derive: value
+    label: "districts whose state B-24 table is not acquired"
+  districts_no_census_2011_code:
+    table: demand_coverage_summary
+    metric: districts_no_census_2011_code
+    derive: value
+    label: "post-2011 districts for which a Census prior can never exist"
+
+# ---------------------------------------------------------------------------
+# PRODUCTION and EXPERIMENTAL outputs.
+#   evidence_status_column -> the table's OWN status column; the envelope reads it.
+#   Nothing here may assert OBSERVED for a derived output: the data decides.
+# ---------------------------------------------------------------------------
+outputs:
+
+  - output_id: analytical_state_demand
+    status: PRODUCTION
+    tier: OBSERVED
+    evidence_status_column: observation_status
+    allowed_label: "NCS vacancies mobilised, cumulative since inception, as on 2024-11-15"
+    geo_level: STATE
+    occupation_level: NONE
+    unit: count
+    measure_basis: CUMULATIVE_SINCE_INCEPTION
+    vintage_column: snapshot_date
+    interpretation: OFFICIAL_PUBLISHED_COUNT_CUMULATIVE_SINCE_INCEPTION
+    prohibited_interpretations: [CURRENT_VACANCIES, ANNUAL_VACANCIES, LABOUR_DEMAND, OPEN_POSITIONS]
+    coverage_disclosures: [state_attributable_share, pan_india_residual_share]
+    # The residual is an observation, not a state. It would rank first in a naive
+    # state chart, so production comparison excludes it by default and discloses it.
+    residual_handling:
+      flag_column: is_pan_india_residual
+      default_filter: "is_pan_india_residual = FALSE"
+      excluded_from_default_comparison: true
+      must_remain_disclosed: true
+      allocation: PROHIBITED
+
+  - output_id: analytical_demand_by_industry
+    status: PRODUCTION
+    tier: OBSERVED
+    evidence_status_column: observation_status
+    allowed_label: "NCS vacancies by NIC section, cumulative, as on 2024-11-15 (project NCS-to-NIC alignment)"
+    geo_level: NATIONAL
+    occupation_level: NONE
+    unit: lakh
+    measure_basis: CUMULATIVE_SINCE_INCEPTION
+    vintage_column: snapshot_date
+    interpretation: OBSERVED_TOTALS_UNDER_PROJECT_NIC_ALIGNMENT
+    prohibited_interpretations: [OFFICIAL_NIC_STATISTIC, INDUSTRY_EMPLOYMENT, SECTOR_DEMAND]
+    mapping_authority_column: mapping_authority
+    notes: "Counts are observed; the NCS-sector to NIC-section alignment is the project's own."
+
+  - output_id: demand_national_occupation_composition
+    status: PRODUCTION
+    tier: ESTIMATED
+    evidence_status_column: observed_or_estimated
+    confidence_column: overall_confidence
+    allowed_label: "Estimated occupation composition of vacancies, national"
+    geo_level: NATIONAL
+    occupation_level: NCO_2015_DIVISION
+    unit: lakh_vacancy_equivalent
+    measure_basis: CUMULATIVE_SINCE_INCEPTION_COMPOSITION
+    vintage_column: baseline_period
+    interpretation: ESTIMATED_OCCUPATION_SPLIT_OF_OBSERVED_INDUSTRY_VACANCIES
+    prohibited_interpretations: [VACANCY_COUNT_BY_OCCUPATION, OCCUPATION_WISE_VACANCY_COUNT, DISTRICT_DEMAND]
+
+  - output_id: demand_district_relative_signal
+    status: PRODUCTION
+    tier: ESTIMATED
+    evidence_status_column: observed_or_estimated
+    confidence_column: overall_confidence
+    allowed_label: "District Relative Demand Allocation Signal"
+    # Step 7.3 established that WITHIN a state this ordering is exactly the Udyam
+    # enterprise-share ordering (0 of 36 states differ). The label may therefore
+    # only be used alongside the stored caveat, which is enforced below.
+    required_caveat_column: within_state_ranking_caveat
+    derivation_inputs: [analytical_state_demand, analytical_district_structure]
+    is_observed_vacancy_ranking: false
+    geo_level: DISTRICT
+    occupation_level: NONE
+    unit: relative_signal_unitless
+    measure_basis: CUMULATIVE_SINCE_INCEPTION
+    vintage_column: baseline_period
+    default_ranking_column: rank_within_state
+    cross_state_ranking_column: rank_national
+    interpretation: RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT
+    prohibited_interpretations: [VACANCY_COUNT, DEMAND_VOLUME, JOBS, SHORTAGE, SUPPLY_GAP]
+    coverage_disclosures:
+      [state_attributable_share, pan_india_residual_share, districts_with_relative_signal]
+
+  - output_id: demand_district_occupation_signal
+    status: PRODUCTION
+    tier: ESTIMATED
+    evidence_status_column: observed_or_estimated
+    confidence_column: overall_confidence
+    allowed_label: "District x Occupation Relative Demand Allocation Signal"
+    # WITHIN a district this ordering is exactly the Census-2011 occupation-share
+    # ordering (0 of 138 districts differ).
+    required_caveat_column: within_district_ranking_caveat
+    derivation_inputs: [demand_district_relative_signal, analytical_district_occupation_structure]
+    is_observed_vacancy_ranking: false
+    geo_level: DISTRICT
+    occupation_level: NCO_2015_DIVISION
+    unit: relative_signal_unitless
+    measure_basis: CUMULATIVE_SINCE_INCEPTION
+    vintage_column: baseline_period
+    default_ranking_column: rank_within_district
+    cross_state_ranking_column: rank_within_occupation_across_districts
+    interpretation: RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT
+    prohibited_interpretations:
+      [VACANCY_COUNT, SHORTAGE, SUPPLY_GAP, OCCUPATION_DEMAND_COUNT, FORECAST]
+    coverage_disclosures:
+      [districts_with_occupation_signal, districts_with_relative_signal,
+       districts_census_not_acquired, districts_no_census_2011_code,
+       state_attributable_share, pan_india_residual_share]
+
+  - output_id: fact_training_outcome
+    status: PRODUCTION
+    tier: OBSERVED
+    evidence_status_column: observed_or_estimated
+    allowed_label: "Training-system outcomes: candidates enrolled / trained / assessed / certified / placed, by state and scheme"
+    geo_level: STATE
+    occupation_level: NONE
+    unit: candidates
+    measure_basis: WITHIN_SCHEME_COHORT
+    vintage_column: as_on_date
+    interpretation: OFFICIALLY_PUBLISHED_CANDIDATE_COUNTS_WITHIN_A_NAMED_SCHEME_AND_PERIOD
+    prohibited_interpretations:
+      [SUPPLY, SKILLED_WORKERS_AVAILABLE, TRAINING_CAPACITY, WORKFORCE_SUPPLY, OCCUPATION_SUPPLY]
+
+  - output_id: fact_training_infrastructure
+    status: PRODUCTION
+    tier: OBSERVED
+    evidence_status_column: observed_or_estimated
+    allowed_label: "PMKKs allocated / established and districts with a PMKK, as on 2024-03-31"
+    geo_level: STATE
+    occupation_level: NONE
+    unit: count
+    measure_basis: POINT_IN_TIME
+    vintage_column: as_on_date
+    interpretation: COUNT_OF_CENTRES_AND_DISTRICTS_COVERED
+    prohibited_interpretations: [TRAINING_CAPACITY, SEATS, OCCUPATION_SUPPLY, SUPPLY]
+
+  - output_id: fact_training_trade_outcome
+    status: PRODUCTION
+    tier: OBSERVED
+    evidence_status_column: observed_or_estimated
+    allowed_label: "Top-N trades / job roles, national - NOT a complete distribution"
+    geo_level: NATIONAL
+    occupation_level: TRADE_OR_JOB_ROLE
+    unit: candidates
+    measure_basis: WITHIN_SCHEME_COHORT_TOP_N_SUBSET
+    vintage_column: as_on_date
+    interpretation: LARGEST_NAMED_TRADES_AS_PUBLISHED_TOP_N_SUBSET_ONLY
+    prohibited_interpretations:
+      [TRADE_DISTRIBUTION, TRADE_SHARES, STATE_TRADE_SUPPLY, DISTRICT_TRADE_SUPPLY, OCCUPATION_SUPPLY]
+
+  - output_id: demand_coverage_summary
+    status: PRODUCTION
+    tier: OBSERVED
+    allowed_label: "Demand coverage and data quality"
+    geo_level: NONE
+    occupation_level: NONE
+    unit: mixed
+    mandatory: true
+    interpretation: WHAT_THE_SYSTEM_DOES_AND_DOES_NOT_COVER
+    prohibited_interpretations: []
+
+  - output_id: supply_coverage_summary
+    status: PRODUCTION
+    tier: OBSERVED
+    allowed_label: "Training-evidence coverage and data quality"
+    geo_level: NONE
+    occupation_level: NONE
+    unit: mixed
+    mandatory: true
+    interpretation: WHAT_THE_SYSTEM_DOES_AND_DOES_NOT_COVER
+    prohibited_interpretations: []
+
+  - output_id: fact_data_quality
+    status: PRODUCTION
+    tier: OBSERVED
+    allowed_label: "Pipeline data-quality checks"
+    geo_level: NONE
+    occupation_level: NONE
+    unit: mixed
+    mandatory: true
+    interpretation: PIPELINE_CONTRACT_CHECK_RESULTS
+    prohibited_interpretations: []
+
+  # SUPPORTING context. Observed evidence, deliberately NOT a demand measure.
+  - output_id: analytical_labour_market_context
+    status: PRODUCTION
+    tier: SUPPORTING
+    evidence_status_column: observation_status
+    allowed_label: "Labour-force context (PLFS) - CONTEXT, NOT A DEMAND MEASURE"
+    geo_level: NATIONAL
+    occupation_level: NONE
+    unit: percent
+    measure_basis: SAMPLE_SURVEY_CWS
+    vintage_column: source_vintage
+    requires_data_flag: not_a_demand_measure
+    valid_geo_level_column: valid_geo_level
+    district_estimates_valid_column: district_estimates_valid
+    interpretation: NATIONAL_LABOUR_FORCE_CONTEXT_NOT_A_DEMAND_MEASURE
+    prohibited_interpretations:
+      [DEMAND, LABOUR_DEMAND, VACANCY_DATA, SUPPLY, OCCUPATION_LEVEL_SUPPLY,
+       DEMAND_SUPPLY_GAP, SHORTAGE, STATE_DEMAND, DISTRICT_DEMAND]
+    notes: >-
+      PLFS monthly bulletin estimates (LFPR / WPR / UR, CWS). National only -
+      district_estimates_valid is FALSE on every row, so this output may not appear
+      on a state or district surface. No PLFS-derived metric may be created from it.
+
+  # EXPERIMENTAL. Designed in Step 7, NOT IMPLEMENTED. Declared here so the
+  # publication boundary exists before any implementation can cross it.
+  - output_id: hybrid_potential_pressure
+    status: EXPERIMENTAL_ONLY
+    tier: ESTIMATED
+    implemented: false
+    allowed_label: "EXPERIMENTAL - NOT AN OFFICIAL OUTPUT"
+    allowed_status_values:
+      [POTENTIAL_PRESSURE, DEMAND_LED_MONITOR, TRAINING_SYSTEM_REVIEW, NO_FLAG, INSUFFICIENT_EVIDENCE]
+    required_display_guard: NOT_MEASURED_SHORTAGE
+    geo_level: DISTRICT
+    occupation_level: NCO_2015_DIVISION
+    unit: ordinal_status
+    confidence: LOW
+    excluded_from_production_responses: true
+    excluded_from_production_exports: true
+    interpretation: PROMPT_TO_INVESTIGATE_NOT_A_FINDING
+    prohibited_interpretations:
+      [SHORTAGE, DEFICIT, SKILL_GAP, VACANCY_ESTIMATE, SUPPLY_SHORTAGE,
+       DEMAND_SUPPLY_GAP, FORECAST, WHICH_OCCUPATION_IS_SHORT]
+    promotion_gates: [G-5, G-6, G-7, G-8]
+
+# ---------------------------------------------------------------------------
+# Capabilities that are NOT available. Published as explicit unavailability with
+# a reason and a gate - never as zero, blank or an empty result.
+# ---------------------------------------------------------------------------
+unavailable_capabilities:
+
+  - capability_id: demand_supply_gap_numeric
+    reason_code: NOT_IDENTIFIABLE
+    reason: "SUPPLY[geography x trade] has no observed interior cell; row and column marginals do not determine an interior."
+    blocking_gate: G-1
+
+  - capability_id: district_occupation_supply
+    reason_code: NOT_IDENTIFIABLE
+    reason: "No district x trade or district x occupation supply evidence exists."
+    blocking_gate: G-2
+
+  - capability_id: state_occupation_supply
+    reason_code: NOT_IDENTIFIABLE
+    reason: "Training data has no occupation dimension; most catalogued trades have no official NCO mapping."
+    blocking_gate: G-3
+
+  - capability_id: district_trade_supply
+    reason_code: NOT_ACQUIRED
+    reason: "PMKVY district resource ACCESS_PENDING; NCVT MIS and DGT portals UNAVAILABLE."
+    blocking_gate: G-2
+
+  - capability_id: state_trade_supply
+    reason_code: NOT_IDENTIFIABLE
+    reason: "Row marginals plus a Top-N column fragment from a different scheme; raking unavailable."
+    blocking_gate: G-1
+
+  - capability_id: occupation_level_training_supply
+    reason_code: NOT_AVAILABLE
+    reason: "Published at national x Top-N trade only; a Top-N subset may not become a distribution."
+    blocking_gate: G-3
+
+  - capability_id: forecast
+    reason_code: NOT_SUPPORTED_YET
+    reason: "One dated demand observation; the measure is a cumulative stock and the two PMKVY schemes are not a time series."
+    blocking_gate: G-4
+
+  - capability_id: shortage_or_surplus_count
+    reason_code: NOT_IDENTIFIABLE
+    reason: "No supply quantity exists at any occupation or trade grain, so no shortage is defined."
+    blocking_gate: G-1
+
+  - capability_id: district_vacancy_count
+    reason_code: NOT_AVAILABLE
+    reason: "NCS publishes state totals; district values are an estimated relative signal, not a count."
+    blocking_gate: G-9
+
+  - capability_id: district_occupation_vacancy_count
+    reason_code: NOT_AVAILABLE
+    reason: "Doubly derived; unit is relative_signal_unitless."
+    blocking_gate: G-9
+
+  - capability_id: nco_coded_vacancy_count
+    reason_code: NOT_AVAILABLE
+    reason: "NCS vacancies are not NCO-coded; the occupation axis is a Census-2011 prior."
+    blocking_gate: G-9
+
+  - capability_id: pan_india_residual_allocation
+    reason_code: PROHIBITED
+    reason: "The residual is not state-attributable; allocating it would invent geography."
+    blocking_gate: PERMANENT
+
+  - capability_id: district_level_training_value
+    reason_code: PROHIBITED
+    reason: "Training evidence is state level; any district variation would be invented."
+    blocking_gate: G-7
+
+  - capability_id: early_warning_alert_lifecycle
+    reason_code: NOT_SUPPORTED_YET
+    reason: "Requires a production indicator and a time dimension; the project has neither."
+    blocking_gate: G-4
+
+  - capability_id: seat_allocation_recommendation
+    reason_code: NOT_SUPPORTED_YET
+    reason: "Requires a gap or an elasticity; the project has neither."
+    blocking_gate: G-1
+
+  - capability_id: monthly_or_quarterly_demand_series
+    reason_code: NOT_SUPPORTED_YET
+    reason: "The measure is a cumulative stock at a single as-on date."
+    blocking_gate: G-4
+
+# ---------------------------------------------------------------------------
+# Derivation inputs. These tables are FACTORS in the outputs listed against them,
+# so displaying one beside its own output would offer a multiplicand as
+# independent evidence for its own product. They may be shown only inside a
+# clearly labelled derivation section. This is an interpretation rule, not a
+# deletion: the data stays, its role is constrained.
+# ---------------------------------------------------------------------------
+derivation_inputs:
+  - input: analytical_district_structure
+    input_evidence_status: SUPPORTING          # read from the table, not declared
+    is_input_to: [demand_district_relative_signal, demand_district_occupation_signal]
+    display_role: DERIVATION_DISCLOSURE_ONLY
+    permitted_section_labels: ["How this signal is derived", "Derivation", "How this is calculated"]
+    prohibited_labels:
+      - "supporting evidence for the demand signal"
+      - "independent validation"
+      - "corroborating demand data"
+      - "corroborating evidence"
+      - "independent evidence"
+    note: "Udyam registered-enterprise structure; the factor that sets the within-state district ordering of output B."
+
+  - input: analytical_district_occupation_structure
+    input_evidence_status: SUPPORTING
+    is_input_to: [demand_district_occupation_signal]
+    display_role: DERIVATION_DISCLOSURE_ONLY
+    permitted_section_labels: ["How this signal is derived", "Derivation", "How this is calculated"]
+    prohibited_labels:
+      - "supporting evidence for the demand signal"
+      - "independent validation"
+      - "corroborating demand data"
+      - "corroborating evidence"
+      - "independent evidence"
+    note: "Census-2011 occupation structure; the factor that sets the within-district occupation ordering of output C."
+
+# ---------------------------------------------------------------------------
+# Vintage policy. Each output carries its OWN as-on date. The surface has five
+# vintages spanning fourteen years, so a single global date would be false.
+# ---------------------------------------------------------------------------
+vintage_policy:
+  global_as_of_date: PROHIBITED
+  per_output_vintage_required: true
+  time_series_across_vintages: PROHIBITED
+  prohibited_labels: ["live", "real-time", "current", "latest", "updated just now", "data as of"]
+  known_vintages:
+    - {output: analytical_state_demand, vintage_column: snapshot_date}
+    - {output: analytical_demand_by_industry, vintage_column: snapshot_date}
+    - {output: demand_national_occupation_composition, vintage_column: baseline_period}
+    - {output: demand_district_relative_signal, vintage_column: baseline_period}
+    - {output: demand_district_occupation_signal, vintage_column: baseline_period}
+    - {output: fact_training_infrastructure, vintage_column: as_on_date}
+    - {output: analytical_labour_market_context, vintage_column: source_vintage}
+    - {input: analytical_district_structure, vintage_column: snapshot_date}
+    - {input: analytical_district_occupation_structure, vintage_column: census_year}
+
+# ---------------------------------------------------------------------------
+# Fields barred from publication because a more authoritative table supersedes
+# them. Barring, not rewriting: the stored value describes its own source
+# correctly, but publishing it would mislead.
+# ---------------------------------------------------------------------------
+barred_fields:
+  - field: dim_training_trade.nco_mapping_status
+    reason: "Describes MSDE Annexure-22, which carries no NCO column. Superseded by dim_trade_mapping_status after the Step 5.2 DGT CTS linkage."
+    publish_instead: dim_trade_mapping_status.mapping_status
+
+# ---------------------------------------------------------------------------
+# Terminology guardrails. Scope is PUBLISHED labels, interpretations and
+# envelope field names - NOT internal table or column names, which may
+# legitimately say 'vacancy' (an observed concept) or 'supply' (an internal
+# coverage table). The target is unsupported interpretation, not vocabulary.
+# ---------------------------------------------------------------------------
+terminology:
+  # Never permitted in a published label, for any output.
+  reserved_everywhere: [shortage, deficit, "demand-supply gap", "supply gap", "skill gap"]
+  # Step 7.3.1: phrasings that assert an OBSERVED ranking where the output is a
+  # derived allocation signal, or that assert a count where none exists.
+  forbidden_ranking_labels:
+    - "district demand ranking"
+    - "district vacancy ranking"
+    - "district labour-demand ranking"
+    - "district labour demand ranking"
+    - "highest-demand districts"
+    - "highest demand districts"
+    - "number of vacancies by district"
+    - "top occupations by vacancies"
+    - "highest-demand occupations"
+    - "highest demand occupations"
+    - "occupation vacancy ranking"
+    - "occupation shortage ranking"
+    - "occupation demand count"
+    - "observed demand ranking"
+    - "vacancy ranking"
+    - "shortage ranking"
+  # Step 7.3.1: a derivation input may never be framed as independent evidence.
+  forbidden_corroboration_labels:
+    - "supporting evidence for the demand signal"
+    - "independent validation"
+    - "corroborating demand data"
+    - "corroborating evidence"
+    - "independent evidence"
+  # Preferred production terminology for the derived signals.
+  preferred_signal_labels:
+    demand_district_relative_signal: "District Relative Demand Allocation Signal"
+    demand_district_occupation_signal: "District x Occupation Relative Demand Allocation Signal"
+    occupation_view_comparison: "Relative Demand Allocation Signal"
+  # 'supply' may not describe a training measure or any occupation-grain quantity.
+  reserved_for_quantities: [supply]
+  # Additionally forbidden for an output whose unit is a relative signal.
+  forbidden_for_relative_signals:
+    [vacancies, vacancy, "actual vacancies", "number of vacancies", jobs, openings,
+     "demand volume", "demand count"]
+  # Units that mark an output as a relative signal.
+  relative_signal_units: [relative_signal_unitless, ordinal_status]
+  # Phrases that NEGATE a forbidden term are permitted verbatim and are stripped
+  # before matching. A negation is the safest possible use of the word: an
+  # interpretation that says "NOT a vacancy count" is the guardrail, not a breach.
+  # The list is explicit so an un-negated use can never slip through.
+  permitted_negations:
+    - RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT
+    - NOT_A_VACANCY_COUNT
+    - NOT_MEASURED_SHORTAGE
+    - "NOT a complete distribution"
+    - "NOT AN OFFICIAL OUTPUT"
+  # Step 7.4: explanatory prose in the UI and methodology page must be able to NAME
+  # the things the system does not publish. These exact phrases are reviewed and
+  # exempt; they are held here, not in the linter, so each one is auditable.
+  # NOTE: "demand-supply gap" is deliberately NOT exempt. Its only permitted use is
+  # inside a negating sentence, which the negation detector recognises - so a bare
+  # "Demand-supply gap by district" still fails.
+  permitted_explanatory_phrases:
+    - "occupation-level supply figure"
+    - "supply quantity"
+  # Confidence must stay categorical.
+  allowed_confidence_values: [HIGH, MEDIUM, LOW, INSUFFICIENT_EVIDENCE, OBSERVED, SUPPORTING]

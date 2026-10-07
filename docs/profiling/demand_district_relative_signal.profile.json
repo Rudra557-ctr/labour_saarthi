@@ -1,0 +1,529 @@
+{
+  "table": "demand_district_relative_signal",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/demand_district_relative_signal.parquet",
+  "n_rows": 785,
+  "n_cols": 36,
+  "columns": [
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 785,
+      "sample_values": [
+        "1",
+        "10",
+        "100",
+        "101",
+        "102"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "district_name_lgd",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 782,
+      "sample_values": [
+        "Anantnag",
+        "Poonch",
+        "Ganganagar",
+        "Hanumangarh",
+        "Jaipur"
+      ],
+      "min_value": "Adilabad",
+      "max_value": "Zunheboto"
+    },
+    {
+      "name": "state_lgd_code",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "1",
+        "8",
+        "9",
+        "2",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "census_2011_code",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 125,
+      "pct_null": 15.92,
+      "n_unique": 641,
+      "sample_values": [
+        "014",
+        "005",
+        "099",
+        "100",
+        "110"
+      ],
+      "min_value": "001",
+      "max_value": "NA"
+    },
+    {
+      "name": "enterprise_share_within_state",
+      "dtype": "Float64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 783,
+      "sample_values": [
+        "0.09629746024132256",
+        "0.01979043476103443",
+        "0.035806609999808704",
+        "0.026139660636513778",
+        "0.20600549664271184"
+      ],
+      "min_value": "0.00010138818923244677",
+      "max_value": "8.417132690995582e-05"
+    },
+    {
+      "name": "district_enterprise_count",
+      "dtype": "Int64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 782,
+      "sample_values": [
+        "34932",
+        "7179",
+        "56153",
+        "40993",
+        "323064"
+      ],
+      "min_value": "10",
+      "max_value": "9987"
+    },
+    {
+      "name": "udyam_snapshot_date",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2023-12-21"
+      ],
+      "min_value": "2023-12-21",
+      "max_value": "2023-12-21"
+    },
+    {
+      "name": "udyam_source_vintage",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2023-12-21"
+      ],
+      "min_value": "2023-12-21",
+      "max_value": "2023-12-21"
+    },
+    {
+      "name": "observed_state_vacancies",
+      "dtype": "Int64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "110731",
+        "303716",
+        "1108648",
+        "55166",
+        "530938"
+      ],
+      "min_value": "100371",
+      "max_value": "86478"
+    },
+    {
+      "name": "ncs_source_rows",
+      "dtype": "int64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "1",
+        "2"
+      ],
+      "min_value": "1",
+      "max_value": "2"
+    },
+    {
+      "name": "ncs_state_names",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "Jammu and Kashmir",
+        "Rajasthan",
+        "Uttar Pradesh",
+        "Himachal Pradesh",
+        "Bihar"
+      ],
+      "min_value": "Andaman and Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "relative_demand_signal",
+      "dtype": "Float64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 784,
+      "sample_values": [
+        "10663.114069981888",
+        "2191.4146315241032",
+        "10875.0403627019",
+        "7939.033169879419",
+        "62567.16541833787"
+      ],
+      "min_value": "1.1109382024414705",
+      "max_value": "999.3900359066428"
+    },
+    {
+      "name": "signal_share_of_national",
+      "dtype": "Float64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 784,
+      "sample_values": [
+        "0.0007220167710846642",
+        "0.0001483842436624529",
+        "0.0007363666445431507",
+        "0.0005375648293013263",
+        "0.004236524382538572"
+      ],
+      "min_value": "0.00010079586619024362",
+      "max_value": "9.947817144802902e-05"
+    },
+    {
+      "name": "rank_within_state",
+      "dtype": "Int64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 75,
+      "sample_values": [
+        "3",
+        "17",
+        "10",
+        "14",
+        "1"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "rank_national",
+      "dtype": "Int64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 784,
+      "sample_values": [
+        "307",
+        "594",
+        "302",
+        "371",
+        "46"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "source_confidence",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "mapping_confidence",
+      "dtype": "object",
+      "n_rows": 785,
+      "n_null": 785,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "temporal_confidence",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "RECENT"
+      ],
+      "min_value": "RECENT",
+      "max_value": "RECENT"
+    },
+    {
+      "name": "geography_coverage",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ALLOCATED"
+      ],
+      "min_value": "ALLOCATED",
+      "max_value": "ALLOCATED"
+    },
+    {
+      "name": "occupation_coverage",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NOT_APPLICABLE"
+      ],
+      "min_value": "NOT_APPLICABLE",
+      "max_value": "NOT_APPLICABLE"
+    },
+    {
+      "name": "statistical_support",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ADMINISTRATIVE_FULL_COVERAGE"
+      ],
+      "min_value": "ADMINISTRATIVE_FULL_COVERAGE",
+      "max_value": "ADMINISTRATIVE_FULL_COVERAGE"
+    },
+    {
+      "name": "transformation_depth",
+      "dtype": "int64",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1"
+      ],
+      "min_value": "1",
+      "max_value": "1"
+    },
+    {
+      "name": "overall_confidence",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MEDIUM"
+      ],
+      "min_value": "MEDIUM",
+      "max_value": "MEDIUM"
+    },
+    {
+      "name": "state_name_lgd",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "Jammu And Kashmir",
+        "Rajasthan",
+        "Uttar Pradesh",
+        "Himachal Pradesh",
+        "Bihar"
+      ],
+      "min_value": "Andaman And Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "baseline_period",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DISTRICT"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "DISTRICT"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NONE"
+      ],
+      "min_value": "NONE",
+      "max_value": "NONE"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "relative_signal_unitless"
+      ],
+      "min_value": "relative_signal_unitless",
+      "max_value": "relative_signal_unitless"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ESTIMATED"
+      ],
+      "min_value": "ESTIMATED",
+      "max_value": "ESTIMATED"
+    },
+    {
+      "name": "methodology",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "B: observed NCS state-attributable vacancies x Udyam distric"
+      ],
+      "min_value": "B: observed NCS state-attributable vacancies x Udyam district enterprise share within state (category TOTAL); PAN-India residual excluded",
+      "max_value": "B: observed NCS state-attributable vacancies x Udyam district enterprise share within state (category TOTAL); PAN-India residual excluded"
+    },
+    {
+      "name": "within_state_ranking_caveat",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "within a state this ordering equals the Udyam enterprise-sha"
+      ],
+      "min_value": "within a state this ordering equals the Udyam enterprise-share ordering; B adds information only across states",
+      "max_value": "within a state this ordering equals the Udyam enterprise-share ordering; B adds information only across states"
+    },
+    {
+      "name": "source_ids",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS; UDYAM_DISTRICT_MSME; LGD_DISTRICT"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS; UDYAM_DISTRICT_MSME; LGD_DISTRICTS_DATAGOVIN",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS; UDYAM_DISTRICT_MSME; LGD_DISTRICTS_DATAGOVIN"
+    },
+    {
+      "name": "pan_india_residual_excluded",
+      "dtype": "bool",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "flow_available",
+      "dtype": "bool",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "False"
+    },
+    {
+      "name": "flow_unavailable_reason",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "single NCS as-on date; a flow requires two differently dated"
+      ],
+      "min_value": "single NCS as-on date; a flow requires two differently dated snapshots",
+      "max_value": "single NCS as-on date; a flow requires two differently dated snapshots"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 785,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

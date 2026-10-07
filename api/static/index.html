@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LMIS — Labour Market Intelligence System</title>
+<meta name="description" content="Evidence-qualified labour-market demand intelligence for MSDE. No demand–supply gap, shortage or forecast is published; unavailable capabilities are reported with reasons.">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="app.skipToContent">Skip to main content</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <h1 data-i18n="app.title">LMIS — Labour Market Intelligence System</h1>
+        <p class="sub" data-i18n="app.subtitle">Evidence-qualified labour-market demand intelligence</p>
+      </div>
+      <div class="field">
+        <label for="lang" data-i18n="lang.label">Language</label>
+        <select id="lang" aria-describedby="lang-note"></select>
+        <span id="lang-note" class="visually-hidden">Official codes such as NCO, NIC and LGD are never translated.</span>
+      </div>
+    </div>
+    <div class="chips" id="mode-chips" aria-label="System mode"></div>
+  </div>
+</header>
+
+<nav class="main" aria-label="Main navigation">
+  <div class="wrap">
+    <ul id="nav"></ul>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+  <div id="view" aria-live="polite" aria-busy="false"></div>
+</main>
+
+<footer>
+  <span id="footer-contract"></span> ·
+  <a href="/docs">OpenAPI</a> ·
+  <span data-i18n="baseline.notLive">This is not a live feed. Each figure carries its own as-on date.</span>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

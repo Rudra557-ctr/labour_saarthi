@@ -1,0 +1,182 @@
+{
+  "table": "fact_vacancy_official_by_state",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_vacancy_official_by_state.parquet",
+  "n_rows": 114,
+  "n_cols": 12,
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 3,
+      "pct_null": 2.63,
+      "n_unique": 36,
+      "sample_values": [
+        "35",
+        "28",
+        "12",
+        "18",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "STATE",
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "STATE"
+    },
+    {
+      "name": "state_name_as_source",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 38,
+      "sample_values": [
+        "Andaman and Nicobar Islands",
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar"
+      ],
+      "min_value": "Andaman and Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "vacancies_cumulative",
+      "dtype": "Int64",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 38,
+      "sample_values": [
+        "2308",
+        "234499",
+        "18294",
+        "100371",
+        "530938"
+      ],
+      "min_value": "100371",
+      "max_value": "86478"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "count"
+      ],
+      "min_value": "count",
+      "max_value": "count"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_SINCE_INCEPTION"
+      ],
+      "min_value": "CUMULATIVE_SINCE_INCEPTION",
+      "max_value": "CUMULATIVE_SINCE_INCEPTION"
+    },
+    {
+      "name": "is_pan_india_residual",
+      "dtype": "bool",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "LS_UQ2225_2024-12-09.pdf",
+        "LS_UQ933_2024-12-02.pdf",
+        "RS_UQ2798_2024-12-19.pdf"
+      ],
+      "min_value": "LS_UQ2225_2024-12-09.pdf",
+      "max_value": "RS_UQ2798_2024-12-19.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 114,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:27+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:27+00:00",
+      "max_value": "2026-10-05T18:31:27+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

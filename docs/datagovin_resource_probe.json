@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "district-wise-number-industrial-training-institutes-itis-and-seating-capacity",
+    "page_url": "https://www.data.gov.in/resource/district-wise-number-industrial-training-institutes-itis-and-seating-capacity",
+    "http_status": 200,
+    "nuxt_chars": 1433,
+    "datafile_urls": [],
+    "api_resource_uuids": [],
+    "file_names": []
+  },
+  {
+    "slug": "state-wise-number-industrial-training-institutes-itis-seating-capacity-and-trainees-admitted",
+    "page_url": "https://www.data.gov.in/resource/state-wise-number-industrial-training-institutes-itis-seating-capacity-and-trainees-admitted",
+    "http_status": 200,
+    "nuxt_chars": 1433,
+    "datafile_urls": [],
+    "api_resource_uuids": [],
+    "file_names": []
+  },
+  {
+    "slug": "district-wise-pradhan-mantri-kaushal-kendras-pmkk",
+    "page_url": "https://www.data.gov.in/resource/district-wise-pradhan-mantri-kaushal-kendras-pmkk",
+    "http_status": 200,
+    "nuxt_chars": 1433,
+    "datafile_urls": [],
+    "api_resource_uuids": [],
+    "file_names": []
+  }
+]

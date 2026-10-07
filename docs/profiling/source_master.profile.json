@@ -1,0 +1,257 @@
+{
+  "table": "source_master",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/source_master.parquet",
+  "n_rows": 26,
+  "n_cols": 15,
+  "columns": [
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 26,
+      "sample_values": [
+        "NCO_2015",
+        "NCO_2015_NAT_TABLE",
+        "NCVET_NCO_MAPPING_REPORT",
+        "NQR_QUALIFICATIONS",
+        "NSQF_NOTIFICATION_2023"
+      ],
+      "min_value": "CENSUS_2011_B24",
+      "max_value": "UDYAM_DISTRICT_MSME"
+    },
+    {
+      "name": "source_name",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 26,
+      "sample_values": [
+        "National Classification of Occupations 2015",
+        "NCO-2015 occupation table (DGE \"NAT\" browser)",
+        "Report on Mapping of Qualifications with NCO Codes",
+        "National Qualifications Register",
+        "National Skills Qualifications Framework notification (6 Jun"
+      ],
+      "min_value": "Census 2011 B-series economic tables (occupational classification of workers)",
+      "max_value": "e-Shram unorganised worker registrations"
+    },
+    {
+      "name": "publisher_org",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 18,
+      "sample_values": [
+        "Directorate General of Employment, Ministry of Labour & Empl",
+        "National Council for Vocational Education and Training (NCVE",
+        "NCVET",
+        "Ministry of Panchayati Raj",
+        "Ministry of Labour & Employment"
+      ],
+      "min_value": "DataMeet (community)",
+      "max_value": "State Directorates of Employment / Skill Development"
+    },
+    {
+      "name": "landing_url",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 25,
+      "sample_values": [
+        "https://dge.gov.in/nco-2015",
+        "https://dge.gov.in/nat",
+        "https://ncvet.gov.in/whats-new/",
+        "https://nqr.gov.in/",
+        "https://ncvet.gov.in/?p=11295"
+      ],
+      "min_value": "https://api.ncs.gov.in/",
+      "max_value": "https://www.ncs.gov.in/_layouts/15/ncsp/ViewStaticReport.aspx"
+    },
+    {
+      "name": "role",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 6,
+      "sample_values": [
+        "taxonomy",
+        "reference",
+        "demand",
+        "supply",
+        "context"
+      ],
+      "min_value": "context",
+      "max_value": "training"
+    },
+    {
+      "name": "access_method",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 6,
+      "sample_values": [
+        "PDF",
+        "PORTAL_REPORT",
+        "PORTAL_FORM",
+        "BULK_DOWNLOAD",
+        "UNKNOWN"
+      ],
+      "min_value": "API",
+      "max_value": "UNKNOWN"
+    },
+    {
+      "name": "licence",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 18,
+      "sample_values": [
+        "Government of India publication; terms not explicitly stated",
+        "Government of India portal; terms not explicitly stated",
+        "Government of India publication; terms not explicitly stated",
+        "Government of India gazette notification",
+        "Government of India open directory; terms not explicitly sta"
+      ],
+      "min_value": "Creative Commons Attribution 2.5 India",
+      "max_value": "unknown"
+    },
+    {
+      "name": "licence_verified",
+      "dtype": "bool",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "geo_level_available",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 14,
+      "sample_values": [
+        "not_applicable",
+        "state, district, sub_district, local_body, village",
+        "national, state, district",
+        "national (monthly), state (quarterly/annual)",
+        "district"
+      ],
+      "min_value": "district",
+      "max_value": "varies_by_resource"
+    },
+    {
+      "name": "occ_coding_scheme",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "NCO_2015",
+        "unknown",
+        "not_applicable",
+        "NCO_2015_derived",
+        "none (scheme training-type split only)"
+      ],
+      "min_value": "DGT_TRADE",
+      "max_value": "varies_by_resource"
+    },
+    {
+      "name": "period_grain",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 15,
+      "sample_values": [
+        "not_applicable",
+        "snapshot",
+        "snapshot (cumulative stock)",
+        "month, quarter, year",
+        "snapshot as on 2022-04-21"
+      ],
+      "min_value": "Census 2011 (single historical point)",
+      "max_value": "year"
+    },
+    {
+      "name": "update_cadence",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 20,
+      "sample_values": [
+        "irregular (series revisions: 1946, 1958, 1968, 2004, 2015)",
+        "unknown",
+        "one-off report",
+        "continuous as qualifications are approved",
+        "superseded 27 Dec 2013 notification"
+      ],
+      "min_value": "annual",
+      "max_value": "varies_by_resource"
+    },
+    {
+      "name": "is_authoritative",
+      "dtype": "bool",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "True",
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "verification_status",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "VERIFIED_URL",
+        "VERIFIED_EXISTS",
+        "UNVERIFIED"
+      ],
+      "min_value": "UNVERIFIED",
+      "max_value": "VERIFIED_URL"
+    },
+    {
+      "name": "notes",
+      "dtype": "str",
+      "n_rows": 26,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 26,
+      "sample_values": [
+        "Aligned to ISCO-2008. Three volumes. Text layer is glyph-enc",
+        "STRUCTURED OFFICIAL SOURCE - discovered 2026-10-02 via the N",
+        "HIGHEST PRIORITY. Committee spanned MoLE, MSDE, UGC, AICTE, ",
+        "Official register of NSQF-aligned approved qualifications ac",
+        "Eight levels (1-8) including half levels: 1, 2, 2.5, 3, 3.5,"
+      ],
+      "min_value": "ACQUIRED Step 3.0. censusindia.gov.in serves only its leaf certificate and omits the emSign intermediate CA, so strict TLS clients fail with \"unable to get local issuer certificate\". Resolved by fetching that intermediate from the CA repository URL the server's own certificate advertises in its AIA extension, and appending it to the certifi roots. The completed chain verifies to the publicly trusted emSign Root CA - G1 (openssl: \"Verify return code: 0 (ok)\"). Certificate verification remains FULLY ENABLED; verify=False is used nowhere. See config/certs/README.md. STRUCTURE (verified by reading the files): columns are Table name, State code, District code, Area Name, Division, Sub-Division, NCO name, Total/Rural/Urban, Persons, Males, Females. District code '000' denotes the state total; other codes are districts. Occupation is NCO-2004 at DIVISION (1-digit) and SUB-DIVISION (2-digit) level only - NOT the 8-digit codes our official concordance keys on. CLASSIFICATION: HISTORICAL WORKFORCE STRUCTURE as at 2011. It is NOT employer demand and must never be relabelled as demand. SCOPE NOTE: B-24 covers main workers in NON-HOUSEHOLD industry, trade, business, profession or service - it is not all workers. Catalogue numbering: catalog/(13648 + census_state_code).",
+      "max_value": "THE geography spine. Form-driven download, NO API. Monthly update cadence is why location_change_event is required rather than optional. data.gov.in mirrors exist but their API is reported absent."
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

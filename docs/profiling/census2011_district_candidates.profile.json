@@ -1,0 +1,121 @@
+{
+  "table": "census2011_district_candidates",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/staging/census2011_district_candidates.parquet",
+  "n_rows": 641,
+  "n_cols": 7,
+  "columns": [
+    {
+      "name": "DISTRICT",
+      "dtype": "str",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 631,
+      "sample_values": [
+        "Adilabad",
+        "Agra",
+        "Ahmadabad",
+        "Ahmadnagar",
+        "Aizawl"
+      ],
+      "min_value": "Adilabad",
+      "max_value": "Zunheboto"
+    },
+    {
+      "name": "ST_NM",
+      "dtype": "str",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "Andhra Pradesh",
+        "Uttar Pradesh",
+        "Gujarat",
+        "Maharashtra",
+        "Mizoram"
+      ],
+      "min_value": "Andaman & Nicobar Island",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "ST_CEN_CD",
+      "dtype": "int64",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "28",
+        "9",
+        "24",
+        "27",
+        "15"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "DT_CEN_CD",
+      "dtype": "int64",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 72,
+      "sample_values": [
+        "1",
+        "15",
+        "7",
+        "26",
+        "3"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "censuscode",
+      "dtype": "int64",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 641,
+      "sample_values": [
+        "532",
+        "146",
+        "474",
+        "522",
+        "283"
+      ],
+      "min_value": "0",
+      "max_value": "99"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DATAMEET_DISTRICT_ATTRS"
+      ],
+      "min_value": "DATAMEET_DISTRICT_ATTRS",
+      "max_value": "DATAMEET_DISTRICT_ATTRS"
+    },
+    {
+      "name": "is_authoritative_for_lgd",
+      "dtype": "bool",
+      "n_rows": 641,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "False"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

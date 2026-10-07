@@ -1,0 +1,292 @@
+{
+  "table": "analytical_state_demand",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/analytical_state_demand.parquet",
+  "n_rows": 38,
+  "n_cols": 20,
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "state_name_as_source",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 38,
+      "sample_values": [
+        "Andaman and Nicobar Islands",
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar"
+      ],
+      "min_value": "Andaman and Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "vacancies_cumulative",
+      "dtype": "Int64",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 38,
+      "sample_values": [
+        "2308",
+        "234499",
+        "18294",
+        "100371",
+        "530938"
+      ],
+      "min_value": "100371",
+      "max_value": "86478"
+    },
+    {
+      "name": "n_source_documents",
+      "dtype": "int64",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "3"
+      ],
+      "min_value": "3",
+      "max_value": "3"
+    },
+    {
+      "name": "source_documents",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "LS_UQ2225_2024-12-09.pdf; LS_UQ933_2024-12-02.pdf; RS_UQ2798"
+      ],
+      "min_value": "LS_UQ2225_2024-12-09.pdf; LS_UQ933_2024-12-02.pdf; RS_UQ2798_2024-12-19.pdf",
+      "max_value": "LS_UQ2225_2024-12-09.pdf; LS_UQ933_2024-12-02.pdf; RS_UQ2798_2024-12-19.pdf"
+    },
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 1,
+      "pct_null": 2.63,
+      "n_unique": 36,
+      "sample_values": [
+        "35",
+        "28",
+        "12",
+        "18",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "STATE",
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "STATE"
+    },
+    {
+      "name": "is_pan_india_residual",
+      "dtype": "bool",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS"
+    },
+    {
+      "name": "share_of_published_total",
+      "dtype": "Float64",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 38,
+      "sample_values": [
+        "6.542722889066858e-05",
+        "0.006647582213012517",
+        "0.0005185986678188435",
+        "0.0028453190602189325",
+        "0.015051040750759876"
+      ],
+      "min_value": "0.00010080555716430565",
+      "max_value": "9.836762749160311e-06"
+    },
+    {
+      "name": "share_of_state_attributable",
+      "dtype": "float64",
+      "n_rows": 38,
+      "n_null": 1,
+      "pct_null": 2.63,
+      "n_unique": 37,
+      "sample_values": [
+        "0.00015627842830215878",
+        "0.01587830812756843",
+        "0.0012387164503291563",
+        "0.006796283417294618",
+        "0.0359506742486532"
+      ],
+      "min_value": "0.00015627842830215878",
+      "max_value": "3.994985818816018e-06"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_SINCE_INCEPTION"
+      ],
+      "min_value": "CUMULATIVE_SINCE_INCEPTION",
+      "max_value": "CUMULATIVE_SINCE_INCEPTION"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "count"
+      ],
+      "min_value": "count",
+      "max_value": "count"
+    },
+    {
+      "name": "observation_status",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NONE"
+      ],
+      "min_value": "NONE",
+      "max_value": "NONE"
+    },
+    {
+      "name": "industry_level",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NONE"
+      ],
+      "min_value": "NONE",
+      "max_value": "NONE"
+    },
+    {
+      "name": "flow_available",
+      "dtype": "bool",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "False"
+    },
+    {
+      "name": "flow_unavailable_reason",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "measure is a cumulative stock and all acquired snapshots sha"
+      ],
+      "min_value": "measure is a cumulative stock and all acquired snapshots share one as-on date; differencing requires two different dated snapshots",
+      "max_value": "measure is a cumulative stock and all acquired snapshots share one as-on date; differencing requires two different dated snapshots"
+    },
+    {
+      "name": "source_vintage",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "transformation",
+      "dtype": "str",
+      "n_rows": 38,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DEDUPLICATE_IDENTICAL_DOCUMENTS + SHARE_WITHIN_SNAPSHOT"
+      ],
+      "min_value": "DEDUPLICATE_IDENTICAL_DOCUMENTS + SHARE_WITHIN_SNAPSHOT",
+      "max_value": "DEDUPLICATE_IDENTICAL_DOCUMENTS + SHARE_WITHIN_SNAPSHOT"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

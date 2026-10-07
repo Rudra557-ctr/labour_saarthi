@@ -1,0 +1,504 @@
+{
+  "table": "demand_national_occupation_composition",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/demand_national_occupation_composition.parquet",
+  "n_rows": 175,
+  "n_cols": 34,
+  "columns": [
+    {
+      "name": "nic_section_code",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 20,
+      "sample_values": [
+        "A",
+        "R",
+        "F",
+        "P",
+        "K"
+      ],
+      "min_value": "A",
+      "max_value": "T"
+    },
+    {
+      "name": "ncs_sector_name",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 20,
+      "sample_values": [
+        "Agriculture and Related",
+        "Arts and Entertainment",
+        "Civil and Construction Works",
+        "Education",
+        "Finance and Insurance"
+      ],
+      "min_value": "Agriculture and Related",
+      "max_value": "Wholesale and Retail"
+    },
+    {
+      "name": "vacancies_cumulative",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 20,
+      "sample_values": [
+        "3.0",
+        "0.59",
+        "21.52",
+        "7.55",
+        "138.24"
+      ],
+      "min_value": "0.25",
+      "max_value": "7.55"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "lakh_vacancy_equivalent"
+      ],
+      "min_value": "lakh_vacancy_equivalent",
+      "max_value": "lakh_vacancy_equivalent"
+    },
+    {
+      "name": "industry_mapping_confidence",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 7,
+      "sample_values": [
+        "0.95",
+        "0.99",
+        "0.97",
+        "0.9",
+        "0.92"
+      ],
+      "min_value": "0.8",
+      "max_value": "0.99"
+    },
+    {
+      "name": "is_heterogeneous_or_residual",
+      "dtype": "bool",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "nco_2015_division",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "employment_thousands",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 175,
+      "sample_values": [
+        "83.593",
+        "28.876",
+        "41.814",
+        "75.081",
+        "500.119"
+      ],
+      "min_value": "1003.944",
+      "max_value": "992.819"
+    },
+    {
+      "name": "section_total",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 20,
+      "sample_values": [
+        "197860.23",
+        "1506.953",
+        "56210.646",
+        "16313.629",
+        "5917.626"
+      ],
+      "min_value": "10868.615",
+      "max_value": "9063.512"
+    },
+    {
+      "name": "occupation_conditional_share",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 175,
+      "sample_values": [
+        "0.00042248510476309463",
+        "0.00014594140520305673",
+        "0.00021133099865495961",
+        "0.0003794648373753533",
+        "0.002527637817867694"
+      ],
+      "min_value": "0.00014594140520305673",
+      "max_value": "0.8127849391461841"
+    },
+    {
+      "name": "bridge_cells_in_section",
+      "dtype": "int64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "9",
+        "8",
+        "7"
+      ],
+      "min_value": "7",
+      "max_value": "9"
+    },
+    {
+      "name": "estimated_occupation_demand",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 175,
+      "sample_values": [
+        "0.0012674553142892838",
+        "0.0004378242156091702",
+        "0.0006339929959648788",
+        "0.00113839451212606",
+        "0.0075829134536030815"
+      ],
+      "min_value": "0.0004378242156091702",
+      "max_value": "8.911660508641683"
+    },
+    {
+      "name": "occupation_total_all_sections",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "40.519599400613444",
+        "61.52270707138868",
+        "37.8584735805369",
+        "61.98219051557032",
+        "50.698894456266345"
+      ],
+      "min_value": "15.171290905220236",
+      "max_value": "61.98219051557032"
+    },
+    {
+      "name": "occupation_share_of_total",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "0.11810883901423452",
+        "0.17932989498174912",
+        "0.1103520377198149",
+        "0.18066922352747344",
+        "0.1477800287296072"
+      ],
+      "min_value": "0.010258755069972942",
+      "max_value": "0.18066922352747344"
+    },
+    {
+      "name": "source_confidence",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "mapping_confidence",
+      "dtype": "float64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 7,
+      "sample_values": [
+        "0.95",
+        "0.99",
+        "0.97",
+        "0.9",
+        "0.92"
+      ],
+      "min_value": "0.8",
+      "max_value": "0.99"
+    },
+    {
+      "name": "temporal_confidence",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CURRENT"
+      ],
+      "min_value": "CURRENT",
+      "max_value": "CURRENT"
+    },
+    {
+      "name": "geography_coverage",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DIRECT"
+      ],
+      "min_value": "DIRECT",
+      "max_value": "DIRECT"
+    },
+    {
+      "name": "occupation_coverage",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DIRECT"
+      ],
+      "min_value": "DIRECT",
+      "max_value": "DIRECT"
+    },
+    {
+      "name": "statistical_support",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "SURVEY_WITHOUT_N"
+      ],
+      "min_value": "SURVEY_WITHOUT_N",
+      "max_value": "SURVEY_WITHOUT_N"
+    },
+    {
+      "name": "transformation_depth",
+      "dtype": "int64",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1"
+      ],
+      "min_value": "1",
+      "max_value": "1"
+    },
+    {
+      "name": "overall_confidence",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "MEDIUM",
+        "LOW"
+      ],
+      "min_value": "LOW",
+      "max_value": "MEDIUM"
+    },
+    {
+      "name": "baseline_period",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "NATIONAL"
+    },
+    {
+      "name": "industry_level",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NIC_SECTION"
+      ],
+      "min_value": "NIC_SECTION",
+      "max_value": "NIC_SECTION"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCO_2015_DIVISION"
+      ],
+      "min_value": "NCO_2015_DIVISION",
+      "max_value": "NCO_2015_DIVISION"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ESTIMATED"
+      ],
+      "min_value": "ESTIMATED",
+      "max_value": "ESTIMATED"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_SINCE_INCEPTION_COMPOSITION"
+      ],
+      "min_value": "CUMULATIVE_SINCE_INCEPTION_COMPOSITION",
+      "max_value": "CUMULATIVE_SINCE_INCEPTION_COMPOSITION"
+    },
+    {
+      "name": "methodology",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "A: observed NCS vacancies by NIC-2008 section x P(NCO-2015 d"
+      ],
+      "min_value": "A: observed NCS vacancies by NIC-2008 section x P(NCO-2015 division | section) from ILOSTAT EMP_TEMP_ECO_OCU_NB_A (India, PLFS, 2025); joined at NIC section only; no geographic allocation",
+      "max_value": "A: observed NCS vacancies by NIC-2008 section x P(NCO-2015 division | section) from ILOSTAT EMP_TEMP_ECO_OCU_NB_A (India, PLFS, 2025); joined at NIC section only; no geographic allocation"
+    },
+    {
+      "name": "source_ids",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS; ILOSTAT_EMP_ECO_OCU"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS; ILOSTAT_EMP_ECO_OCU",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS; ILOSTAT_EMP_ECO_OCU"
+    },
+    {
+      "name": "bridge_year",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2025"
+      ],
+      "min_value": "2025",
+      "max_value": "2025"
+    },
+    {
+      "name": "flow_available",
+      "dtype": "bool",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "False"
+    },
+    {
+      "name": "flow_unavailable_reason",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "single NCS as-on date; a flow requires two differently dated"
+      ],
+      "min_value": "single NCS as-on date; a flow requires two differently dated snapshots",
+      "max_value": "single NCS as-on date; a flow requires two differently dated snapshots"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 175,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

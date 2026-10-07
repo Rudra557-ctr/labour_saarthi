@@ -1,0 +1,196 @@
+{
+  "table": "fact_establishment_district",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_establishment_district.parquet",
+  "n_rows": 6280,
+  "n_cols": 13,
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2023-12-21"
+      ],
+      "min_value": "2023-12-21",
+      "max_value": "2023-12-21"
+    },
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 785,
+      "sample_values": [
+        "745",
+        "744",
+        "502",
+        "753",
+        "750"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DISTRICT"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "DISTRICT"
+    },
+    {
+      "name": "district_name_as_source",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 780,
+      "sample_values": [
+        "Alluri Sitharama Raju",
+        "Anakapalli",
+        "ANANTHAPUR",
+        "Annamayya",
+        "Bapatla"
+      ],
+      "min_value": "ADILABAD",
+      "max_value": "ZUNHEBOTO"
+    },
+    {
+      "name": "enterprise_category",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "TOTAL",
+        "SERVICES"
+      ],
+      "min_value": "SERVICES",
+      "max_value": "TOTAL"
+    },
+    {
+      "name": "size_class",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "MICRO",
+        "SMALL",
+        "MEDIUM",
+        "TOTAL"
+      ],
+      "min_value": "MEDIUM",
+      "max_value": "TOTAL"
+    },
+    {
+      "name": "enterprise_count",
+      "dtype": "Int64",
+      "n_rows": 6280,
+      "n_null": 352,
+      "pct_null": 5.61,
+      "n_unique": 3578,
+      "sample_values": [
+        "1879",
+        "9",
+        "1888",
+        "11163",
+        "115"
+      ],
+      "min_value": "1",
+      "max_value": "9987"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "count"
+      ],
+      "min_value": "count",
+      "max_value": "count"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_REGISTRATIONS"
+      ],
+      "min_value": "CUMULATIVE_REGISTRATIONS",
+      "max_value": "CUMULATIVE_REGISTRATIONS"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "UDYAM_DISTRICT_MSME"
+      ],
+      "min_value": "UDYAM_DISTRICT_MSME",
+      "max_value": "UDYAM_DISTRICT_MSME"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "district_level_total_Registered_msme.csv",
+        "district_level_service_msme.csv"
+      ],
+      "min_value": "district_level_service_msme.csv",
+      "max_value": "district_level_total_Registered_msme.csv"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 6280,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:27+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:27+00:00",
+      "max_value": "2026-10-05T18:31:27+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

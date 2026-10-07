@@ -1,0 +1,139 @@
+{
+  "table": "map_nco2004_division_to_nco2015_division",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/map_nco2004_division_to_nco2015_division.parquet",
+  "n_rows": 10,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "nco_2004_division",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "X"
+    },
+    {
+      "name": "nco_2015_division",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 1,
+      "pct_null": 10.0,
+      "n_unique": 9,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "confidence",
+      "dtype": "float64",
+      "n_rows": 10,
+      "n_null": 1,
+      "pct_null": 10.0,
+      "n_unique": 9,
+      "sample_values": [
+        "0.975",
+        "0.9977",
+        "0.7888",
+        "0.9451",
+        "0.9612"
+      ],
+      "min_value": "0.7888",
+      "max_value": "0.9977"
+    },
+    {
+      "name": "n_concorded_codes",
+      "dtype": "int64",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "160",
+        "428",
+        "303",
+        "91",
+        "103"
+      ],
+      "min_value": "0",
+      "max_value": "92"
+    },
+    {
+      "name": "n_in_modal_division",
+      "dtype": "int64",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "156",
+        "427",
+        "239",
+        "86",
+        "99"
+      ],
+      "min_value": "0",
+      "max_value": "99"
+    },
+    {
+      "name": "alternative_divisions",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 1,
+      "pct_null": 10.0,
+      "n_unique": 9,
+      "sample_values": [
+        "2:4",
+        "3:1",
+        "2:60; 7:4",
+        "3:5",
+        "4:3; 3:1"
+      ],
+      "min_value": "2:4",
+      "max_value": "8:34; 3:32"
+    },
+    {
+      "name": "authority",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PROJECT_DERIVED_FROM_OFFICIAL"
+      ],
+      "min_value": "PROJECT_DERIVED_FROM_OFFICIAL",
+      "max_value": "PROJECT_DERIVED_FROM_OFFICIAL"
+    },
+    {
+      "name": "method",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "FIRST_DIGIT_TRUNCATION_OF_OFFICIAL_CONCORDANCE",
+        "NOT_MAPPABLE_workers_not_classified_by_occupation"
+      ],
+      "min_value": "FIRST_DIGIT_TRUNCATION_OF_OFFICIAL_CONCORDANCE",
+      "max_value": "NOT_MAPPABLE_workers_not_classified_by_occupation"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

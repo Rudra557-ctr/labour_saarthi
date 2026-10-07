@@ -1,0 +1,264 @@
+{
+  "table": "fact_ilo_employment_eco_occ",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_ilo_employment_eco_occ.parquet",
+  "n_rows": 715,
+  "n_cols": 18,
+  "columns": [
+    {
+      "name": "ref_area",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "IND"
+      ],
+      "min_value": "IND",
+      "max_value": "IND"
+    },
+    {
+      "name": "year",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "2025",
+        "2024",
+        "2023",
+        "2022"
+      ],
+      "min_value": "2022",
+      "max_value": "2025"
+    },
+    {
+      "name": "nic_2008_section",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 20,
+      "sample_values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "min_value": "A",
+      "max_value": "T"
+    },
+    {
+      "name": "isco_08_major_group",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "nco_2015_division",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "employment_thousands",
+      "dtype": "float64",
+      "n_rows": 715,
+      "n_null": 45,
+      "pct_null": 6.29,
+      "n_unique": 670,
+      "sample_values": [
+        "83.593",
+        "28.876",
+        "41.814",
+        "75.081",
+        "500.119"
+      ],
+      "min_value": "100.764",
+      "max_value": "9982.978"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "thousands_of_persons"
+      ],
+      "min_value": "thousands_of_persons",
+      "max_value": "thousands_of_persons"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "EMPLOYMENT_STOCK_SURVEY_ESTIMATE"
+      ],
+      "min_value": "EMPLOYMENT_STOCK_SURVEY_ESTIMATE",
+      "max_value": "EMPLOYMENT_STOCK_SURVEY_ESTIMATE"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "NATIONAL"
+    },
+    {
+      "name": "industry_level",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NIC_SECTION"
+      ],
+      "min_value": "NIC_SECTION",
+      "max_value": "NIC_SECTION"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCO_2015_DIVISION"
+      ],
+      "min_value": "NCO_2015_DIVISION",
+      "max_value": "NCO_2015_DIVISION"
+    },
+    {
+      "name": "survey_source_code",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "BA:14121"
+      ],
+      "min_value": "BA:14121",
+      "max_value": "BA:14121"
+    },
+    {
+      "name": "survey_source_label",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "LFS - Periodic Labour Force Survey"
+      ],
+      "min_value": "LFS - Periodic Labour Force Survey",
+      "max_value": "LFS - Periodic Labour Force Survey"
+    },
+    {
+      "name": "obs_status",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "",
+        "U"
+      ],
+      "min_value": "",
+      "max_value": "U"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED_SURVEY_ESTIMATE"
+      ],
+      "min_value": "OBSERVED_SURVEY_ESTIMATE",
+      "max_value": "OBSERVED_SURVEY_ESTIMATE"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ILOSTAT_EMP_ECO_OCU"
+      ],
+      "min_value": "ILOSTAT_EMP_ECO_OCU",
+      "max_value": "ILOSTAT_EMP_ECO_OCU"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ILOSTAT_EMP_TEMP_ECO_OCU_NB_A_IND.csv"
+      ],
+      "min_value": "ILOSTAT_EMP_TEMP_ECO_OCU_NB_A_IND.csv",
+      "max_value": "ILOSTAT_EMP_TEMP_ECO_OCU_NB_A_IND.csv"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 715,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:29+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:29+00:00",
+      "max_value": "2026-10-05T18:31:29+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

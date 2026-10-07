@@ -1,0 +1,130 @@
+{
+  "table": "dim_trade_mapping_status",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/dim_trade_mapping_status.parquet",
+  "n_rows": 155,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "trade_id",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 155,
+      "sample_values": [
+        "DGT_S1_1",
+        "DGT_S1_2",
+        "DGT_S1_3",
+        "DGT_S1_4",
+        "DGT_S1_5"
+      ],
+      "min_value": "DGT_S1_1",
+      "max_value": "DGT_S3_5"
+    },
+    {
+      "name": "trade_name",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 154,
+      "sample_values": [
+        "Additive Manufacturing Technician (3D Printing)",
+        "Advanced CNC Machining",
+        "Aeronautical Structure and Equipment Fitter",
+        "Architectural Draughtsman",
+        "Artisan Using Advanced Tool"
+      ],
+      "min_value": "5G Network Technician",
+      "max_value": "Wood Work Technician"
+    },
+    {
+      "name": "nsqf_level",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "3",
+        "4",
+        "3\ufffd5",
+        "4\ufffd5"
+      ],
+      "min_value": "3",
+      "max_value": "4\ufffd5"
+    },
+    {
+      "name": "dgt_trade_code",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 153,
+      "pct_null": 98.71,
+      "n_unique": 2,
+      "sample_values": [
+        "DGT/1001",
+        "DGT/1002"
+      ],
+      "min_value": "DGT/1001",
+      "max_value": "DGT/1002"
+    },
+    {
+      "name": "nco_codes_for_trade",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 153,
+      "pct_null": 98.71,
+      "n_unique": 2,
+      "sample_values": [
+        "7411.0100, 7412.0200",
+        "7233.0100, 7233.0200"
+      ],
+      "min_value": "7233.0100, 7233.0200",
+      "max_value": "7411.0100, 7412.0200"
+    },
+    {
+      "name": "mapping_status",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "MAPPING_UNKNOWN",
+        "OFFICIAL_MULTI_NCO"
+      ],
+      "min_value": "MAPPING_UNKNOWN",
+      "max_value": "OFFICIAL_MULTI_NCO"
+    },
+    {
+      "name": "mapping_level",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "UNMAPPED",
+        "NCO_OCCUPATION"
+      ],
+      "min_value": "NCO_OCCUPATION",
+      "max_value": "UNMAPPED"
+    },
+    {
+      "name": "status_reason",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "DGT publishes NCO-2015 on the CTS curriculum for this scheme",
+        "DGT CTS curriculum acquired; NCO-2015 field read directly"
+      ],
+      "min_value": "DGT CTS curriculum acquired; NCO-2015 field read directly",
+      "max_value": "DGT publishes NCO-2015 on the CTS curriculum for this scheme, but no official index of curricula exists, so this trade's curriculum could not be enumerated. Mapping is UNKNOWN, not non-existent."
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

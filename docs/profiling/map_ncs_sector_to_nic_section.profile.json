@@ -1,0 +1,130 @@
+{
+  "table": "map_ncs_sector_to_nic_section",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/map_ncs_sector_to_nic_section.parquet",
+  "n_rows": 21,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "ncs_sector_name",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "Agriculture and Related",
+        "Mining And Quarrying",
+        "Manufacturing",
+        "Power and Energy",
+        "Water Supply, Sewerage and Waste Management"
+      ],
+      "min_value": "Agriculture and Related",
+      "max_value": "Wholesale and Retail"
+    },
+    {
+      "name": "nic_version",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 1,
+      "pct_null": 4.76,
+      "n_unique": 1,
+      "sample_values": [
+        "2008"
+      ],
+      "min_value": "2008",
+      "max_value": "2008"
+    },
+    {
+      "name": "section_code",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 1,
+      "pct_null": 4.76,
+      "n_unique": 20,
+      "sample_values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "min_value": "A",
+      "max_value": "T"
+    },
+    {
+      "name": "authority",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PROJECT"
+      ],
+      "min_value": "PROJECT",
+      "max_value": "PROJECT"
+    },
+    {
+      "name": "method",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NAME_ALIGNMENT_VERIFIED_AGAINST_NIC_2008"
+      ],
+      "min_value": "NAME_ALIGNMENT_VERIFIED_AGAINST_NIC_2008",
+      "max_value": "NAME_ALIGNMENT_VERIFIED_AGAINST_NIC_2008"
+    },
+    {
+      "name": "confidence",
+      "dtype": "float64",
+      "n_rows": 21,
+      "n_null": 1,
+      "pct_null": 4.76,
+      "n_unique": 7,
+      "sample_values": [
+        "0.95",
+        "0.99",
+        "0.9",
+        "0.97",
+        "0.92"
+      ],
+      "min_value": "0.8",
+      "max_value": "0.99"
+    },
+    {
+      "name": "rationale",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "NIC A: Agriculture, forestry and fishing",
+        "NIC B: Mining and quarrying - name identical",
+        "NIC C: Manufacturing - name identical",
+        "NIC D: Electricity, gas, steam and air conditioning supply",
+        "NIC E: Water supply; sewerage, waste management and remediat"
+      ],
+      "min_value": "NIC A: Agriculture, forestry and fishing",
+      "max_value": "No industry information; must remain unallocated"
+    },
+    {
+      "name": "reviewed_at",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:20+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:20+00:00",
+      "max_value": "2026-10-05T18:31:20+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

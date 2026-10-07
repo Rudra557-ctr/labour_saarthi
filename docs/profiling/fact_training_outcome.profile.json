@@ -1,0 +1,286 @@
+{
+  "table": "fact_training_outcome",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_training_outcome.parquet",
+  "n_rows": 350,
+  "n_cols": 19,
+  "columns": [
+    {
+      "name": "source_annexure",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "ANNEXURE_11",
+        "ANNEXURE_14"
+      ],
+      "min_value": "ANNEXURE_11",
+      "max_value": "ANNEXURE_14"
+    },
+    {
+      "name": "annexure_title",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "State wise training details of PMKVY 1.0 (2015-16)",
+        "State wise progress under Short Term Training (STT) componen"
+      ],
+      "min_value": "State wise progress under Short Term Training (STT) component of CSSM - PMKVY 2.0 (as on 31.03.2024)",
+      "max_value": "State wise training details of PMKVY 1.0 (2015-16)"
+    },
+    {
+      "name": "scheme",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "PMKVY_1.0",
+        "PMKVY_2.0_CSSM_STT"
+      ],
+      "min_value": "PMKVY_1.0",
+      "max_value": "PMKVY_2.0_CSSM_STT"
+    },
+    {
+      "name": "scheme_period",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "2015-16",
+        "2016-20"
+      ],
+      "min_value": "2015-16",
+      "max_value": "2016-20"
+    },
+    {
+      "name": "as_on_date",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 175,
+      "pct_null": 50.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-03-31"
+      ],
+      "min_value": "2024-03-31",
+      "max_value": "2024-03-31"
+    },
+    {
+      "name": "state_name_as_source",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "Andaman And Nicobar Islands",
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar"
+      ],
+      "min_value": "Andaman And Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "state_lgd_code",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "35",
+        "28",
+        "12",
+        "18",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "STATE"
+      ],
+      "min_value": "STATE",
+      "max_value": "STATE"
+    },
+    {
+      "name": "geography_status",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MATCHED"
+      ],
+      "min_value": "MATCHED",
+      "max_value": "MATCHED"
+    },
+    {
+      "name": "measure",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "ENROLLED",
+        "TRAINED",
+        "ASSESSED",
+        "CERTIFIED",
+        "PLACED"
+      ],
+      "min_value": "ASSESSED",
+      "max_value": "TRAINED"
+    },
+    {
+      "name": "measure_definition",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "candidates registered for training",
+        "candidates who completed the training input",
+        "candidates who underwent assessment",
+        "candidates certified after assessment",
+        "candidates reported placed at point of report; NOT sustained"
+      ],
+      "min_value": "candidates certified after assessment",
+      "max_value": "candidates who underwent assessment"
+    },
+    {
+      "name": "value_as_published",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 303,
+      "sample_values": [
+        "194",
+        "164",
+        "20",
+        "-",
+        "1,36,635"
+      ],
+      "min_value": "-",
+      "max_value": "93"
+    },
+    {
+      "name": "value",
+      "dtype": "float64",
+      "n_rows": 350,
+      "n_null": 5,
+      "pct_null": 1.43,
+      "n_unique": 302,
+      "sample_values": [
+        "194.0",
+        "164.0",
+        "20.0",
+        "136635.0",
+        "134154.0"
+      ],
+      "min_value": "1017.0",
+      "max_value": "9985.0"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "candidates"
+      ],
+      "min_value": "candidates",
+      "max_value": "candidates"
+    },
+    {
+      "name": "value_status",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "AVAILABLE",
+        "NO_DATA"
+      ],
+      "min_value": "AVAILABLE",
+      "max_value": "NO_DATA"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_ANNUAL_REPORT_2023_24"
+      ],
+      "min_value": "MSDE_ANNUAL_REPORT_2023_24",
+      "max_value": "MSDE_ANNUAL_REPORT_2023_24"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_Annual_Report_2023-24.pdf"
+      ],
+      "min_value": "MSDE_Annual_Report_2023-24.pdf",
+      "max_value": "MSDE_Annual_Report_2023-24.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 350,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

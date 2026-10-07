@@ -1,0 +1,121 @@
+{
+  "table": "fact_trade_supply_reconciliation",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_trade_supply_reconciliation.parquet",
+  "n_rows": 4,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "source_table",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "TABLE_5_54",
+        "TABLE_5_10",
+        "TABLE_5_9"
+      ],
+      "min_value": "TABLE_5_10",
+      "max_value": "TABLE_5_9"
+    },
+    {
+      "name": "measure",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "APPRENTICES_ENGAGED",
+        "ENROLLED",
+        "TRAINED_ORIENTED"
+      ],
+      "min_value": "APPRENTICES_ENGAGED",
+      "max_value": "TRAINED_ORIENTED"
+    },
+    {
+      "name": "top_n_extracted_sum",
+      "dtype": "float64",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "1047299.0",
+        "514619.0",
+        "105100.0",
+        "1291749.0"
+      ],
+      "min_value": "1047299.0",
+      "max_value": "514619.0"
+    },
+    {
+      "name": "published_grand_total",
+      "dtype": "float64",
+      "n_rows": 4,
+      "n_null": 3,
+      "pct_null": 75.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1047299.0"
+      ],
+      "min_value": "1047299.0",
+      "max_value": "1047299.0"
+    },
+    {
+      "name": "top_n_shortfall",
+      "dtype": "float64",
+      "n_rows": 4,
+      "n_null": 3,
+      "pct_null": 75.0,
+      "n_unique": 1,
+      "sample_values": [
+        "0.0"
+      ],
+      "min_value": "0.0",
+      "max_value": "0.0"
+    },
+    {
+      "name": "note",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "Top-N subset: the extracted rows are a subset of the populat"
+      ],
+      "min_value": "Top-N subset: the extracted rows are a subset of the population, so a non-zero shortfall is correct.",
+      "max_value": "Top-N subset: the extracted rows are a subset of the population, so a non-zero shortfall is correct."
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_ANNUAL_REPORT_2023_24"
+      ],
+      "min_value": "MSDE_ANNUAL_REPORT_2023_24",
+      "max_value": "MSDE_ANNUAL_REPORT_2023_24"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 4,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

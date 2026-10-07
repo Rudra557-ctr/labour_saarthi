@@ -1,0 +1,11 @@
+alias_text,lgd_state_name,match_method,confidence,rationale
+Dadra and Nagar Haveli,The Dadra And Nagar Haveli And Daman And Diu,HUMAN_TERRITORIAL_REORG,1.0,"NCS reports the pre-2020 UT separately; LGD carries the merged UT created by the Dadra and Nagar Haveli and Daman and Diu (Merger of Union territories) Act 2019. Many-to-one: two source rows resolve to one LGD code."
+Daman and Diu,The Dadra And Nagar Haveli And Daman And Diu,HUMAN_TERRITORIAL_REORG,1.0,"Same 2019 merger as above. Source rows are kept separate as published; both carry the merged LGD code."
+Orissa,Odisha,HUMAN_RENAME,1.0,"Renamed to Odisha by the Orissa (Alteration of Name) Act 2011."
+Pondicherry,Puducherry,HUMAN_RENAME,1.0,"Renamed to Puducherry in 2006."
+Uttaranchal,Uttarakhand,HUMAN_RENAME,1.0,"Renamed to Uttarakhand in 2007."
+NCT of Delhi,Delhi,HUMAN_VARIANT,1.0,"Administrative long form of the same LGD entity."
+Jammu & Kashmir,Jammu And Kashmir,HUMAN_VARIANT,1.0,"Ampersand variant of the same LGD entity."
+A & N Islands,Andaman And Nicobar Islands,HUMAN_VARIANT,1.0,"Abbreviated variant of the same LGD entity."
+Dadra & Nagar Haveli and Daman & Diu,The Dadra And Nagar Haveli And Daman And Diu,HUMAN_VARIANT,1.0,"Ampersand spelling of the merged UT as printed in the MSDE Annual Report 2023-24 Annexure-21."
+Jammu Kashmir,Jammu And Kashmir,HUMAN_VARIANT,1.0,"MSDE Annual Report Annexure-21 omits the conjunction; same LGD entity."

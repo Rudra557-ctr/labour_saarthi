@@ -1,0 +1,115 @@
+{
+  "table": "fact_training_reconciliation",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_training_reconciliation.parquet",
+  "n_rows": 14,
+  "n_cols": 7,
+  "columns": [
+    {
+      "name": "source_annexure",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "ANNEXURE_11",
+        "ANNEXURE_14",
+        "ANNEXURE_21"
+      ],
+      "min_value": "ANNEXURE_11",
+      "max_value": "ANNEXURE_21"
+    },
+    {
+      "name": "measure",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "ENROLLED",
+        "TRAINED",
+        "ASSESSED",
+        "CERTIFIED",
+        "PLACED"
+      ],
+      "min_value": "ASSESSED",
+      "max_value": "TRAINED"
+    },
+    {
+      "name": "extracted_sum",
+      "dtype": "float64",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 13,
+      "sample_values": [
+        "1986016.0",
+        "1951487.0",
+        "1451636.0",
+        "253296.0",
+        "870769.0"
+      ],
+      "min_value": "1451636.0",
+      "max_value": "870769.0"
+    },
+    {
+      "name": "published_total",
+      "dtype": "float64",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 13,
+      "sample_values": [
+        "1986016.0",
+        "1951487.0",
+        "1451636.0",
+        "253296.0",
+        "870769.0"
+      ],
+      "min_value": "1451636.0",
+      "max_value": "870769.0"
+    },
+    {
+      "name": "difference",
+      "dtype": "float64",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "0.0"
+      ],
+      "min_value": "0.0",
+      "max_value": "0.0"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_ANNUAL_REPORT_2023_24"
+      ],
+      "min_value": "MSDE_ANNUAL_REPORT_2023_24",
+      "max_value": "MSDE_ANNUAL_REPORT_2023_24"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

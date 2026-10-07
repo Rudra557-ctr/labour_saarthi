@@ -1,0 +1,197 @@
+{
+  "table": "source_snapshot",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/source_snapshot.parquet",
+  "n_rows": 35,
+  "n_cols": 12,
+  "columns": [
+    {
+      "name": "snapshot_id",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "CENSUS_2011_B24:2026-10-04:DDW-B24-2700-Final.XLSX",
+        "CENSUS_2011_B24:2026-10-04:DDW-B24-3300-Final.XLSX",
+        "CENSUS_2011_B24:2026-10-04:DDW-B24-0900-Final.XLSX",
+        "DATAMEET_DISTRICT_ATTRS:2026-10-02:2011_Dist.dbf",
+        "DGT_CTS_CURRICULUM:2026-10-04:Fitter_CTS3.0_NSQF-4.pdf"
+      ],
+      "min_value": "CENSUS_2011_B24:2026-10-04:DDW-B24-0900-Final.XLSX",
+      "max_value": "UDYAM_DISTRICT_MSME:2026-10-02:district_level_total_Registered_msme.csv"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 15,
+      "sample_values": [
+        "CENSUS_2011_B24",
+        "DATAMEET_DISTRICT_ATTRS",
+        "DGT_CTS_CURRICULUM",
+        "ILOSTAT_EMP_ECO_OCU",
+        "LGD_DISTRICTS_DATAGOVIN"
+      ],
+      "min_value": "CENSUS_2011_B24",
+      "max_value": "UDYAM_DISTRICT_MSME"
+    },
+    {
+      "name": "retrieved_at",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 14,
+      "sample_values": [
+        "2026-10-04T09:04:17+00:00",
+        "2026-10-02T08:24:53+00:00",
+        "2026-10-04T17:24:17+00:00",
+        "2026-10-04T09:20:50+00:00",
+        "2026-10-02T11:58:26+00:00"
+      ],
+      "min_value": "2026-10-02T08:17:05+00:00",
+      "max_value": "2026-10-04T17:24:17+00:00"
+    },
+    {
+      "name": "retrieved_date",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "2026-10-04",
+        "2026-10-02"
+      ],
+      "min_value": "2026-10-02",
+      "max_value": "2026-10-04"
+    },
+    {
+      "name": "file_name",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "DDW-B24-2700-Final.XLSX",
+        "DDW-B24-3300-Final.XLSX",
+        "DDW-B24-0900-Final.XLSX",
+        "2011_Dist.dbf",
+        "Fitter_CTS3.0_NSQF-4.pdf"
+      ],
+      "min_value": "2011_Dist.dbf",
+      "max_value": "nqr_sectors.html"
+    },
+    {
+      "name": "file_url",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "https://censusindia.gov.in/nada/index.php/catalog/13675/down",
+        "https://censusindia.gov.in/nada/index.php/catalog/13681/down",
+        "https://censusindia.gov.in/nada/index.php/catalog/13657/down",
+        "https://raw.githubusercontent.com/datameet/maps/master/Distr",
+        "https://dgt.gov.in/sites/default/files/2026-08/Fitter_CTS3.0"
+      ],
+      "min_value": "https://censusindia.gov.in/nada/index.php/catalog/13657/download/16770/DDW-B24-0900-Final.XLSX",
+      "max_value": "https://www.msde.gov.in/static/uploads/2024/11/4f71465f72e9f90ff079f76ca2e374a9.pdf"
+    },
+    {
+      "name": "sha256",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "1df7c75ae02540e5aea0475508fa69928b64ba2036675297ae8e2f43a821",
+        "b59409c4a754b5fcc5965598a033ae491ab5c849007e18091da03b81d3b2",
+        "76b1835dfa2f61feaf6293d9567d706574975ae071347cadf4b389f1f716",
+        "2c7b03578fdf41a4c4e29941a564fa90bf0b0e4f865f5e54481ef7ac8494",
+        "5dac1db08a8c09ba0785a24c10051b9746b8fc06a3fc18964ec001082dcc"
+      ],
+      "min_value": "099a43cce60567f28db6b1d0ef86d6bb8fee58c7e910790b0992830559556f05",
+      "max_value": "f0fe6308df810781ff4e71d27f90247f4cc879850d74b6343cb456a017dbf101"
+    },
+    {
+      "name": "size_bytes",
+      "dtype": "int64",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "569998",
+        "531886",
+        "1096835",
+        "54678",
+        "1091660"
+      ],
+      "min_value": "1056552",
+      "max_value": "990156"
+    },
+    {
+      "name": "http_status",
+      "dtype": "int64",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "200"
+      ],
+      "min_value": "200",
+      "max_value": "200"
+    },
+    {
+      "name": "publication_vintage",
+      "dtype": "object",
+      "n_rows": 35,
+      "n_null": 35,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "retrieved_by",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "lmis.ingest.acquire"
+      ],
+      "min_value": "lmis.ingest.acquire",
+      "max_value": "lmis.ingest.acquire"
+    },
+    {
+      "name": "notes",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 10,
+      "pct_null": 28.57,
+      "n_unique": 24,
+      "sample_values": [
+        "Maharashtra (census state code 27)",
+        "Tamil Nadu (census state code 33)",
+        "Uttar Pradesh (census state code 09)",
+        "district attribute table (names + Census 2011 codes), no geo",
+        "trade DGT/1002 - official NCO-2015 reference"
+      ],
+      "min_value": "36 states/UTs with LGD + Census-2011 state codes",
+      "max_value": "training annexures 11, 14, 21, 22"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

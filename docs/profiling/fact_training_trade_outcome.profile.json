@@ -1,0 +1,355 @@
+{
+  "table": "fact_training_trade_outcome",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_training_trade_outcome.parquet",
+  "n_rows": 35,
+  "n_cols": 24,
+  "columns": [
+    {
+      "name": "source_table",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "TABLE_5_54",
+        "TABLE_5_10",
+        "TABLE_5_9"
+      ],
+      "min_value": "TABLE_5_10",
+      "max_value": "TABLE_5_9"
+    },
+    {
+      "name": "source_table_title",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "Top Ten Trades in Apprenticeship Training (FY 2018-19 to FY ",
+        "Top 10 job roles (based on number enrolled) under PMKVY 4.0",
+        "Top 5 Sectors under PMKVY 4.0 (based on enrolled numbers)"
+      ],
+      "min_value": "Top 10 job roles (based on number enrolled) under PMKVY 4.0",
+      "max_value": "Top Ten Trades in Apprenticeship Training (FY 2018-19 to FY 2023-24)"
+    },
+    {
+      "name": "scheme",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "NAPS_APPRENTICESHIP",
+        "PMKVY_4.0"
+      ],
+      "min_value": "NAPS_APPRENTICESHIP",
+      "max_value": "PMKVY_4.0"
+    },
+    {
+      "name": "period_label",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "FY2018-19_to_FY2023-24",
+        "as_on_2024-03-31"
+      ],
+      "min_value": "FY2018-19_to_FY2023-24",
+      "max_value": "as_on_2024-03-31"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "NATIONAL"
+    },
+    {
+      "name": "occupation_entity_type",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "TRADE",
+        "JOB_ROLE",
+        "SECTOR"
+      ],
+      "min_value": "JOB_ROLE",
+      "max_value": "TRADE"
+    },
+    {
+      "name": "entity_name_as_source",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 25,
+      "sample_values": [
+        "Electrician",
+        "Fitter",
+        "Retail Trainee Associate",
+        "Assembly Line Operator",
+        "Automotive Assembly Operator"
+      ],
+      "min_value": "Apparel",
+      "max_value": "Welder (Gas and Electric)"
+    },
+    {
+      "name": "entity_type_as_source",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 25,
+      "pct_null": 71.43,
+      "n_unique": 2,
+      "sample_values": [
+        "Designated Trade",
+        "Optional Trade"
+      ],
+      "min_value": "Designated Trade",
+      "max_value": "Optional Trade"
+    },
+    {
+      "name": "published_rank",
+      "dtype": "int64",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "measure",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "APPRENTICES_ENGAGED",
+        "ENROLLED",
+        "TRAINED_ORIENTED"
+      ],
+      "min_value": "APPRENTICES_ENGAGED",
+      "max_value": "TRAINED_ORIENTED"
+    },
+    {
+      "name": "measure_definition",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "apprentices engaged under NAPS, cumulative FY2018-19 to FY20",
+        "candidates enrolled under PMKVY 4.0",
+        "candidates trained or oriented under PMKVY 4.0"
+      ],
+      "min_value": "apprentices engaged under NAPS, cumulative FY2018-19 to FY2023-24; an engagement count, not training completion",
+      "max_value": "candidates trained or oriented under PMKVY 4.0"
+    },
+    {
+      "name": "value_as_published",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "2,14,271",
+        "2,06,676",
+        "1,59,266",
+        "86,276",
+        "79,769"
+      ],
+      "min_value": "1,17,340",
+      "max_value": "946"
+    },
+    {
+      "name": "value",
+      "dtype": "float64",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 35,
+      "sample_values": [
+        "214271.0",
+        "206676.0",
+        "159266.0",
+        "86276.0",
+        "79769.0"
+      ],
+      "min_value": "11254.0",
+      "max_value": "946.0"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "candidates"
+      ],
+      "min_value": "candidates",
+      "max_value": "candidates"
+    },
+    {
+      "name": "value_status",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "AVAILABLE"
+      ],
+      "min_value": "AVAILABLE",
+      "max_value": "AVAILABLE"
+    },
+    {
+      "name": "is_top_n_subset",
+      "dtype": "bool",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "published_grand_total",
+      "dtype": "float64",
+      "n_rows": 35,
+      "n_null": 25,
+      "pct_null": 71.43,
+      "n_unique": 1,
+      "sample_values": [
+        "1047299.0"
+      ],
+      "min_value": "1047299.0",
+      "max_value": "1047299.0"
+    },
+    {
+      "name": "nco_link_status",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "OFFICIAL_VIA_MAP_TRADE_TO_NCO",
+        "NO_EXISTING_OFFICIAL_MAP",
+        "OFFICIAL_VIA_MAP_QUALIFICATION_TO_NCO"
+      ],
+      "min_value": "NO_EXISTING_OFFICIAL_MAP",
+      "max_value": "OFFICIAL_VIA_MAP_TRADE_TO_NCO"
+    },
+    {
+      "name": "nco_codes_via_existing_map",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 31,
+      "pct_null": 88.57,
+      "n_unique": 3,
+      "sample_values": [
+        "7411.0100, 7412.0200",
+        "7233.0100, 7233.0200",
+        "4132.0402"
+      ],
+      "min_value": "4132.0402",
+      "max_value": "7411.0100, 7412.0200"
+    },
+    {
+      "name": "nco_link_method",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 31,
+      "pct_null": 88.57,
+      "n_unique": 1,
+      "sample_values": [
+        "EXACT_NAME_AGAINST_EXISTING_OFFICIAL_MAP"
+      ],
+      "min_value": "EXACT_NAME_AGAINST_EXISTING_OFFICIAL_MAP",
+      "max_value": "EXACT_NAME_AGAINST_EXISTING_OFFICIAL_MAP"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_ANNUAL_REPORT_2023_24"
+      ],
+      "min_value": "MSDE_ANNUAL_REPORT_2023_24",
+      "max_value": "MSDE_ANNUAL_REPORT_2023_24"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_Annual_Report_2023-24.pdf"
+      ],
+      "min_value": "MSDE_Annual_Report_2023-24.pdf",
+      "max_value": "MSDE_Annual_Report_2023-24.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 35,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

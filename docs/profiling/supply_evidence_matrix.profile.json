@@ -1,0 +1,273 @@
+{
+  "table": "supply_evidence_matrix",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/supply_evidence_matrix.parquet",
+  "n_rows": 17,
+  "n_cols": 17,
+  "columns": [
+    {
+      "name": "blocker",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "A_DISTRICT_SUPPLY",
+        "B_TRADE_NCO",
+        "C_TRADE_LEVEL_SUPPLY"
+      ],
+      "min_value": "A_DISTRICT_SUPPLY",
+      "max_value": "C_TRADE_LEVEL_SUPPLY"
+    },
+    {
+      "name": "source",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 9,
+      "sample_values": [
+        "data.gov.in",
+        "AIKosh (IndiaAI)",
+        "DGT",
+        "NCVT MIS",
+        "MSDE Annual Report 2023-24"
+      ],
+      "min_value": "AIKosh (IndiaAI)",
+      "max_value": "data.gov.in"
+    },
+    {
+      "name": "resource",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 17,
+      "sample_values": [
+        "PMKVY district enrolled/trained/assessed/certified/placed",
+        "ITI seating capacity resources",
+        "catalogue of 346 datasets",
+        "dgt.gov.in site",
+        "ncvtmis.gov.in"
+      ],
+      "min_value": "Annexure-21 PMKKs",
+      "max_value": "qualification records"
+    },
+    {
+      "name": "official_publisher",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 6,
+      "sample_values": [
+        "MSDE",
+        "MSDE / DGT",
+        "IndiaAI / MeitY",
+        "DGT, MSDE",
+        "NCVET"
+      ],
+      "min_value": "DGT, MSDE",
+      "max_value": "NCVET"
+    },
+    {
+      "name": "url",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "https://www.data.gov.in/resource/district-wise-enrolled-trai",
+        "https://www.data.gov.in/",
+        "https://aikosh.indiaai.gov.in/home/datasets.html",
+        "https://www.dgt.gov.in/",
+        "https://www.ncvtmis.gov.in/"
+      ],
+      "min_value": "https://aikosh.indiaai.gov.in/home/datasets.html",
+      "max_value": "https://www.ncvtmis.gov.in/"
+    },
+    {
+      "name": "access_status",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "ACCESS_PENDING",
+        "UNAVAILABLE",
+        "ACQUIRED_METADATA_ONLY",
+        "ACQUIRED"
+      ],
+      "min_value": "ACCESS_PENDING",
+      "max_value": "UNAVAILABLE"
+    },
+    {
+      "name": "vintage",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "as on 2022-04-21",
+        "2016 and earlier",
+        "2026",
+        "unknown",
+        "as on 2024-03-31"
+      ],
+      "min_value": "2016 and earlier",
+      "max_value": "unknown"
+    },
+    {
+      "name": "grain",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 12,
+      "sample_values": [
+        "district x scheme training type",
+        "state/UT x ITI type",
+        "n/a",
+        "unknown",
+        "state x PMKK metric"
+      ],
+      "min_value": "awarding body",
+      "max_value": "unknown"
+    },
+    {
+      "name": "district_available",
+      "dtype": "object",
+      "n_rows": 17,
+      "n_null": 2,
+      "pct_null": 11.76,
+      "n_unique": 2,
+      "sample_values": [
+        "True",
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "trade_available",
+      "dtype": "object",
+      "n_rows": 17,
+      "n_null": 2,
+      "pct_null": 11.76,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "occupation_available",
+      "dtype": "object",
+      "n_rows": 17,
+      "n_null": 2,
+      "pct_null": 11.76,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "measure_available",
+      "dtype": "object",
+      "n_rows": 17,
+      "n_null": 2,
+      "pct_null": 11.76,
+      "n_unique": 2,
+      "sample_values": [
+        "True",
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "nco_mapping_available",
+      "dtype": "bool",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "decision",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "ACCESS_PENDING",
+        "REJECTED",
+        "UNAVAILABLE",
+        "ACQUIRED",
+        "PARTIALLY_ACQUIRED"
+      ],
+      "min_value": "ACCESS_PENDING",
+      "max_value": "UNAVAILABLE"
+    },
+    {
+      "name": "reason",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 17,
+      "sample_values": [
+        "Resource page names PMKVY-210422.csv but publishes no datafi",
+        "Published at state/UT level only; no district dimension exis",
+        "Probed its SSR state: it is an AI model/dataset hub. Its one",
+        "Site publishes notices and circulars only; no ITI directory,",
+        "Host unreachable (connection timeout) in Steps 1.5-1.7 and n"
+      ],
+      "min_value": "Already held from Step 1. Establishes that every NSQF qualification must carry an NCO code and audits mapping quality per awarding body, but publishes no per-qualification crosswalk table.",
+      "max_value": "Trades carry NSQF level, entry qualification and duration but NO NCO code, and no trade -> qualification link is published. Mapping therefore remains UNMAPPED for all 155."
+    },
+    {
+      "name": "access_date",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-04"
+      ],
+      "min_value": "2026-10-04",
+      "max_value": "2026-10-04"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 17,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

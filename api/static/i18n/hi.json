@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "lang": "hi",
+    "name": "हिन्दी",
+    "dir": "ltr",
+    "complete": false,
+    "note": "Translation architecture is in place. Only strings reviewed for official terminology are translated; every other key falls back to English rather than being machine-translated. Official taxonomy identifiers (NCO, NIC, LGD, Census codes) are never translated."
+  },
+  "app.title": "LMIS — श्रम बाज़ार आसूचना प्रणाली",
+  "app.skipToContent": "मुख्य सामग्री पर जाएँ",
+  "nav.label": "मुख्य नेविगेशन",
+  "nav.national": "राष्ट्रीय",
+  "nav.state": "राज्य",
+  "nav.district": "ज़िला",
+  "nav.occupation": "व्यवसाय",
+  "lang.label": "भाषा",
+  "evidence.OBSERVED": "प्रेक्षित",
+  "evidence.ESTIMATED": "अनुमानित",
+  "evidence.SUPPORTING": "संदर्भ",
+  "evidence.UNAVAILABLE": "अनुपलब्ध",
+  "confidence.label": "विश्वसनीयता",
+  "confidence.MEDIUM": "मध्यम",
+  "confidence.LOW": "निम्न",
+  "coverage.label": "कवरेज",
+  "state.select": "राज्य चुनें",
+  "district.select": "ज़िला चुनें",
+  "loading": "लोड हो रहा है…",
+  "source.label": "स्रोत",
+  "rows.label": "पंक्तियाँ"
+}

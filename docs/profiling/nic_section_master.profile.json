@@ -1,0 +1,83 @@
+{
+  "table": "nic_section_master",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/nic_section_master.parquet",
+  "n_rows": 21,
+  "n_cols": 5,
+  "columns": [
+    {
+      "name": "nic_version",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2008"
+      ],
+      "min_value": "2008",
+      "max_value": "2008"
+    },
+    {
+      "name": "section_code",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "min_value": "A",
+      "max_value": "U"
+    },
+    {
+      "name": "section_title_en",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "Agriculture, forestry and fishing",
+        "Mining and quarrying",
+        "Manufacturing",
+        "Electricity, gas, steam and air conditioning supply",
+        "Water supply; sewerage, waste management and remediation act"
+      ],
+      "min_value": "Accommodation and Food service activities",
+      "max_value": "Wholesale and retail trade; repair of motor vehicles and motorcycles"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NIC_2008"
+      ],
+      "min_value": "NIC_2008",
+      "max_value": "NIC_2008"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 21,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:20+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:20+00:00",
+      "max_value": "2026-10-05T18:31:20+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

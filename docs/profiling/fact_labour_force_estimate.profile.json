@@ -1,0 +1,213 @@
+{
+  "table": "fact_labour_force_estimate",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_labour_force_estimate.parquet",
+  "n_rows": 81,
+  "n_cols": 15,
+  "columns": [
+    {
+      "name": "period_id",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "M202504"
+      ],
+      "min_value": "M202504",
+      "max_value": "M202504"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "NATIONAL"
+    },
+    {
+      "name": "lgd_code",
+      "dtype": "object",
+      "n_rows": 81,
+      "n_null": 81,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "area",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "RURAL",
+        "URBAN",
+        "RURAL_URBAN"
+      ],
+      "min_value": "RURAL",
+      "max_value": "URBAN"
+    },
+    {
+      "name": "sex",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "MALE",
+        "FEMALE",
+        "PERSON"
+      ],
+      "min_value": "FEMALE",
+      "max_value": "PERSON"
+    },
+    {
+      "name": "age_group",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "15-29 years",
+        "15 years and above",
+        "all ages"
+      ],
+      "min_value": "15 years and above",
+      "max_value": "all ages"
+    },
+    {
+      "name": "indicator",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "LFPR",
+        "WPR",
+        "UR"
+      ],
+      "min_value": "LFPR",
+      "max_value": "WPR"
+    },
+    {
+      "name": "approach",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CWS"
+      ],
+      "min_value": "CWS",
+      "max_value": "CWS"
+    },
+    {
+      "name": "value_percent",
+      "dtype": "float64",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 72,
+      "sample_values": [
+        "63.5",
+        "23.8",
+        "43.4",
+        "79.0",
+        "38.2"
+      ],
+      "min_value": "10.7",
+      "max_value": "8.7"
+    },
+    {
+      "name": "std_error",
+      "dtype": "object",
+      "n_rows": 81,
+      "n_null": 81,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "percent"
+      ],
+      "min_value": "percent",
+      "max_value": "percent"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED_SURVEY_ESTIMATE"
+      ],
+      "min_value": "OBSERVED_SURVEY_ESTIMATE",
+      "max_value": "OBSERVED_SURVEY_ESTIMATE"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PLFS"
+      ],
+      "min_value": "PLFS",
+      "max_value": "PLFS"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PLFS_Monthly_Bulletin_April_2025.pdf"
+      ],
+      "min_value": "PLFS_Monthly_Bulletin_April_2025.pdf",
+      "max_value": "PLFS_Monthly_Bulletin_April_2025.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 81,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:27+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:27+00:00",
+      "max_value": "2026-10-05T18:31:27+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1760" viewBox="0 0 2400 1760"><rect width="2400" height="1760" fill="#fff"/>
+<text x="80" y="84" font-family="Arial, Helvetica, sans-serif" font-size="46" fill="#15171C" font-weight="700" text-anchor="start">LMIS — Evidence-first architecture</text>
+<text x="80" y="128" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#687080" font-weight="400" text-anchor="start">Official sources in, provenance out — nothing invented in between.</text>
+<text x="90" y="172" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#687080" font-weight="700" text-anchor="start">MASTER / REFERENCE</text>
+<text x="820" y="172" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#687080" font-weight="700" text-anchor="start">PIPELINE</text>
+<text x="1700" y="172" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#687080" font-weight="700" text-anchor="start">EVIDENCE STAMPED</text>
+<rect x="820" y="190" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="232" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">OFFICIAL SOURCES</text>
+<text x="1200.0" y="260" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">26 registered · 15 acquired · 6 in production</text>
+<rect x="820" y="312" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="354" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">RAW SNAPSHOTS + PROVENANCE</text>
+<text x="1200.0" y="382" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">sha256 manifests · immutable · never overwritten</text>
+<rect x="820" y="434" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="476" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">STANDARDISATION</text>
+<text x="1200.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">PDF · HTML · XLSX · DBF    NULL ≠ 0 ≠ '-' ≠ 'NA'</text>
+<rect x="820" y="556" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="598" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">LOCATION / OCCUPATION / SECTOR NORMALISATION</text>
+<text x="1200.0" y="626" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">every mapping carries authority + method + confidence</text>
+<rect x="820" y="678" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="720" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">VALIDATION + DATA QUALITY</text>
+<text x="1200.0" y="748" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">Pandera contracts · 14/14 reconciliations exact</text>
+<rect x="820" y="800" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="842" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">ANALYTICAL DATASET</text>
+<text x="1200.0" y="870" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">one table per source-concept · native grain · never merged</text>
+<rect x="820" y="922" width="760" height="92" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="964" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">DEMAND INTELLIGENCE</text>
+<text x="1200.0" y="992" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">national composition · district + district×occupation signals</text>
+<line x1="1200.0" y1="286" x2="1200.0" y2="301" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,301 1207.0,301 1200.0,312" fill="#1A4FA0"/>
+<line x1="1200.0" y1="408" x2="1200.0" y2="423" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,423 1207.0,423 1200.0,434" fill="#1A4FA0"/>
+<line x1="1200.0" y1="530" x2="1200.0" y2="545" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,545 1207.0,545 1200.0,556" fill="#1A4FA0"/>
+<line x1="1200.0" y1="652" x2="1200.0" y2="667" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,667 1207.0,667 1200.0,678" fill="#1A4FA0"/>
+<line x1="1200.0" y1="774" x2="1200.0" y2="789" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,789 1207.0,789 1200.0,800" fill="#1A4FA0"/>
+<line x1="1200.0" y1="896" x2="1200.0" y2="911" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,911 1207.0,911 1200.0,922" fill="#1A4FA0"/>
+<rect x="90" y="230" width="560" height="76" rx="10" fill="#fff" stroke="#CBD2DE" stroke-width="2"/>
+<text x="110" y="264" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="start">LGD / Location</text>
+<text x="110" y="292" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="start">821 · 36 states + 785 districts</text>
+<rect x="90" y="318" width="560" height="76" rx="10" fill="#fff" stroke="#CBD2DE" stroke-width="2"/>
+<text x="110" y="352" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="start">NCO-2015 / Occupation</text>
+<text x="110" y="380" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="start">3,982 · official 3,447-row concordance</text>
+<rect x="90" y="406" width="560" height="76" rx="10" fill="#fff" stroke="#CBD2DE" stroke-width="2"/>
+<text x="110" y="440" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="start">NIC-2008 / NCS Sector</text>
+<text x="110" y="468" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="start">21 sections · 22 NCS sectors</text>
+<rect x="90" y="494" width="560" height="76" rx="10" fill="#fff" stroke="#CBD2DE" stroke-width="2"/>
+<text x="110" y="528" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="start">Period</text>
+<text x="110" y="556" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="start">dim_period · 132</text>
+<rect x="90" y="582" width="560" height="76" rx="10" fill="#fff" stroke="#CBD2DE" stroke-width="2"/>
+<text x="110" y="616" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="start">Source / Provenance</text>
+<text x="110" y="644" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="start">26 registered · licence gate</text>
+<line x1="664" y1="250" x2="664" y2="640" stroke="#CBD2DE" stroke-width="3"/>
+<line x1="664" y1="602.0" x2="805" y2="602.0" stroke="#CBD2DE" stroke-width="3"/>
+<polygon points="805,597.0 805,607.0 814,602.0" fill="#CBD2DE"/>
+<text x="90" y="698" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="start">consulted during normalisation — not passed through</text>
+<text x="1226.0" y="302" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#1A4FA0" font-weight="700" text-anchor="start">LICENCE GATE</text>
+<text x="1374.0" y="303" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#687080" font-weight="400" text-anchor="start">— nothing acquired unless registered</text>
+<line x1="1586" y1="358.0" x2="1683" y2="358.0" stroke="#CBD2DE" stroke-width="3"/>
+<polygon points="1683,353.0 1683,363.0 1692,358.0" fill="#CBD2DE"/>
+<rect x="1700" y="330.0" width="610" height="56" rx="9" fill="#E9F0FA" stroke="#1A4FA0" stroke-width="2"/>
+<text x="1720" y="366.0" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1A4FA0" font-weight="700" text-anchor="start">PROVENANCE attached</text>
+<line x1="1586" y1="724.0" x2="1683" y2="724.0" stroke="#CBD2DE" stroke-width="3"/>
+<polygon points="1683,719.0 1683,729.0 1692,724.0" fill="#CBD2DE"/>
+<rect x="1700" y="696.0" width="610" height="56" rx="9" fill="#E9F0FA" stroke="#1A4FA0" stroke-width="2"/>
+<text x="1720" y="732.0" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1A4FA0" font-weight="700" text-anchor="start">CONTRACTS ENFORCED</text>
+<line x1="1586" y1="846.0" x2="1683" y2="846.0" stroke="#CBD2DE" stroke-width="3"/>
+<polygon points="1683,841.0 1683,851.0 1692,846.0" fill="#CBD2DE"/>
+<rect x="1700" y="818.0" width="610" height="56" rx="9" fill="#E2F2EA" stroke="#15543A" stroke-width="2"/>
+<rect x="1720" y="835.0" width="22" height="22" fill="#15543A"/>
+<text x="1754" y="854.0" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#15543A" font-weight="700" text-anchor="start">OBSERVED</text>
+<rect x="1930" y="835.0" width="22" height="22" fill="none" stroke="#3C4A63" stroke-width="3"/>
+<text x="1964" y="854.0" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#3C4A63" font-weight="700" text-anchor="start">SUPPORTING</text>
+<line x1="1586" y1="968.0" x2="1683" y2="968.0" stroke="#CBD2DE" stroke-width="3"/>
+<polygon points="1683,963.0 1683,973.0 1692,968.0" fill="#CBD2DE"/>
+<rect x="1700" y="940.0" width="610" height="56" rx="9" fill="#FDF3DC" stroke="#8A6400" stroke-width="2"/>
+<rect x="1720" y="957.0" width="22" height="22" fill="none" stroke="#8A6400" stroke-width="3"/>
+<rect x="1720" y="957.0" width="11.0" height="22" fill="#8A6400"/>
+<text x="1754" y="976.0" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#8A6400" font-weight="700" text-anchor="start">ESTIMATED  ·  weakest-link MEDIUM / LOW</text>
+<rect x="90" y="1050" width="2220" height="258" rx="14" fill="#FAE8E8" stroke="#9A2A2A" stroke-width="5"/>
+<text x="124" y="1108" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#9A2A2A" font-weight="700" text-anchor="start">NO-FABRICATION BOUNDARY</text>
+<text x="124" y="1152" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#15171C" font-weight="400" text-anchor="start">SUPPLY[geography × trade] is a JOINT DISTRIBUTION.  We hold row marginals</text>
+<text x="124" y="1184" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#15171C" font-weight="400" text-anchor="start">+ a 21.8% column fragment — from a different scheme.</text>
+<text x="124" y="1218" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#9A2A2A" font-weight="700" text-anchor="start">Marginals never determine an interior.</text>
+<text x="124" y="1264" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#9A2A2A" font-weight="700" text-anchor="start">NOT estimated.   NOT zero.   NOT 404.   NOT omitted.</text>
+<text x="124" y="1298" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#15171C" font-weight="700" text-anchor="start">OBSERVED DATA  ≠  DERIVED RELATIVE SIGNAL</text>
+<rect x="1310" y="1086" width="440" height="114" rx="10" fill="#fff" stroke="#9A2A2A" stroke-width="3"/>
+<text x="1330" y="1120" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#15171C" font-weight="400" text-anchor="start">numeric demand–supply gap</text>
+<text x="1330" y="1148" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#15171C" font-weight="400" text-anchor="start">shortage · forecast</text>
+<text x="1330" y="1176" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#15171C" font-weight="400" text-anchor="start">occupation-level supply</text>
+<line x1="1762" y1="1142" x2="1845" y2="1142" stroke="#9A2A2A" stroke-width="5"/>
+<polygon points="1845,1137 1845,1147 1854,1142" fill="#9A2A2A"/>
+<text x="1808" y="1122" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#9A2A2A" font-weight="700" text-anchor="middle">BLOCKED</text>
+<rect x="1862" y="1086" width="414" height="114" rx="10" fill="#fff" stroke="#9A2A2A" stroke-width="3"/>
+<rect x="1882" y="1106" width="22" height="22" fill="none" stroke="#9A2A2A" stroke-width="3" stroke-dasharray="6 5"/>
+<text x="1916" y="1124" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#9A2A2A" font-weight="700" text-anchor="start">UNAVAILABLE</text>
+<text x="1882" y="1160" font-family="Menlo, Consolas, monospace" font-size="19" fill="#15171C" font-weight="400" text-anchor="start">reason_code · blocking_gate G-1…G-9</text>
+<text x="1882" y="1184" font-family="Menlo, Consolas, monospace" font-size="19" fill="#15171C" font-weight="400" text-anchor="start">data: null   (HTTP 200)</text>
+<line x1="1200.0" y1="1310" x2="1200.0" y2="1331" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,1331 1207.0,1331 1200.0,1342" fill="#1A4FA0"/>
+<rect x="820" y="1342" width="760" height="94" rx="10" fill="#E9F0FA" stroke="#1A4FA0" stroke-width="3"/>
+<text x="1200.0" y="1382" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#1A4FA0" font-weight="700" text-anchor="middle">PUBLICATION CONTRACT</text>
+<text x="1200.0" y="1414" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#15171C" font-weight="400" text-anchor="middle">evidence status READ FROM THE DATA · confidence · coverage · vintage</text>
+<rect x="1700" y="1360" width="610" height="52" rx="9" fill="#fff" stroke="#1A4FA0" stroke-width="2"/>
+<text x="1718" y="1393" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#1A4FA0" font-weight="700" text-anchor="start">is_measured_shortage = FALSE</text>
+<line x1="1586" y1="1386" x2="1683" y2="1386" stroke="#CBD2DE" stroke-width="3"/>
+<polygon points="1683,1381 1683,1391 1692,1386" fill="#CBD2DE"/>
+<text x="1600" y="1436" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#9A2A2A" font-weight="700" text-anchor="start">app REFUSES TO START on breach</text>
+<line x1="1200.0" y1="1438" x2="1200.0" y2="1455" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,1455 1207.0,1455 1200.0,1466" fill="#1A4FA0"/>
+<rect x="820" y="1466" width="760" height="72" rx="10" fill="#F7F8FB" stroke="#CBD2DE" stroke-width="2"/>
+<text x="1200.0" y="1500" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#15171C" font-weight="700" text-anchor="middle">FastAPI</text>
+<text x="1200.0" y="1528" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#687080" font-weight="400" text-anchor="middle">30 routes — 20 production · 10 blocked</text>
+<line x1="1200.0" y1="1540" x2="1200.0" y2="1546" stroke="#1A4FA0" stroke-width="4"/>
+<line x1="696.0" y1="1546" x2="1704.0" y2="1546" stroke="#1A4FA0" stroke-width="4"/>
+<line x1="696.0" y1="1546" x2="696.0" y2="1557" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="689.0,1557 703.0,1557 696.0,1568" fill="#1A4FA0"/>
+<rect x="461.0" y="1568" width="470" height="76" rx="10" fill="#fff" stroke="#1A4FA0" stroke-width="2"/>
+<text x="696.0" y="1604" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="middle">DASHBOARD</text>
+<text x="696.0" y="1632" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#687080" font-weight="400" text-anchor="middle">8 pages · EN/HI · WCAG 2.1 AA</text>
+<line x1="1200.0" y1="1546" x2="1200.0" y2="1557" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1193.0,1557 1207.0,1557 1200.0,1568" fill="#1A4FA0"/>
+<rect x="965.0" y="1568" width="470" height="76" rx="10" fill="#fff" stroke="#1A4FA0" stroke-width="2"/>
+<text x="1200.0" y="1604" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="middle">CSV / JSON EXPORT</text>
+<text x="1200.0" y="1632" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#687080" font-weight="400" text-anchor="middle">11 outputs · caveats in the file header</text>
+<line x1="1704.0" y1="1546" x2="1704.0" y2="1557" stroke="#1A4FA0" stroke-width="4"/>
+<polygon points="1697.0,1557 1711.0,1557 1704.0,1568" fill="#1A4FA0"/>
+<rect x="1469.0" y="1568" width="470" height="76" rx="10" fill="#fff" stroke="#1A4FA0" stroke-width="2"/>
+<text x="1704.0" y="1604" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#1A4FA0" font-weight="700" text-anchor="middle">OpenAPI</text>
+<text x="1704.0" y="1632" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#687080" font-weight="400" text-anchor="middle">/docs</text>
+<line x1="90" y1="1680" x2="2310" y2="1680" stroke="#CBD2DE" stroke-width="2"/>
+<text x="90" y="1716" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#687080" font-weight="400" text-anchor="start">Sources: NCS Parliament answers (as on 15 Nov 2024) · Udyam MSME (21 Dec 2023) · Census 2011 B-24 · LGD · PLFS (Apr 2025) · MSDE Annual Report 2023–24</text>
+</svg>

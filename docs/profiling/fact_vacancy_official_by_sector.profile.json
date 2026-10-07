@@ -1,0 +1,154 @@
+{
+  "table": "fact_vacancy_official_by_sector",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_vacancy_official_by_sector.parquet",
+  "n_rows": 63,
+  "n_cols": 10,
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "ncs_sector_name",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 22,
+      "sample_values": [
+        "Agriculture and Related",
+        "Arts and Entertainment",
+        "Civil and Construction Works",
+        "Education",
+        "Finance and Insurance"
+      ],
+      "min_value": "Agriculture and Related",
+      "max_value": "Wholesale and Retail"
+    },
+    {
+      "name": "nic_section_code",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 5,
+      "pct_null": 7.94,
+      "n_unique": 20,
+      "sample_values": [
+        "A",
+        "R",
+        "F",
+        "P",
+        "K"
+      ],
+      "min_value": "A",
+      "max_value": "T"
+    },
+    {
+      "name": "vacancies_cumulative",
+      "dtype": "float64",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "3.0",
+        "0.59",
+        "21.52",
+        "7.55",
+        "138.24"
+      ],
+      "min_value": "0.25",
+      "max_value": "9.71"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "lakh"
+      ],
+      "min_value": "lakh",
+      "max_value": "lakh"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_SINCE_INCEPTION"
+      ],
+      "min_value": "CUMULATIVE_SINCE_INCEPTION",
+      "max_value": "CUMULATIVE_SINCE_INCEPTION"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "LS_UQ2225_2024-12-09.pdf",
+        "LS_UQ933_2024-12-02.pdf",
+        "RS_UQ2798_2024-12-19.pdf"
+      ],
+      "min_value": "LS_UQ2225_2024-12-09.pdf",
+      "max_value": "RS_UQ2798_2024-12-19.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 63,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:27+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:27+00:00",
+      "max_value": "2026-10-05T18:31:27+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

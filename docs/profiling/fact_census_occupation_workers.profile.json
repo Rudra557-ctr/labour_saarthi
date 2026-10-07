@@ -1,0 +1,294 @@
+{
+  "table": "fact_census_occupation_workers",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_census_occupation_workers.parquet",
+  "n_rows": 48645,
+  "n_cols": 19,
+  "columns": [
+    {
+      "name": "census_year",
+      "dtype": "int64",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2011"
+      ],
+      "min_value": "2011",
+      "max_value": "2011"
+    },
+    {
+      "name": "census_state_code",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "09",
+        "27",
+        "33"
+      ],
+      "min_value": "09",
+      "max_value": "33"
+    },
+    {
+      "name": "census_district_code",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 1053,
+      "pct_null": 2.16,
+      "n_unique": 138,
+      "sample_values": [
+        "132",
+        "133",
+        "134",
+        "135",
+        "136"
+      ],
+      "min_value": "132",
+      "max_value": "633"
+    },
+    {
+      "name": "area_name",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 141,
+      "sample_values": [
+        "STATE - UTTAR PRADESH",
+        "District - Saharanpur",
+        "District - Muzaffarnagar",
+        "District - Bijnor",
+        "District - Moradabad"
+      ],
+      "min_value": "District - Agra",
+      "max_value": "STATE - UTTAR PRADESH"
+    },
+    {
+      "name": "nco_2004_division",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 11,
+      "sample_values": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "min_value": "0",
+      "max_value": "X"
+    },
+    {
+      "name": "nco_2004_sub_division",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 29,
+      "sample_values": [
+        "00",
+        "11",
+        "12",
+        "13",
+        "21"
+      ],
+      "min_value": "00",
+      "max_value": "X9"
+    },
+    {
+      "name": "nco_name",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 39,
+      "sample_values": [
+        "TOTAL",
+        "LEGISLATORS, SENIOR OFFICIALS AND MANAGERS",
+        "Legislators and Senior Officials",
+        "Corporate Managers",
+        "General Managers"
+      ],
+      "min_value": "Agricultural, Fishery and Related Labourers",
+      "max_value": "Workers Not Reporting Any Occupations"
+    },
+    {
+      "name": "row_type",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "TOTAL_ALL_OCCUPATIONS",
+        "DIVISION_TOTAL",
+        "SUB_DIVISION",
+        "UNCLASSIFIED"
+      ],
+      "min_value": "DIVISION_TOTAL",
+      "max_value": "UNCLASSIFIED"
+    },
+    {
+      "name": "area",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "TOTAL",
+        "RURAL",
+        "URBAN"
+      ],
+      "min_value": "RURAL",
+      "max_value": "URBAN"
+    },
+    {
+      "name": "sex",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "PERSON",
+        "MALE",
+        "FEMALE"
+      ],
+      "min_value": "FEMALE",
+      "max_value": "PERSON"
+    },
+    {
+      "name": "main_workers",
+      "dtype": "Int64",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 16647,
+      "sample_values": [
+        "16917229",
+        "14259660",
+        "2657569",
+        "7860015",
+        "6345289"
+      ],
+      "min_value": "0",
+      "max_value": "9998"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "STATE",
+        "DISTRICT"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "STATE"
+    },
+    {
+      "name": "occupation_scheme",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCO_2004"
+      ],
+      "min_value": "NCO_2004",
+      "max_value": "NCO_2004"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "DIVISION",
+        "SUB_DIVISION"
+      ],
+      "min_value": "DIVISION",
+      "max_value": "SUB_DIVISION"
+    },
+    {
+      "name": "universe",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MAIN_WORKERS_NON_HOUSEHOLD_INDUSTRY"
+      ],
+      "min_value": "MAIN_WORKERS_NON_HOUSEHOLD_INDUSTRY",
+      "max_value": "MAIN_WORKERS_NON_HOUSEHOLD_INDUSTRY"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CENSUS_2011_B24"
+      ],
+      "min_value": "CENSUS_2011_B24",
+      "max_value": "CENSUS_2011_B24"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "DDW-B24-0900-Final.XLSX",
+        "DDW-B24-2700-Final.XLSX",
+        "DDW-B24-3300-Final.XLSX"
+      ],
+      "min_value": "DDW-B24-0900-Final.XLSX",
+      "max_value": "DDW-B24-3300-Final.XLSX"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 48645,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:29+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:29+00:00",
+      "max_value": "2026-10-05T18:31:29+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

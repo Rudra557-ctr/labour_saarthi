@@ -1,0 +1,118 @@
+{
+  "table": "sector_master",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/sector_master.parquet",
+  "n_rows": 59,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "sector_id",
+      "dtype": "str",
+      "n_rows": 59,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 59,
+      "sample_values": [
+        "SEC_001",
+        "SEC_002",
+        "SEC_003",
+        "SEC_004",
+        "SEC_005"
+      ],
+      "min_value": "SEC_001",
+      "max_value": "SEC_077"
+    },
+    {
+      "name": "portal_sector_id",
+      "dtype": "int64",
+      "n_rows": 59,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 59,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "sector_name_en",
+      "dtype": "str",
+      "n_rows": 59,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 59,
+      "sample_values": [
+        "Apparel",
+        "Aerospace & Aviation",
+        "Agriculture",
+        "Automotive",
+        "Beauty & Wellness"
+      ],
+      "min_value": "Aerospace & Aviation",
+      "max_value": "Wood & Carpentry"
+    },
+    {
+      "name": "ssc_name",
+      "dtype": "object",
+      "n_rows": 59,
+      "n_null": 59,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "ssc_code",
+      "dtype": "object",
+      "n_rows": 59,
+      "n_null": 59,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 59,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NQR_SECTORS"
+      ],
+      "min_value": "NQR_SECTORS",
+      "max_value": "NQR_SECTORS"
+    },
+    {
+      "name": "valid_from",
+      "dtype": "object",
+      "n_rows": 59,
+      "n_null": 59,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "valid_to",
+      "dtype": "object",
+      "n_rows": 59,
+      "n_null": 59,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

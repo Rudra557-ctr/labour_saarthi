@@ -1,0 +1,126 @@
+{
+  "table": "map_nco2004_to_nco2015",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/map_nco2004_to_nco2015.parquet",
+  "n_rows": 3447,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "nco_2015_code",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3436,
+      "sample_values": [
+        "2411.0100",
+        "2411.0200",
+        "2411.0300",
+        "2411.0101",
+        "2411.0201"
+      ],
+      "min_value": "1111.0100",
+      "max_value": "9629.9900"
+    },
+    {
+      "name": "nco_2004_code",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 762,
+      "pct_null": 22.11,
+      "n_unique": 2672,
+      "sample_values": [
+        "2411.10",
+        "2411.20",
+        "2411.30",
+        "4121.60",
+        "4121.70"
+      ],
+      "min_value": "1111.10",
+      "max_value": "9333.90"
+    },
+    {
+      "name": "occupational_title",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3427,
+      "sample_values": [
+        "Accountant",
+        "Auditor",
+        "Cost Accountant",
+        "Associate \u2013 Transactional Finance & Accounting",
+        "Associate \u2013 Finance & Accounting Complex"
+      ],
+      "min_value": "(Letter Box Peon) Post Man",
+      "max_value": "Zoologist, General"
+    },
+    {
+      "name": "authority",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OFFICIAL"
+      ],
+      "min_value": "OFFICIAL",
+      "max_value": "OFFICIAL"
+    },
+    {
+      "name": "method",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PUBLISHED_TABLE"
+      ],
+      "min_value": "PUBLISHED_TABLE",
+      "max_value": "PUBLISHED_TABLE"
+    },
+    {
+      "name": "confidence",
+      "dtype": "float64",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1.0"
+      ],
+      "min_value": "1.0",
+      "max_value": "1.0"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCO_2015_NAT_TABLE"
+      ],
+      "min_value": "NCO_2015_NAT_TABLE",
+      "max_value": "NCO_2015_NAT_TABLE"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 3447,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:20+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:20+00:00",
+      "max_value": "2026-10-05T18:31:20+00:00"
+    }
+  ],
+  "duplicate_full_rows": 10,
+  "notes": []
+}

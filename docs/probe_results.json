@@ -1,0 +1,236 @@
+[
+  {
+    "probe_id": "P1_NCS",
+    "question": "Does NCS publish district x occupation-coded vacancies machine-readably?",
+    "url": "https://www.ncs.gov.in/_layouts/15/ncsp/ViewStaticReport.aspx",
+    "http_status": 200,
+    "verdict": "BLOCKED_JS",
+    "evidence": "HTTP 200; 0 <tr> elements; 0 NCO-format codes found in page",
+    "implication": "No NCO-coded district vacancy table observed in the static report HTML. D-04 remains OPEN."
+  },
+  {
+    "probe_id": "P2_ESHRAM",
+    "question": "Is e-Shram occupation x district data published jointly and machine-readably?",
+    "url": "https://eshram.gov.in/",
+    "http_status": 200,
+    "verdict": "NOT_FOUND",
+    "evidence": "HTTP 200; 0 <tr>; err=none",
+    "implication": "Occupation coding is documented as NCO-2015-based, but no joint occupation x district extract was obtained."
+  },
+  {
+    "probe_id": "P3_OGD_API",
+    "question": "Does the data.gov.in datastore API work without an API key?",
+    "url": "https://api.data.gov.in/resource/test?format=json",
+    "http_status": null,
+    "verdict": "ERROR",
+    "evidence": "HTTP None; err=ConnectionError: HTTPSConnectionPool(host='api.data.gov.in', port=443): Max retries exceeded with url: /resource/test?format=json (Caused by NewConnectionError(\"HTTPSConnection(host='api.data.gov.in', port=443): Failed to establish a new connection: [Errno 61] Connection refused\"))",
+    "implication": "A registered API key is required; without it no data.gov.in resource can be ingested programmatically."
+  },
+  {
+    "probe_id": "P3_OGD_API",
+    "question": "Does the data.gov.in datastore API work without an API key?",
+    "url": "https://data.gov.in/api/datastore/resource.json?resource_id=test",
+    "http_status": 404,
+    "verdict": "NOT_FOUND",
+    "evidence": "HTTP 404; err=none",
+    "implication": "A registered API key is required; without it no data.gov.in resource can be ingested programmatically."
+  },
+  {
+    "probe_id": "P4_DGT",
+    "question": "Is DGT/ITI trade x district capacity data published machine-readably?",
+    "url": "https://dgt.gov.in/",
+    "http_status": 200,
+    "verdict": "PARTIAL",
+    "evidence": "HTTP 200; 7 <tr>; err=none",
+    "implication": "No trade x district open dataset located. Long-term training capacity may only be available at coarser grain."
+  },
+  {
+    "probe_id": "P4_DGT",
+    "question": "Is DGT/ITI trade x district capacity data published machine-readably?",
+    "url": "https://www.ncvtmis.gov.in/",
+    "http_status": null,
+    "verdict": "ERROR",
+    "evidence": "HTTP None; 0 <tr>; err=ConnectTimeout: HTTPSConnectionPool(host='www.ncvtmis.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.ncvtmis.gov.in', port=443) at 0x10ad596d0>, 'Connection to www.ncvtmis.gov.in timed out. (connect timeout=45)'))",
+    "implication": "No trade x district open dataset located. Long-term training capacity may only be available at coarser grain."
+  },
+  {
+    "probe_id": "P5_NCS_API_STATE",
+    "question": "Does the public NCS API expose locations?",
+    "url": "https://api.ncs.gov.in/api/location/state",
+    "http_status": 200,
+    "verdict": "ACCESSIBLE",
+    "evidence": "39 states with stateCode matching standard Indian state numbering (Bihar 10, Maharashtra 27, Tamil Nadu 33)",
+    "implication": "Usable for the STATE tier of geography; not a substitute for LGD district codes."
+  },
+  {
+    "probe_id": "P6_NCS_API_LOCATIONS",
+    "question": "Can the NCS district list be read?",
+    "url": "https://api.ncs.gov.in/api/locations",
+    "http_status": 200,
+    "verdict": "BLOCKED_AUTH",
+    "evidence": "HTTP 200 but response body is encrypted opaque ciphertext, not JSON",
+    "implication": "District list unusable from this endpoint."
+  },
+  {
+    "probe_id": "P7_NCS_API_VACANCY",
+    "question": "Is there vacancy demand by location/occupation on the public NCS API?",
+    "url": "https://api.ncs.gov.in/employer-service/api/v1/hiring/top-companies",
+    "http_status": 200,
+    "verdict": "PARTIAL",
+    "evidence": "Real totalVacancies per COMPANY only (Apna 27913, Swiggy 13100). No location, occupation or date dimension. No job-search endpoint found across 39 JS bundles + SSR state.",
+    "implication": "Public NCS API cannot supply district x occupation demand. D-04 remains open."
+  },
+  {
+    "probe_id": "P8_NCS_API_SPEC",
+    "question": "Is the NCS API documented (sanctioned use)?",
+    "url": "https://api.ncs.gov.in/v3/api-docs",
+    "http_status": 500,
+    "verdict": "NOT_FOUND",
+    "evidence": "/v3/api-docs 500, /openapi.json 401, /swagger-ui 401, /actuator/health 200 (Spring Boot)",
+    "implication": "Undocumented public surface; terms of use UNCLEAR, must be confirmed with DGE."
+  },
+  {
+    "probe_id": "P9_LGD_CAPTCHA",
+    "question": "Why does the LGD bulk download fail?",
+    "url": "https://lgdirectory.gov.in/downloadDirectory.do",
+    "http_status": 200,
+    "verdict": "BLOCKED_AUTH",
+    "evidence": "Page carries a CAPTCHA (/js/captcha.js, refreshCaptcha('captchaImageId')). Earlier 'Session Time Out' was the symptom.",
+    "implication": "Automated download would require circumventing an access control. Manual human download required; use `lmis drop LGD_DIRECTORY <file>`."
+  },
+  {
+    "probe_id": "P10_NCS_PARL",
+    "question": "Do NCS Parliament answers carry usable demand data?",
+    "url": "https://dge.gov.in/sites/default/files/2025-05/2798_e.pdf",
+    "http_status": 200,
+    "verdict": "PARTIAL",
+    "evidence": "State-wise (39 rows) + sector-wise (22 rows) cumulative vacancies, as on 2024-11-15. State rows sum exactly to published total 35,275,833. 20,507,320 (58.1%) booked to 'Multiple States/PAN India'. Marginal tables only - no joint cross-tab. No district, no occupation.",
+    "implication": "Best real official demand data found. State x sector marginals, cumulative stock. Situation C."
+  },
+  {
+    "probe_id": "P11_INDEED",
+    "question": "Does Indeed Hiring Lab open data cover India?",
+    "url": "https://github.com/hiring-lab/job_postings_tracker",
+    "http_status": 200,
+    "verdict": "REJECTED",
+    "evidence": "All 6 hiring-lab repos checked; markets are AU CA DE EA ES FR GB IE IT NL US. No IN/India directory. CC-BY-4.0.",
+    "implication": "Rejected: no India coverage."
+  },
+  {
+    "probe_id": "P12_DATA_GOV_API",
+    "question": "Can data.gov.in be queried programmatically?",
+    "url": "https://api.data.gov.in/lists",
+    "http_status": null,
+    "verdict": "ERROR",
+    "evidence": "api.data.gov.in ConnectionError (unreachable from this network, repeated). www.data.gov.in search paths return the Nuxt SSR shell; __NUXT__ blob is 1450 chars with no prefetched results.",
+    "implication": "API key path remains UNTESTED and must be tested from the user's own network; catalogue not enumerable from here."
+  },
+  {
+    "probe_id": "P13_PMKVY_PLACEMENT",
+    "question": "Is placement still tracked under PMKVY 4.0?",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jul/doc2025714585701.pdf",
+    "http_status": 200,
+    "verdict": "PARTIAL",
+    "evidence": "PIB 10-year PMKVY document: placements tracked under STT for PMKVY 1.0-3.0 (FY2015-16 to FY2021-22), reported rate 42.8%; under PMKVY 4.0 'the focus is to empower trained candidates to choose their varied career path'. Document is national-only, 0 district/state tables.",
+    "implication": "Absorption ratio (placed/certified) may not exist for current data - first-order open question for the Step 0 supply index and SATURATION_RISK flag."
+  },
+  {
+    "probe_id": "P14_AIKOSH",
+    "question": "Does AIKosh host downloadable district datasets?",
+    "url": "https://aikosh.indiaai.gov.in/home/datasets/details/district_wise_total_msme_registered_enterprises_under_udyam_registration_till_last_date.html",
+    "http_status": 200,
+    "verdict": "PARTIAL",
+    "evidence": "Angular SPA; ng-state shows fileDownloadableUrl=null, filePath=null, dataset_source='External', dataset_external_url -> data.gov.in. Catalogue description confirms 'Daily updated district-wise dataset of total MSMEs ... with LG directory codes'.",
+    "implication": "AIKosh is a catalogue only, but it independently confirms a daily district-level LGD-coded dataset exists."
+  },
+  {
+    "probe_id": "P15_DATAGOVIN_DATAFILE",
+    "question": "Can data.gov.in files be reached without an API key?",
+    "url": "https://www.data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_districts.csv",
+    "http_status": 403,
+    "verdict": "BLOCKED_AUTH",
+    "evidence": "Resource pages embed direct keyless file URLs in their Nuxt SSR payload (extracted by scripts/probe_datagovin.py). Found: lgd_districts.csv, lgd_states.csv, lgd_subdistricts.csv, district_level_total_Registered_msme.csv, district_level_service_msme.csv, plus API UUIDs. All /files/ogdpv2dms/ fetches returned HTTP 403 with empty bodies from this environment; DNS resolves (api.data.gov.in -> 164.100.61.198).",
+    "implication": "URLs identified precisely; blocked at the edge HERE. Must be re-tested from the user network before being called unavailable."
+  },
+  {
+    "probe_id": "P16_CENSUS_B_SERIES",
+    "question": "Is district x occupation data available anywhere?",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog",
+    "http_status": 200,
+    "verdict": "ACCESSIBLE",
+    "evidence": "Census 2011 tables B-24 and B-27 give occupational classification of main workers by NCO division and group down to DISTRICT level, as XLSX from the ORGI digital library. Coded in NCO-2004.",
+    "implication": "Only verified route to real district x occupation. Translatable via our OFFICIAL NCO-2004->NCO-2015 concordance. HISTORICAL workforce structure, never demand."
+  },
+  {
+    "probe_id": "P17_STATE_PORTALS",
+    "question": "Do state employment portals publish district vacancies?",
+    "url": "https://rojgar.mahaswayam.gov.in/",
+    "http_status": 200,
+    "verdict": "PARTIAL",
+    "evidence": "Mahaswayam HTTP 200, JS-driven, 21 'vacancy' / 19 'district' mentions, 2 table rows. rojgaarsangam.up.gov.in HTTP 200 with a /JobSearch route. tnvelaivaaippu.gov.in HTTP 200, minimal server-rendered content.",
+    "implication": "Potentially real district-level demand for all three pilot states. NOT pursued: needs a human browser check and a terms-of-use review before any automated access."
+  },
+  {
+    "probe_id": "P18_DATAGOVIN_APEX",
+    "question": "Why did data.gov.in files 403, and can that be resolved?",
+    "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_districts.csv",
+    "http_status": 200,
+    "verdict": "ACCESSIBLE",
+    "evidence": "www.data.gov.in returns HTTP 403 with an empty body for its own file paths; the APEX host data.gov.in returns HTTP 200. Downloaded lgd_states.csv (3,103B), lgd_districts.csv (109,919B), lgd_subdistricts.csv (1,272,292B), district_level_total_Registered_msme.csv (54,621B), district_level_service_msme.csv (54,141B). PMKVY-210422.csv still 404.",
+    "implication": "Step 1.6's 'blocked' verdict was a hostname artefact. Geography blocker resolved; location_master populated (ADR-0006)."
+  },
+  {
+    "probe_id": "P19_LGD_VALIDATION",
+    "question": "Is the LGD extract good enough to be the geography spine?",
+    "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_districts.csv",
+    "http_status": 200,
+    "verdict": "ACCESSIBLE",
+    "evidence": "36 states/UTs (28 S + 8 U), 785 districts, codes unique at both tiers, all 36 states present, full referential integrity, official district_census2011_code crosswalk present. Vintage 2023-11-30/2023-12-01. 125/785 districts (15.9%) have census code '000' (post-2011). No split/merge/rename events published.",
+    "implication": "VALIDATED and adopted as the spine. Census join ceiling is 660/785 districts."
+  },
+  {
+    "probe_id": "P20_UDYAM_VALIDATION",
+    "question": "Is Udyam genuinely district-level and LGD-keyed?",
+    "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/district_level_total_Registered_msme.csv",
+    "http_status": 200,
+    "verdict": "ACCESSIBLE",
+    "evidence": "785 rows; 785/785 lg_dist_code join to location_master districts (100%). Fields: state_name, lg_dist_code, district_name, micro, small, medium, total, last_updated. 'NA' in small (30) and medium (123). last_updated=2023-12-21 for every row, CONTRADICTING the catalogue's 'daily updated' claim.",
+    "implication": "Usable as a district allocation weight and context only. It counts registered enterprises, never vacancies or employment."
+  },
+  {
+    "probe_id": "P21_CENSUS_TLS",
+    "question": "Can Census B-24/B-27 be acquired programmatically?",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/13918",
+    "http_status": null,
+    "verdict": "ERROR",
+    "evidence": "SSLCertVerificationError: unable to get local issuer certificate. openssl shows subject CN=censusindia.gov.in, issuer 'emSign SSL CA - G1', verify return code 21 (unable to verify the first certificate) - the server omits its intermediate CA. TLSv1.3 otherwise fine.",
+    "implication": "Server-side incomplete certificate chain, not a block. Certificate verification was NOT disabled. Fix: supply the emSign intermediate, or download via browser."
+  },
+  {
+    "probe_id": "P22_NCS_SECTOR_IS_NIC",
+    "question": "Does an NCS sector -> NCO crosswalk exist?",
+    "url": "https://dge.gov.in/sites/default/files/2024-05/NIC_2008.pdf",
+    "http_status": 200,
+    "verdict": "ACCESSIBLE",
+    "evidence": "Acquired the official NIC-2008 document (193 pages) and extracted 20 section names. All 20 substantive NCS sector categories align one-to-one with NIC-2008 sections A-T (Agriculture=A, Mining=B, Manufacturing=C, Power=D, Water/Sewerage=E, Construction=F, Wholesale&Retail=G, Transport&Storage=H, Hotels/Food=I, IT&Communication=J, Finance&Insurance=K, Real Estate=L, Specialized Professional=M, Operations&Support=N, Public Admin&Defence=O, Education=P, Health=Q, Arts&Entertainment=R, Other Services=S, Household&Domestic=T). ncs.gov.in/Documents/NIC_Sector.pdf returns the Angular SPA shell, not a PDF.",
+    "implication": "NCS sectors are an INDUSTRY classification. Industry -> occupation is many-to-many, so no official crosswalk exists or can. Defensible route is an empirical P(occupation|industry,state) cross-tab from PLFS."
+  },
+  {
+    "probe_id": "P23_STATE_PORTALS_GATED",
+    "question": "Do state employment portals publish district vacancies openly?",
+    "url": "https://rojgar.mahaswayam.gov.in/",
+    "http_status": 200,
+    "verdict": "BLOCKED_AUTH",
+    "evidence": "robots.txt checked first on all three. Mahaswayam: 'User-agent: * / Disallow:' (permits) BUT uses Google reCAPTCHA plus login/registration; no datasets, no public API. Rojgar Sangam UP: robots permits main site, disallows dev/beta hosts; login required; no datasets or API refs. TN Velaivaaippu: robots.txt 404; no datasets; points to tamilnaducareerservices.tn.gov.in.",
+    "implication": "robots.txt permission is not data availability. Vacancy data sits behind CAPTCHA/login; not pursued. Formal data request to state directorates is the realistic route."
+  },
+  {
+    "probe_id": "P24_ESHRAM_UNAVAILABLE",
+    "question": "Can e-Shram occupation x district be acquired?",
+    "url": "https://www.data.gov.in/resource/occupation-wise-number-registrations-unorganized-workers-under-e-shram-inception-23-02-2023",
+    "http_status": 200,
+    "verdict": "NOT_FOUND",
+    "evidence": "Resource pages returned a minimal SSR payload (1,433 chars) with no datafile URL, no API UUID and no filename.",
+    "implication": "e-Shram remains UNAVAILABLE. It also publishes occupation-wise and state-wise separately, so the joint table may not exist publicly even if acquired."
+  }
+]

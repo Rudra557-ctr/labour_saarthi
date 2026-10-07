@@ -1,0 +1,289 @@
+{
+  "table": "dim_training_trade",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/dim_training_trade.parquet",
+  "n_rows": 155,
+  "n_cols": 20,
+  "columns": [
+    {
+      "name": "trade_section_index",
+      "dtype": "int64",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "1",
+        "2",
+        "3"
+      ],
+      "min_value": "1",
+      "max_value": "3"
+    },
+    {
+      "name": "trade_serial",
+      "dtype": "int64",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 85,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "trade_name",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 154,
+      "sample_values": [
+        "Additive Manufacturing Technician (3D Printing)",
+        "Advanced CNC Machining",
+        "Aeronautical Structure and Equipment Fitter",
+        "Architectural Draughtsman",
+        "Artisan Using Advanced Tool"
+      ],
+      "min_value": "5G Network Technician",
+      "max_value": "Wood Work Technician"
+    },
+    {
+      "name": "entry_qualification",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 46,
+      "sample_values": [
+        "Passed 10th class examination with Science and Mathematics o",
+        "Class X Pass plus simultaneously enrolled for class XII thro",
+        "Passed 10th Class examination with Science and Mathematics",
+        "Passed 10th Class examination under 10+2 system of Education",
+        "Passed 8th class examination"
+      ],
+      "min_value": "(a)\ufffdPassed class 10th class Examination or its equivalent\ufffd (b)\ufffdThe minimum physical requirements are i. Height - 165 cm ii. Weight - 52 kg iii. Chest - Normal 81 cm - Expanded 85 cm A registered MBBS doctor must certify that the candidate is medically fit to undertake the course",
+      "max_value": "a) 10th Class Passed b) Lateral Entry: Direct 2nd Year admission for NTC Passed Out(Two Years Courses) In Electronics & Hardware Sector or IoT Group of trades\ufffd"
+    },
+    {
+      "name": "nsqf_level",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "3",
+        "4",
+        "3\ufffd5",
+        "4\ufffd5"
+      ],
+      "min_value": "3",
+      "max_value": "4\ufffd5"
+    },
+    {
+      "name": "duration",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "One year",
+        "Two Years",
+        "One Year",
+        "6 months"
+      ],
+      "min_value": "6 months",
+      "max_value": "Two Years"
+    },
+    {
+      "name": "revision_year",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "2022",
+        "2023"
+      ],
+      "min_value": "2022",
+      "max_value": "2023"
+    },
+    {
+      "name": "scheme",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CRAFTSMEN_TRAINING_SCHEME"
+      ],
+      "min_value": "CRAFTSMEN_TRAINING_SCHEME",
+      "max_value": "CRAFTSMEN_TRAINING_SCHEME"
+    },
+    {
+      "name": "trade_scheme_source",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DGT_NSQF_COMPLIANT_TRADES"
+      ],
+      "min_value": "DGT_NSQF_COMPLIANT_TRADES",
+      "max_value": "DGT_NSQF_COMPLIANT_TRADES"
+    },
+    {
+      "name": "nco_2015_code",
+      "dtype": "object",
+      "n_rows": 155,
+      "n_null": 155,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "nco_mapping_status",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "UNMAPPED_NO_OFFICIAL_MAPPING"
+      ],
+      "min_value": "UNMAPPED_NO_OFFICIAL_MAPPING",
+      "max_value": "UNMAPPED_NO_OFFICIAL_MAPPING"
+    },
+    {
+      "name": "nco_mapping_authority",
+      "dtype": "object",
+      "n_rows": 155,
+      "n_null": 155,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "nco_mapping_confidence",
+      "dtype": "object",
+      "n_rows": 155,
+      "n_null": 155,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "source_annexure",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ANNEXURE_22"
+      ],
+      "min_value": "ANNEXURE_22",
+      "max_value": "ANNEXURE_22"
+    },
+    {
+      "name": "annexure_title",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "List of 155 NSQF Compliant Trades"
+      ],
+      "min_value": "List of 155 NSQF Compliant Trades",
+      "max_value": "List of 155 NSQF Compliant Trades"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_ANNUAL_REPORT_2023_24"
+      ],
+      "min_value": "MSDE_ANNUAL_REPORT_2023_24",
+      "max_value": "MSDE_ANNUAL_REPORT_2023_24"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_Annual_Report_2023-24.pdf"
+      ],
+      "min_value": "MSDE_Annual_Report_2023-24.pdf",
+      "max_value": "MSDE_Annual_Report_2023-24.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    },
+    {
+      "name": "trade_id",
+      "dtype": "str",
+      "n_rows": 155,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 155,
+      "sample_values": [
+        "DGT_S1_1",
+        "DGT_S1_2",
+        "DGT_S1_3",
+        "DGT_S1_4",
+        "DGT_S1_5"
+      ],
+      "min_value": "DGT_S1_1",
+      "max_value": "DGT_S3_5"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

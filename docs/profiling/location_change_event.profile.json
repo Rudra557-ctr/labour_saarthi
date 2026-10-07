@@ -1,0 +1,100 @@
+{
+  "table": "location_change_event",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/location_change_event.parquet",
+  "n_rows": 0,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "event_id",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "event_type",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "parent_lgd_code",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "child_lgd_code",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "effective_date",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "notification_reference",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "source_id",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "notes",
+      "dtype": "object",
+      "n_rows": 0,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": [
+    "TABLE IS EMPTY - check whether this is by design (see docs/limitations.md)"
+  ]
+}

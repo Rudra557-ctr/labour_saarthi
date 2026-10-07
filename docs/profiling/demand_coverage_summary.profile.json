@@ -1,0 +1,101 @@
+{
+  "table": "demand_coverage_summary",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/demand_coverage_summary.parquet",
+  "n_rows": 8,
+  "n_cols": 6,
+  "columns": [
+    {
+      "name": "metric",
+      "dtype": "str",
+      "n_rows": 8,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 8,
+      "sample_values": [
+        "ncs_vacancies_published_total",
+        "ncs_vacancies_pan_india_residual",
+        "ncs_vacancies_state_attributable",
+        "ncs_state_attributable_share",
+        "districts_with_relative_signal"
+      ],
+      "min_value": "districts_census_not_acquired",
+      "max_value": "ncs_vacancies_state_attributable"
+    },
+    {
+      "name": "value",
+      "dtype": "float64",
+      "n_rows": 8,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 8,
+      "sample_values": [
+        "35275833.0",
+        "20507320.0",
+        "14768513.0",
+        "0.4186580937720167",
+        "785.0"
+      ],
+      "min_value": "0.4186580937720167",
+      "max_value": "785.0"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 8,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "count",
+        "ratio"
+      ],
+      "min_value": "count",
+      "max_value": "ratio"
+    },
+    {
+      "name": "note",
+      "dtype": "str",
+      "n_rows": 8,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 8,
+      "sample_values": [
+        "observed published grand total",
+        "kept NATIONAL; never allocated to districts",
+        "the only part entering district allocation",
+        "dashboard must state this as coverage",
+        "output B coverage"
+      ],
+      "min_value": "dashboard must state this as coverage",
+      "max_value": "the only part entering district allocation"
+    },
+    {
+      "name": "baseline_period",
+      "dtype": "str",
+      "n_rows": 8,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 8,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

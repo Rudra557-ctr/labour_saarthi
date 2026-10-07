@@ -1,0 +1,389 @@
+{
+  "table": "analytical_district_structure",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/analytical_district_structure.parquet",
+  "n_rows": 1570,
+  "n_cols": 25,
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2023-12-21"
+      ],
+      "min_value": "2023-12-21",
+      "max_value": "2023-12-21"
+    },
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 785,
+      "sample_values": [
+        "1",
+        "10",
+        "100",
+        "101",
+        "102"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "enterprise_category",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "SERVICES",
+        "TOTAL"
+      ],
+      "min_value": "SERVICES",
+      "max_value": "TOTAL"
+    },
+    {
+      "name": "district_name_lgd",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 782,
+      "sample_values": [
+        "Anantnag",
+        "Poonch",
+        "Ganganagar",
+        "Hanumangarh",
+        "Jaipur"
+      ],
+      "min_value": "Adilabad",
+      "max_value": "Zunheboto"
+    },
+    {
+      "name": "state_lgd_code",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "1",
+        "8",
+        "9",
+        "2",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "census_2011_code",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 250,
+      "pct_null": 15.92,
+      "n_unique": 641,
+      "sample_values": [
+        "014",
+        "005",
+        "099",
+        "100",
+        "110"
+      ],
+      "min_value": "001",
+      "max_value": "NA"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "UDYAM_DISTRICT_MSME"
+      ],
+      "min_value": "UDYAM_DISTRICT_MSME",
+      "max_value": "UDYAM_DISTRICT_MSME"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "district_level_service_msme.csv",
+        "district_level_total_Registered_msme.csv"
+      ],
+      "min_value": "district_level_service_msme.csv",
+      "max_value": "district_level_total_Registered_msme.csv"
+    },
+    {
+      "name": "medium",
+      "dtype": "Int64",
+      "n_rows": 1570,
+      "n_null": 284,
+      "pct_null": 18.09,
+      "n_unique": 231,
+      "sample_values": [
+        "11",
+        "45",
+        "17",
+        "412",
+        "1"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "micro",
+      "dtype": "Int64",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1532,
+      "sample_values": [
+        "26883",
+        "5900",
+        "42403",
+        "30651",
+        "207175"
+      ],
+      "min_value": "10",
+      "max_value": "9975"
+    },
+    {
+      "name": "small",
+      "dtype": "Int64",
+      "n_rows": 1570,
+      "n_null": 68,
+      "pct_null": 4.33,
+      "n_unique": 807,
+      "sample_values": [
+        "235",
+        "44",
+        "705",
+        "343",
+        "4464"
+      ],
+      "min_value": "1",
+      "max_value": "995"
+    },
+    {
+      "name": "total",
+      "dtype": "Int64",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1543,
+      "sample_values": [
+        "27129",
+        "5944",
+        "43153",
+        "31011",
+        "212051"
+      ],
+      "min_value": "10",
+      "max_value": "9987"
+    },
+    {
+      "name": "enterprise_share_of_national",
+      "dtype": "Float64",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1561,
+      "sample_values": [
+        "0.0016993844155505733",
+        "0.0003723373867828747",
+        "0.0027031418660567615",
+        "0.0019425563091392541",
+        "0.013283061104423849"
+      ],
+      "min_value": "0.00010229255595835034",
+      "max_value": "9.897258935345593e-06"
+    },
+    {
+      "name": "enterprise_share_within_state",
+      "dtype": "Float64",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1563,
+      "sample_values": [
+        "0.10298957918114003",
+        "0.022565153844693733",
+        "0.03892289833215926",
+        "0.02797112599769636",
+        "0.19126455899318018"
+      ],
+      "min_value": "0.00010138818923244677",
+      "max_value": "9.019743316144709e-05"
+    },
+    {
+      "name": "micro_share_of_district",
+      "dtype": "Float64",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1491,
+      "sample_values": [
+        "0.9909322127612518",
+        "0.9925975773889637",
+        "0.9826199800709104",
+        "0.9883912160201219",
+        "0.9770055316881316"
+      ],
+      "min_value": "0.8826465947595769",
+      "max_value": "1.0"
+    },
+    {
+      "name": "small_share_of_district",
+      "dtype": "Float64",
+      "n_rows": 1570,
+      "n_null": 68,
+      "pct_null": 4.33,
+      "n_unique": 1494,
+      "sample_values": [
+        "0.008662317077665967",
+        "0.007402422611036339",
+        "0.016337218733344146",
+        "0.01106059140305053",
+        "0.021051539488142004"
+      ],
+      "min_value": "0.0008090614886731392",
+      "max_value": "0.10400662166007087"
+    },
+    {
+      "name": "medium_share_of_district",
+      "dtype": "Float64",
+      "n_rows": 1570,
+      "n_null": 284,
+      "pct_null": 18.09,
+      "n_unique": 1283,
+      "sample_values": [
+        "0.00040547016108223675",
+        "0.0010428011957453712",
+        "0.0005481925768275773",
+        "0.0019429288237263677",
+        "0.00011448196908986835"
+      ],
+      "min_value": "0.00010414496979795876",
+      "max_value": "9.56297217175098e-05"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DISTRICT"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "DISTRICT"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NONE"
+      ],
+      "min_value": "NONE",
+      "max_value": "NONE"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_REGISTRATIONS"
+      ],
+      "min_value": "CUMULATIVE_REGISTRATIONS",
+      "max_value": "CUMULATIVE_REGISTRATIONS"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "count"
+      ],
+      "min_value": "count",
+      "max_value": "count"
+    },
+    {
+      "name": "observation_status",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "SUPPORTING"
+      ],
+      "min_value": "SUPPORTING",
+      "max_value": "SUPPORTING"
+    },
+    {
+      "name": "not_a_demand_measure",
+      "dtype": "bool",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "source_vintage",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2023-12-21"
+      ],
+      "min_value": "2023-12-21",
+      "max_value": "2023-12-21"
+    },
+    {
+      "name": "transformation",
+      "dtype": "str",
+      "n_rows": 1570,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PIVOT_SIZE_CLASS + SHARE_WITHIN_STATE + SHARE_OF_NATIONAL"
+      ],
+      "min_value": "PIVOT_SIZE_CLASS + SHARE_WITHIN_STATE + SHARE_OF_NATIONAL",
+      "max_value": "PIVOT_SIZE_CLASS + SHARE_WITHIN_STATE + SHARE_OF_NATIONAL"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

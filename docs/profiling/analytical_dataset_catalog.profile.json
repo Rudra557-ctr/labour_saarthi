@@ -1,0 +1,232 @@
+{
+  "table": "analytical_dataset_catalog",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/analytical_dataset_catalog.parquet",
+  "n_rows": 5,
+  "n_cols": 14,
+  "columns": [
+    {
+      "name": "analytical_table",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "analytical_state_demand",
+        "analytical_demand_by_industry",
+        "analytical_district_structure",
+        "analytical_district_occupation_structure",
+        "analytical_labour_market_context"
+      ],
+      "min_value": "analytical_demand_by_industry",
+      "max_value": "analytical_state_demand"
+    },
+    {
+      "name": "row_count",
+      "dtype": "int64",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "38",
+        "22",
+        "1570",
+        "12420",
+        "81"
+      ],
+      "min_value": "12420",
+      "max_value": "81"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:29+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:29+00:00",
+      "max_value": "2026-10-05T18:31:29+00:00"
+    },
+    {
+      "name": "grain",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "snapshot_date x state (or NATIONAL residual)",
+        "snapshot_date x NCS sector (NIC-2008 section)",
+        "snapshot_date x district x enterprise_category",
+        "census_year x district x NCO-2004 division x area x sex",
+        "period x NATIONAL x area x sex x age_group x indicator"
+      ],
+      "min_value": "census_year x district x NCO-2004 division x area x sex",
+      "max_value": "snapshot_date x state (or NATIONAL residual)"
+    },
+    {
+      "name": "source_tables",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "fact_vacancy_official_by_state",
+        "fact_vacancy_official_by_sector + map_ncs_sector_to_nic_sect",
+        "fact_establishment_district + location_master",
+        "fact_census_occupation_workers + map_nco2004_division_to_nco",
+        "fact_labour_force_estimate"
+      ],
+      "min_value": "fact_census_occupation_workers + map_nco2004_division_to_nco2015_division",
+      "max_value": "fact_vacancy_official_by_state"
+    },
+    {
+      "name": "source_ids",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS",
+        "NCS_PARLIAMENTARY_ANSWERS; NIC_2008",
+        "UDYAM_DISTRICT_MSME; LGD_DISTRICTS_DATAGOVIN",
+        "CENSUS_2011_B24",
+        "PLFS"
+      ],
+      "min_value": "CENSUS_2011_B24",
+      "max_value": "UDYAM_DISTRICT_MSME; LGD_DISTRICTS_DATAGOVIN"
+    },
+    {
+      "name": "source_vintage",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "as on 2024-11-15",
+        "2023-12-21 (Udyam); 2023-11-30 (LGD)",
+        "2011 (Census)",
+        "M202504"
+      ],
+      "min_value": "2011 (Census)",
+      "max_value": "as on 2024-11-15"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "STATE + NATIONAL residual",
+        "NATIONAL",
+        "DISTRICT"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "STATE + NATIONAL residual"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "NONE",
+        "NCO_2004_DIVISION"
+      ],
+      "min_value": "NCO_2004_DIVISION",
+      "max_value": "NONE"
+    },
+    {
+      "name": "industry_level",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "NONE",
+        "NIC_SECTION"
+      ],
+      "min_value": "NIC_SECTION",
+      "max_value": "NONE"
+    },
+    {
+      "name": "observation_status",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "OBSERVED",
+        "SUPPORTING"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "SUPPORTING"
+    },
+    {
+      "name": "transformations",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "deduplicate identical corroborating documents; share within ",
+        "deduplicate identical documents; share within snapshot; NCS-",
+        "pivot size class; share within state; share of national; siz",
+        "division share within district; derived NCO-2004->NCO-2015 d",
+        "none (pass-through: no valid transformation exists at this g"
+      ],
+      "min_value": "deduplicate identical corroborating documents; share within snapshot",
+      "max_value": "pivot size class; share within state; share of national; size-class composition"
+    },
+    {
+      "name": "coverage_note",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "36/36 LGD states covered; 58.1% of vacancies sit in the PAN-",
+        "20 of 22 rows map to a NIC section; Sector Not Specified del",
+        "785/785 districts",
+        "3 pilot states only (MH 35, TN 32, UP 71 Census-2011 distric",
+        "one month only (April 2025)"
+      ],
+      "min_value": "20 of 22 rows map to a NIC section; Sector Not Specified deliberately unmapped",
+      "max_value": "one month only (April 2025)"
+    },
+    {
+      "name": "limitations",
+      "dtype": "str",
+      "n_rows": 5,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 5,
+      "sample_values": [
+        "cumulative stock, not a flow; single as-on date so no time s",
+        "industry is not occupation; marginal table only - no joint s",
+        "registered ENTERPRISES, not vacancies/demand/employment; 202",
+        "HISTORICAL 2011 structure, not demand; universe is main work",
+        "sample survey rates; district estimates NOT valid; context n"
+      ],
+      "min_value": "HISTORICAL 2011 structure, not demand; universe is main workers in non-household industry; 'X' unclassified not mappable to NCO-2015",
+      "max_value": "sample survey rates; district estimates NOT valid; context not demand"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

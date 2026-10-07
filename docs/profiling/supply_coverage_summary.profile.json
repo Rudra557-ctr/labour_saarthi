@@ -1,0 +1,104 @@
+{
+  "table": "supply_coverage_summary",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/supply_coverage_summary.parquet",
+  "n_rows": 10,
+  "n_cols": 6,
+  "columns": [
+    {
+      "name": "metric",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "training_outcome_rows",
+        "states_with_training_outcomes",
+        "geography_unmatched_rows",
+        "measure_cells_no_data",
+        "training_trades_catalogued"
+      ],
+      "min_value": "district_level_training_data",
+      "max_value": "training_trades_catalogued"
+    },
+    {
+      "name": "value",
+      "dtype": "float64",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 7,
+      "sample_values": [
+        "350.0",
+        "36.0",
+        "0.0",
+        "5.0",
+        "155.0"
+      ],
+      "min_value": "0.0",
+      "max_value": "5.0"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "count"
+      ],
+      "min_value": "count",
+      "max_value": "count"
+    },
+    {
+      "name": "status",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 7,
+      "sample_values": [
+        "AVAILABLE",
+        "NO_DATA",
+        "PARTIAL_OFFICIAL",
+        "OFFICIAL",
+        "MAPPING_UNKNOWN"
+      ],
+      "min_value": "ACCESS_PENDING",
+      "max_value": "PARTIAL_OFFICIAL"
+    },
+    {
+      "name": "note",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "state x scheme x measure, OBSERVED",
+        "resolved to LGD state codes",
+        "retained, never dropped",
+        "source prints '-'; kept NULL, never zero",
+        "official NSQF-compliant trade list"
+      ],
+      "min_value": "PMKVY district CSV 404s on data.gov.in; NCVT MIS portal unreachable",
+      "max_value": "state x scheme x measure, OBSERVED"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

@@ -1,0 +1,270 @@
+{
+  "table": "map_qualification_to_nco",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/map_qualification_to_nco.parquet",
+  "n_rows": 1,
+  "n_cols": 20,
+  "columns": [
+    {
+      "name": "mapping_id",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "QFILE_SSC2212_4132.0402"
+      ],
+      "min_value": "QFILE_SSC2212_4132.0402",
+      "max_value": "QFILE_SSC2212_4132.0402"
+    },
+    {
+      "name": "qualification_name",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "Domestic Data Entry Operator"
+      ],
+      "min_value": "Domestic Data Entry Operator",
+      "max_value": "Domestic Data Entry Operator"
+    },
+    {
+      "name": "qualification_code",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "SSC2212"
+      ],
+      "min_value": "SSC2212",
+      "max_value": "SSC2212"
+    },
+    {
+      "name": "qfile_version",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "3"
+      ],
+      "min_value": "3",
+      "max_value": "3"
+    },
+    {
+      "name": "nsqf_level",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "3"
+      ],
+      "min_value": "3",
+      "max_value": "3"
+    },
+    {
+      "name": "nco_2015_code",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "4132.0402"
+      ],
+      "min_value": "4132.0402",
+      "max_value": "4132.0402"
+    },
+    {
+      "name": "nco_2015_title",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "Domestic Data Entry Operator"
+      ],
+      "min_value": "Domestic Data Entry Operator",
+      "max_value": "Domestic Data Entry Operator"
+    },
+    {
+      "name": "nco_mapping_level",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OCCUPATION"
+      ],
+      "min_value": "OCCUPATION",
+      "max_value": "OCCUPATION"
+    },
+    {
+      "name": "mapping_authority",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OFFICIAL"
+      ],
+      "min_value": "OFFICIAL",
+      "max_value": "OFFICIAL"
+    },
+    {
+      "name": "mapping_method",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "QFILE_FIELD_14_ALIGNED_TO_NCO_ISCO_CODE"
+      ],
+      "min_value": "QFILE_FIELD_14_ALIGNED_TO_NCO_ISCO_CODE",
+      "max_value": "QFILE_FIELD_14_ALIGNED_TO_NCO_ISCO_CODE"
+    },
+    {
+      "name": "mapping_confidence",
+      "dtype": "float64",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1.0"
+      ],
+      "min_value": "1.0",
+      "max_value": "1.0"
+    },
+    {
+      "name": "evidence_field",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "Q-File field 14: Aligned to NCO/ISCO Code/s"
+      ],
+      "min_value": "Q-File field 14: Aligned to NCO/ISCO Code/s",
+      "max_value": "Q-File field 14: Aligned to NCO/ISCO Code/s"
+    },
+    {
+      "name": "evidence_reference",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf (NQR qualific"
+      ],
+      "min_value": "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf (NQR qualification file)",
+      "max_value": "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf (NQR qualification file)"
+    },
+    {
+      "name": "title_matches_nco_title",
+      "dtype": "bool",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "nco_code_resolves_in_master",
+      "dtype": "bool",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "qp_nos_indicated_by_nco_code",
+      "dtype": "bool",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "applies_to_dgt_cts_trade",
+      "dtype": "bool",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "False"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NQR_QUALIFICATIONS"
+      ],
+      "min_value": "NQR_QUALIFICATIONS",
+      "max_value": "NQR_QUALIFICATIONS"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf"
+      ],
+      "min_value": "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf",
+      "max_value": "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 1,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

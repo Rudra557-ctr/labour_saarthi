@@ -1,0 +1,122 @@
+{
+  "table": "fact_data_quality",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_data_quality.parquet",
+  "n_rows": 14,
+  "n_cols": 8,
+  "columns": [
+    {
+      "name": "run_id",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DQ20261005T183140"
+      ],
+      "min_value": "DQ20261005T183140",
+      "max_value": "DQ20261005T183140"
+    },
+    {
+      "name": "table_name",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 14,
+      "sample_values": [
+        "location_master",
+        "occupation_master",
+        "fact_vacancy_official_by_state",
+        "fact_vacancy_official_by_sector",
+        "fact_establishment_district"
+      ],
+      "min_value": "analytical_demand_by_industry",
+      "max_value": "occupation_master"
+    },
+    {
+      "name": "check_name",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "schema_contract"
+      ],
+      "min_value": "schema_contract",
+      "max_value": "schema_contract"
+    },
+    {
+      "name": "status",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PASS"
+      ],
+      "min_value": "PASS",
+      "max_value": "PASS"
+    },
+    {
+      "name": "observed",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 13,
+      "sample_values": [
+        "821",
+        "3982",
+        "114",
+        "63",
+        "6280"
+      ],
+      "min_value": "114",
+      "max_value": "821"
+    },
+    {
+      "name": "expected",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "schema"
+      ],
+      "min_value": "schema",
+      "max_value": "schema"
+    },
+    {
+      "name": "severity",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "HIGH"
+      ],
+      "min_value": "HIGH",
+      "max_value": "HIGH"
+    },
+    {
+      "name": "checked_at",
+      "dtype": "str",
+      "n_rows": 14,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:40+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:40+00:00",
+      "max_value": "2026-10-05T18:31:40+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

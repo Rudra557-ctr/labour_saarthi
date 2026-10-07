@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Raw snapshots are immutable but NOT committed (size + licence).
+# Manifests ARE committed: they are the provenance record.
+data/raw/**
+!data/raw/**/manifest.json
+!data/raw/.gitkeep
+
+data/staging/**
+data/standardized/**
+data/external/**
+!data/**/.gitkeep
+
+# Profiling reports ARE committed (they are evidence, see docs/profiling/)
+
+# generated CA bundle cache (rebuilt from certifi + the committed intermediate)
+config/certs/.bundle_*.pem
+
+# DuckDB warehouse is rebuildable from data/standardized via `make warehouse`
+db/lmis.duckdb

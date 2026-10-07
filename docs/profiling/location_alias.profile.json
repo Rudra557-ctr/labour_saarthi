@@ -1,0 +1,145 @@
+{
+  "table": "location_alias",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/location_alias.parquet",
+  "n_rows": 10,
+  "n_cols": 9,
+  "columns": [
+    {
+      "name": "alias_id",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "ALIAS_STATE_0001",
+        "ALIAS_STATE_0002",
+        "ALIAS_STATE_0003",
+        "ALIAS_STATE_0004",
+        "ALIAS_STATE_0005"
+      ],
+      "min_value": "ALIAS_STATE_0001",
+      "max_value": "ALIAS_STATE_0010"
+    },
+    {
+      "name": "alias_text",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "Dadra and Nagar Haveli",
+        "Daman and Diu",
+        "Orissa",
+        "Pondicherry",
+        "Uttaranchal"
+      ],
+      "min_value": "A & N Islands",
+      "max_value": "Uttaranchal"
+    },
+    {
+      "name": "normalised_alias",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 10,
+      "sample_values": [
+        "dadra and nagar haveli",
+        "daman and diu",
+        "orissa",
+        "pondicherry",
+        "uttaranchal"
+      ],
+      "min_value": "a & n islands",
+      "max_value": "uttaranchal"
+    },
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 7,
+      "sample_values": [
+        "38",
+        "21",
+        "34",
+        "5",
+        "7"
+      ],
+      "min_value": "1",
+      "max_value": "7"
+    },
+    {
+      "name": "match_method",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "HUMAN_TERRITORIAL_REORG",
+        "HUMAN_RENAME",
+        "HUMAN_VARIANT"
+      ],
+      "min_value": "HUMAN_RENAME",
+      "max_value": "HUMAN_VARIANT"
+    },
+    {
+      "name": "confidence",
+      "dtype": "float64",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "1.0"
+      ],
+      "min_value": "1.0",
+      "max_value": "1.0"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "PROJECT_ALIAS"
+      ],
+      "min_value": "PROJECT_ALIAS",
+      "max_value": "PROJECT_ALIAS"
+    },
+    {
+      "name": "reviewed_by",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "project"
+      ],
+      "min_value": "project",
+      "max_value": "project"
+    },
+    {
+      "name": "reviewed_at",
+      "dtype": "str",
+      "n_rows": 10,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:20+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:20+00:00",
+      "max_value": "2026-10-05T18:31:20+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

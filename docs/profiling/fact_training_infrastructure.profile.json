@@ -1,0 +1,253 @@
+{
+  "table": "fact_training_infrastructure",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/fact_training_infrastructure.parquet",
+  "n_rows": 144,
+  "n_cols": 17,
+  "columns": [
+    {
+      "name": "as_on_date",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-03-31"
+      ],
+      "min_value": "2024-03-31",
+      "max_value": "2024-03-31"
+    },
+    {
+      "name": "source_annexure",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ANNEXURE_21"
+      ],
+      "min_value": "ANNEXURE_21",
+      "max_value": "ANNEXURE_21"
+    },
+    {
+      "name": "annexure_title",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "State wise details of PMKKs (as on 31.03.2024)"
+      ],
+      "min_value": "State wise details of PMKKs (as on 31.03.2024)",
+      "max_value": "State wise details of PMKKs (as on 31.03.2024)"
+    },
+    {
+      "name": "state_name_as_source",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "Andaman and Nicobar Islands",
+        "Arunachal Pradesh",
+        "Andhra Pradesh",
+        "Assam",
+        "Bihar"
+      ],
+      "min_value": "Andaman and Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "state_lgd_code",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "35",
+        "12",
+        "28",
+        "18",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "STATE"
+      ],
+      "min_value": "STATE",
+      "max_value": "STATE"
+    },
+    {
+      "name": "geography_status",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MATCHED"
+      ],
+      "min_value": "MATCHED",
+      "max_value": "MATCHED"
+    },
+    {
+      "name": "metric",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "DISTRICTS_IN_STATE",
+        "DISTRICTS_WITH_PMKK",
+        "PMKK_ALLOCATED",
+        "PMKK_ESTABLISHED"
+      ],
+      "min_value": "DISTRICTS_IN_STATE",
+      "max_value": "PMKK_ESTABLISHED"
+    },
+    {
+      "name": "metric_definition",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 4,
+      "sample_values": [
+        "districts in the state as counted by MSDE",
+        "districts having at least one PMKK",
+        "PMKKs allocated",
+        "PMKKs established and operational"
+      ],
+      "min_value": "PMKKs allocated",
+      "max_value": "districts in the state as counted by MSDE"
+    },
+    {
+      "name": "value_as_published",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 44,
+      "sample_values": [
+        "3",
+        "2",
+        "25",
+        "20",
+        "7"
+      ],
+      "min_value": "0",
+      "max_value": "89"
+    },
+    {
+      "name": "value",
+      "dtype": "float64",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 44,
+      "sample_values": [
+        "3.0",
+        "2.0",
+        "25.0",
+        "20.0",
+        "7.0"
+      ],
+      "min_value": "0.0",
+      "max_value": "89.0"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "count"
+      ],
+      "min_value": "count",
+      "max_value": "count"
+    },
+    {
+      "name": "value_status",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "AVAILABLE"
+      ],
+      "min_value": "AVAILABLE",
+      "max_value": "AVAILABLE"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_ANNUAL_REPORT_2023_24"
+      ],
+      "min_value": "MSDE_ANNUAL_REPORT_2023_24",
+      "max_value": "MSDE_ANNUAL_REPORT_2023_24"
+    },
+    {
+      "name": "snapshot_file",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "MSDE_Annual_Report_2023-24.pdf"
+      ],
+      "min_value": "MSDE_Annual_Report_2023-24.pdf",
+      "max_value": "MSDE_Annual_Report_2023-24.pdf"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 144,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

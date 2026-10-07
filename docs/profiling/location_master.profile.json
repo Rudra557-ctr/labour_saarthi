@@ -1,0 +1,201 @@
+{
+  "table": "location_master",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/location_master.parquet",
+  "n_rows": 821,
+  "n_cols": 13,
+  "columns": [
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 785,
+      "sample_values": [
+        "1",
+        "10",
+        "100",
+        "101",
+        "102"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "level",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "DISTRICT",
+        "STATE"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "STATE"
+    },
+    {
+      "name": "parent_lgd_code",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 36,
+      "pct_null": 4.38,
+      "n_unique": 36,
+      "sample_values": [
+        "1",
+        "8",
+        "9",
+        "2",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "name_en",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 817,
+      "sample_values": [
+        "Anantnag",
+        "Poonch",
+        "Ganganagar",
+        "Hanumangarh",
+        "Jaipur"
+      ],
+      "min_value": "Adilabad",
+      "max_value": "Zunheboto"
+    },
+    {
+      "name": "name_local",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 5,
+      "pct_null": 0.61,
+      "n_unique": 781,
+      "sample_values": [
+        "ANANTNAG",
+        "POONCH",
+        "GANGANAGAR",
+        "HANUMANGARH",
+        "JAIPUR"
+      ],
+      "min_value": "AGRA",
+      "max_value": "\u0d35\u0d2f\u0d28\u0d3e\u0d1f\u0d4d"
+    },
+    {
+      "name": "state_lgd_code",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "1",
+        "8",
+        "9",
+        "2",
+        "10"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "census_2011_code",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 125,
+      "pct_null": 15.23,
+      "n_unique": 675,
+      "sample_values": [
+        "014",
+        "005",
+        "099",
+        "100",
+        "110"
+      ],
+      "min_value": "00",
+      "max_value": "NA"
+    },
+    {
+      "name": "valid_from",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "2023-11-30",
+        "2023-12-01"
+      ],
+      "min_value": "2023-11-30",
+      "max_value": "2023-12-01"
+    },
+    {
+      "name": "valid_to",
+      "dtype": "object",
+      "n_rows": 821,
+      "n_null": 821,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "is_current",
+      "dtype": "bool",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "True"
+      ],
+      "min_value": "True",
+      "max_value": "True"
+    },
+    {
+      "name": "stable_district_group_id",
+      "dtype": "object",
+      "n_rows": 821,
+      "n_null": 821,
+      "pct_null": 100.0,
+      "n_unique": 0,
+      "sample_values": [],
+      "min_value": null,
+      "max_value": null
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "LGD_DISTRICTS_DATAGOVIN"
+      ],
+      "min_value": "LGD_DISTRICTS_DATAGOVIN",
+      "max_value": "LGD_DISTRICTS_DATAGOVIN"
+    },
+    {
+      "name": "ingested_at",
+      "dtype": "str",
+      "n_rows": 821,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:20+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:20+00:00",
+      "max_value": "2026-10-05T18:31:20+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

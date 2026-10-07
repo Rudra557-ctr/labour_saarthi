@@ -1,0 +1,295 @@
+{
+  "table": "analytical_demand_by_industry",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/analytical_demand_by_industry.parquet",
+  "n_rows": 22,
+  "n_cols": 20,
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "ncs_sector_name",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 22,
+      "sample_values": [
+        "Agriculture and Related",
+        "Arts and Entertainment",
+        "Civil and Construction Works",
+        "Education",
+        "Finance and Insurance"
+      ],
+      "min_value": "Agriculture and Related",
+      "max_value": "Wholesale and Retail"
+    },
+    {
+      "name": "vacancies_cumulative",
+      "dtype": "float64",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "3.0",
+        "0.59",
+        "21.52",
+        "7.55",
+        "138.24"
+      ],
+      "min_value": "0.25",
+      "max_value": "9.71"
+    },
+    {
+      "name": "n_source_documents",
+      "dtype": "int64",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "3",
+        "2",
+        "1"
+      ],
+      "min_value": "1",
+      "max_value": "3"
+    },
+    {
+      "name": "source_documents",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "LS_UQ2225_2024-12-09.pdf; LS_UQ933_2024-12-02.pdf; RS_UQ2798",
+        "LS_UQ2225_2024-12-09.pdf; LS_UQ933_2024-12-02.pdf",
+        "RS_UQ2798_2024-12-19.pdf"
+      ],
+      "min_value": "LS_UQ2225_2024-12-09.pdf; LS_UQ933_2024-12-02.pdf",
+      "max_value": "RS_UQ2798_2024-12-19.pdf"
+    },
+    {
+      "name": "nic_section_code",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 2,
+      "pct_null": 9.09,
+      "n_unique": 20,
+      "sample_values": [
+        "A",
+        "R",
+        "F",
+        "P",
+        "K"
+      ],
+      "min_value": "A",
+      "max_value": "T"
+    },
+    {
+      "name": "source_id",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS"
+    },
+    {
+      "name": "mapping_authority",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 1,
+      "pct_null": 4.55,
+      "n_unique": 1,
+      "sample_values": [
+        "PROJECT"
+      ],
+      "min_value": "PROJECT",
+      "max_value": "PROJECT"
+    },
+    {
+      "name": "mapping_confidence",
+      "dtype": "float64",
+      "n_rows": 22,
+      "n_null": 2,
+      "pct_null": 9.09,
+      "n_unique": 7,
+      "sample_values": [
+        "0.95",
+        "0.99",
+        "0.97",
+        "0.9",
+        "0.92"
+      ],
+      "min_value": "0.8",
+      "max_value": "0.99"
+    },
+    {
+      "name": "mapping_method",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 1,
+      "pct_null": 4.55,
+      "n_unique": 1,
+      "sample_values": [
+        "NAME_ALIGNMENT_VERIFIED_AGAINST_NIC_2008"
+      ],
+      "min_value": "NAME_ALIGNMENT_VERIFIED_AGAINST_NIC_2008",
+      "max_value": "NAME_ALIGNMENT_VERIFIED_AGAINST_NIC_2008"
+    },
+    {
+      "name": "is_heterogeneous_or_residual",
+      "dtype": "bool",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "min_value": "False",
+      "max_value": "True"
+    },
+    {
+      "name": "share_of_published_total",
+      "dtype": "float64",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 21,
+      "sample_values": [
+        "0.008497861371554824",
+        "0.0016712460697391155",
+        "0.06095799223861994",
+        "0.02138628445174631",
+        "0.39158145200124633"
+      ],
+      "min_value": "0.0007081551142962354",
+      "max_value": "0.39158145200124633"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "lakh"
+      ],
+      "min_value": "lakh",
+      "max_value": "lakh"
+    },
+    {
+      "name": "measure_basis",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "CUMULATIVE_SINCE_INCEPTION"
+      ],
+      "min_value": "CUMULATIVE_SINCE_INCEPTION",
+      "max_value": "CUMULATIVE_SINCE_INCEPTION"
+    },
+    {
+      "name": "observation_status",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NATIONAL"
+      ],
+      "min_value": "NATIONAL",
+      "max_value": "NATIONAL"
+    },
+    {
+      "name": "industry_level",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NIC_SECTION"
+      ],
+      "min_value": "NIC_SECTION",
+      "max_value": "NIC_SECTION"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NONE"
+      ],
+      "min_value": "NONE",
+      "max_value": "NONE"
+    },
+    {
+      "name": "source_vintage",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "transformation",
+      "dtype": "str",
+      "n_rows": 22,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DEDUPLICATE_IDENTICAL_DOCUMENTS + SHARE_WITHIN_SNAPSHOT"
+      ],
+      "min_value": "DEDUPLICATE_IDENTICAL_DOCUMENTS + SHARE_WITHIN_SNAPSHOT",
+      "max_value": "DEDUPLICATE_IDENTICAL_DOCUMENTS + SHARE_WITHIN_SNAPSHOT"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

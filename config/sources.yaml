@@ -1,0 +1,816 @@
+# LMIS Source Registry
+# ---------------------------------------------------------------------------
+# One entry per external source. This file is the authority for provenance:
+# nothing may be ingested unless it is registered here first (Step 0 layer L1,
+# "licence gate").
+#
+# verification_status values:
+#   VERIFIED_URL        - URL confirmed reachable/resolvable during Step 0/1
+#   VERIFIED_EXISTS     - source confirmed to exist, exact download URL not yet fixed
+#   UNVERIFIED          - existence or access method still to be established
+#
+# role: demand | supply | training | taxonomy | reference | context
+# access_method: BULK_DOWNLOAD | API | PORTAL_REPORT | PDF | PORTAL_FORM | SCRAPE
+#
+# IMPORTANT: geo_level_available and occ_coding_scheme record what the source
+# ACTUALLY publishes. They are never aspirational. "unknown" is a valid value
+# and must stay "unknown" until verified.
+# ---------------------------------------------------------------------------
+
+schema_version: 1
+
+sources:
+
+  - source_id: NCO_2015
+    source_name: National Classification of Occupations 2015
+    publisher_org: Directorate General of Employment, Ministry of Labour & Employment
+    landing_url: https://dge.gov.in/nco-2015
+    role: taxonomy
+    access_method: PDF
+    licence: Government of India publication; terms not explicitly stated on landing page
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: NCO_2015
+    period_grain: not_applicable
+    update_cadence: "irregular (series revisions: 1946, 1958, 1968, 2004, 2015)"
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      Aligned to ISCO-2008. Three volumes. Text layer is glyph-encoded subset
+      fonts; extraction requires pdfplumber + manual spot-check validation.
+    files:
+      # URLs verified 2026-10-02 by scraping the DGE landing page. The
+      # /2022-07/ paths reported by web search return HTTP 404; these
+      # /2024-05/ paths are the live ones.
+      - name: NCO_2015_Vol_I.pdf
+        url: https://dge.gov.in/sites/default/files/2024-05/National_Classification_of_Occupations_Vol_I-2015.pdf
+        purpose: code structure and hierarchy definition
+      - name: NCO_2015_Vol_II_A.pdf
+        url: https://dge.gov.in/sites/default/files/2024-05/National_Classification_of_Occupations_Vol_II-A-2015.pdf
+        purpose: occupation descriptions / index (volume role to confirm on extraction)
+      - name: NCO_2015_Vol_II_B.pdf
+        url: https://dge.gov.in/sites/default/files/2024-05/National_Classification_of_Occupations_Vol_II-B-2015.pdf
+        purpose: occupation descriptions / index (volume role to confirm on extraction)
+
+  - source_id: NCO_2015_NAT_TABLE
+    source_name: NCO-2015 occupation table (DGE "NAT" browser)
+    publisher_org: Directorate General of Employment, Ministry of Labour & Employment
+    landing_url: https://dge.gov.in/nat
+    role: taxonomy
+    access_method: PORTAL_REPORT
+    licence: Government of India portal; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: NCO_2015
+    period_grain: not_applicable
+    update_cadence: unknown
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      STRUCTURED OFFICIAL SOURCE - discovered 2026-10-02 via the NCVET mapping
+      report (Annexure IX Note 1 names this as MoLE's NCO search engine).
+      Paginated HTML table with columns: S.No., Occupational Title, NCO 2015,
+      NCO 2004, Division, Sub Division, Group, Family. Pages 0-6 inclusive
+      (500 rows per page, 447 on the last) = 3447 occupation rows.
+      This is strongly preferred over PDF extraction for occupation_master, and
+      it additionally carries an OFFICIAL NCO-2004 to NCO-2015 concordance.
+    paged_files:
+      - name_template: nat_page_{page}.html
+        url_template: https://dge.gov.in/nat?page={page}
+        pages: [0, 1, 2, 3, 4, 5, 6]
+
+  - source_id: NCVET_NCO_MAPPING_REPORT
+    source_name: Report on Mapping of Qualifications with NCO Codes
+    publisher_org: National Council for Vocational Education and Training (NCVET)
+    landing_url: https://ncvet.gov.in/whats-new/
+    role: taxonomy
+    access_method: PDF
+    licence: Government of India publication; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: NCO_2015
+    period_grain: not_applicable
+    update_cadence: one-off report
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      HIGHEST PRIORITY. Committee spanned MoLE, MSDE, UGC, AICTE, NCVET, DGT,
+      NSDC and Awarding Bodies. Sub-groups (DGT, NIELIT, SSCs) were tasked with
+      confirming/correcting NCO codes ALREADY ASSIGNED to NSQF-aligned
+      qualifications. Whether this document contains a full QP->NCO crosswalk
+      table or only guidelines determines whether our qualification->occupation
+      mapping is authority=OFFICIAL or authority=PROJECT.
+    files:
+      - name: Report_on_Mapping_of_Qualifications_with_NCO_Codes.pdf
+        url: https://ncvet.gov.in/wp-content/uploads/2025/05/Report-on-Mapping-of-Qualifications-with-NCO-Codes.pdf
+
+  - source_id: NQR_QUALIFICATIONS
+    source_name: National Qualifications Register
+    publisher_org: NCVET
+    landing_url: https://nqr.gov.in/
+    role: taxonomy
+    access_method: PORTAL_REPORT
+    licence: Government of India publication; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: unknown
+    period_grain: not_applicable
+    update_cadence: continuous as qualifications are approved
+    is_authoritative: true
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      Official register of NSQF-aligned approved qualifications across 59
+      sectors. Per-qualification Q-File dossier incl. Model Curriculum and
+      Occupational Maps. NO bulk export or API found. Observed per-file URL
+      pattern: nqr.gov.in/qualification/file/QF_<code>_<name>_V<n>.pdf
+      Whether a Q-File carries an explicit NCO code field: UNVERIFIED.
+    files:
+      - name: QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf
+        url: https://nqr.gov.in/qualification/file/QF_SSC2212_Domestic%20Data%20Entry%20Operator_V3.pdf
+        purpose: sample Q-File, to test for an NCO code field
+
+  - source_id: NSQF_NOTIFICATION_2023
+    source_name: National Skills Qualifications Framework notification (6 June 2023)
+    publisher_org: NCVET
+    landing_url: https://ncvet.gov.in/?p=11295
+    role: taxonomy
+    access_method: PDF
+    licence: Government of India gazette notification
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: not_applicable
+    period_grain: not_applicable
+    update_cadence: superseded 27 Dec 2013 notification
+    is_authoritative: true
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      Eight levels (1-8) including half levels: 1, 2, 2.5, 3, 3.5, 4, 4.5, 5,
+      5.5, 6, 6.5, 7, 8. Needed to seed the NSQF level reference.
+
+  - source_id: LGD_DIRECTORY
+    source_name: Local Government Directory
+    publisher_org: Ministry of Panchayati Raj
+    landing_url: https://lgdirectory.gov.in/downloadDirectory.do
+    role: reference
+    access_method: PORTAL_FORM
+    licence: Government of India open directory; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: state, district, sub_district, local_body, village
+    occ_coding_scheme: not_applicable
+    period_grain: snapshot
+    update_cadence: monthly (1st of each month)
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      THE geography spine. Form-driven download, NO API. Monthly update cadence
+      is why location_change_event is required rather than optional. data.gov.in
+      mirrors exist but their API is reported absent.
+    mirrors:
+      - name: LGD States (data.gov.in)
+        url: https://www.data.gov.in/resource/local-government-directory-lgd-states
+      - name: LGD Sub-Districts (data.gov.in)
+        url: https://www.data.gov.in/resource/local-government-directory-lgd-sub-districts
+
+  - source_id: NCS_VACANCIES
+    source_name: National Career Service - vacancies and jobseekers
+    publisher_org: Directorate General of Employment, Ministry of Labour & Employment
+    landing_url: https://www.ncs.gov.in/_layouts/15/ncsp/ViewStaticReport.aspx
+    role: demand
+    access_method: PORTAL_REPORT
+    licence: Government of India portal; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: national, state, district
+    occ_coding_scheme: unknown
+    period_grain: snapshot
+    update_cadence: unknown
+    is_authoritative: true
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      DECIDES D-04. District-level active vacancies/employers appear on the
+      portal static report page. Whether vacancies are NCO-coded, and whether
+      occupation x district is published JOINTLY, is UNVERIFIED. If NCO-coded at
+      district level, this is the primary official demand source.
+    mirrors:
+      - name: State-wise vacancies mobilised (as on 15-11-2024), data.gov.in
+        url: https://data.gov.in/resource/state-wise-number-vacancies-mobilised-through-national-career-service-ncs-portal-15-11
+        api_available: false
+
+  - source_id: ESHRAM_REGISTRATIONS
+    source_name: e-Shram unorganised worker registrations
+    publisher_org: Ministry of Labour & Employment
+    landing_url: https://eshram.gov.in/
+    role: supply
+    access_method: PORTAL_REPORT
+    licence: Government of India portal; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: national, state, district
+    occ_coding_scheme: NCO_2015_derived
+    period_grain: snapshot (cumulative stock)
+    update_cadence: continuous
+    is_authoritative: true
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      Occupation capture is stated to be BASED ON NCO-2015, structured as 30
+      broad sector categories, 190 broad occupation families, ~400 occupations.
+      This makes map_eshram_occupation_to_nco structural rather than invented.
+      MEASURE IS A CUMULATIVE REGISTRATION STOCK - not employment, not vacancies.
+      Whether occupation x district is published JOINTLY: UNVERIFIED.
+
+  - source_id: PLFS
+    source_name: Periodic Labour Force Survey
+    publisher_org: National Statistics Office, MoSPI
+    landing_url: https://mospi.gov.in/
+    role: context
+    access_method: PDF
+    licence: Government of India publication
+    licence_verified: false
+    geo_level_available: national (monthly), state (quarterly/annual)
+    occ_coding_scheme: NCO_2015
+    period_grain: month, quarter, year
+    update_cadence: monthly bulletins since April 2025
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      DISTRICT-LEVEL ESTIMATES ARE NOT VALID. Survey with sampling error; must
+      carry standard errors and must never be apportioned to districts in a
+      fact table. Post-Jan-2025 design: FSUs 12,800 -> 22,594, ~270,472
+      households, monthly estimates at ALL-INDIA level only, CWS approach.
+    files:
+      - name: PLFS_Monthly_Bulletin_April_2025.pdf
+        url: https://mospi.gov.in/sites/default/files/publication_reports/PLFS_Monthly_Bulletin_April_2025_final.pdf
+      - name: PLFS_sample_design_change_press_note.pdf
+        url: https://mospi.gov.in/sites/default/files/press_release/Press_note_changes_sample_design_Final.pdf
+
+  - source_id: PMKVY_DISTRICT_OUTCOMES
+    source_name: District-wise enrolled, trained, assessed, certified and placed under PMKVY
+    publisher_org: Ministry of Skill Development and Entrepreneurship
+    landing_url: https://www.data.gov.in/resource/district-wise-enrolled-trained-assessed-certified-placed-under-pmkvy-21-april-2022
+    role: training
+    access_method: BULK_DOWNLOAD
+    licence: Government Open Data Licence - India (to confirm per resource)
+    licence_verified: false
+    geo_level_available: district
+    occ_coding_scheme: none (scheme training-type split only)
+    period_grain: snapshot as on 2022-04-21
+    update_cadence: unknown; this vintage is 2022
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      Covers 28 states, 8 UTs, 720 districts. Splits RPL / Short Term Training /
+      Special Projects. API reported ABSENT for this resource. STALE VINTAGE -
+      a newer release must be searched for (Skill India Digital Hub / PMKVY 4.0).
+      NOTE: this is district x scheme-training-type, NOT district x trade.
+
+  - source_id: DGT_ITI_CAPACITY
+    source_name: DGT / ITI Craftsman Training Scheme capacity and admissions
+    publisher_org: Directorate General of Training, MSDE
+    landing_url: https://dgt.gov.in/
+    role: training
+    access_method: UNKNOWN
+    licence: unknown
+    licence_verified: false
+    geo_level_available: unknown
+    occ_coding_scheme: DGT_TRADE
+    period_grain: academic_year
+    update_cadence: unknown
+    is_authoritative: true
+    verification_status: UNVERIFIED
+    notes: >-
+      AT RISK. Figures surface via parliamentary answers and CONFLICT between
+      sources (~25.77 lakh seats with 12.25 lakh admitted for 2021-22 in one
+      answer vs ~35 lakh seats cited for 2021 in another). NCVT MIS
+      (ncvtmis.gov.in) appears to be the operational repository. Trade x district
+      open data NOT FOUND. If unavailable, long-term training capacity enters at
+      a coarser grain and must be labelled as such.
+
+  - source_id: DATAMEET_DISTRICT_BOUNDARIES
+    source_name: India district boundaries
+    publisher_org: DataMeet (community)
+    landing_url: https://projects.datameet.org/maps/districts/
+    role: reference
+    access_method: BULK_DOWNLOAD
+    licence: Creative Commons Attribution 2.5 India
+    licence_verified: true
+    geo_level_available: district
+    occ_coding_scheme: not_applicable
+    period_grain: snapshot
+    update_cadence: irregular
+    is_authoritative: false
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      NOT a government source - community-maintained, flagged accordingly.
+      Needed only for map rendering (Step 0 R5), never for analysis. For a
+      government-facing tool the official Survey of India external boundary
+      should be used for the national outline. Disputed-boundary depiction is
+      politically sensitive.
+
+  - source_id: NQR_SECTORS
+    source_name: NQR sector listing
+    publisher_org: NCVET
+    landing_url: https://nqr.gov.in/sectors
+    role: taxonomy
+    access_method: PORTAL_REPORT
+    licence: Government of India portal; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: not_applicable
+    period_grain: not_applicable
+    update_cadence: unknown
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      Plain-HTML sector listing page, used to seed sector_master. NOTE: NCVET
+      documentation states the NQR covers 59 sectors; the number of distinct
+      sector entries recoverable from this page is recorded by the build and any
+      shortfall is reported rather than padded.
+    files:
+      - name: nqr_sectors.html
+        url: https://nqr.gov.in/sectors
+        purpose: seed sector_master
+
+  - source_id: DATAMEET_DISTRICT_ATTRS
+    source_name: Census 2011 district attribute table (DataMeet maps)
+    publisher_org: DataMeet (community) - derived from Census of India 2011
+    landing_url: https://github.com/datameet/maps/tree/master/Districts/Census_2011
+    role: reference
+    access_method: BULK_DOWNLOAD
+    licence: "repository licence MIT; project site states CC-BY 2.5 India - DISCREPANCY, see notes"
+    licence_verified: false
+    geo_level_available: district
+    occ_coding_scheme: not_applicable
+    period_grain: snapshot (Census 2011 vintage)
+    update_cadence: irregular
+    is_authoritative: false
+    verification_status: VERIFIED_URL
+    notes: >-
+      NOT AUTHORITATIVE for LGD. Acquired as a CANDIDATE district universe only
+      (shapefile .dbf attribute table, read without geospatial dependencies),
+      because LGD bulk download is blocked without browser automation. Census
+      2011 district codes are NOT LGD codes and the two must not be conflated.
+      Loaded to data/staging, never to location_master. Licence discrepancy
+      between repo (MIT) and project site (CC-BY 2.5 IN) is unresolved and must
+      be settled before any public redistribution of derived geometry.
+    files:
+      - name: 2011_Dist.dbf
+        url: https://raw.githubusercontent.com/datameet/maps/master/Districts/Census_2011/2011_Dist.dbf
+        purpose: district attribute table (names + Census 2011 codes), no geometry
+
+  - source_id: NCS_API_PUBLIC
+    source_name: National Career Service public web API (api.ncs.gov.in)
+    publisher_org: Directorate General of Employment, Ministry of Labour & Employment
+    landing_url: https://api.ncs.gov.in/
+    role: reference
+    access_method: API
+    licence: "no published terms located; Government of India portal API - LICENCE UNCLEAR"
+    licence_verified: false
+    geo_level_available: state
+    occ_coding_scheme: ncs_skill_keyword
+    period_grain: snapshot
+    update_cadence: continuous
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      Discovered 2026-10-02. These are the endpoints the PUBLIC, UNAUTHENTICATED
+      ncs.gov.in homepage calls; no authentication was used or bypassed. No public
+      API specification exists (/v3/api-docs 500, /openapi.json 401), so this is
+      an undocumented surface and terms of use are UNCLEAR - must be confirmed
+      with DGE before any production or published use.
+      WORKING: /api/location/state returns 39 state names with standard Indian
+      state codes (Bihar 10, Maharashtra 27, Tamil Nadu 33 - these match the
+      Census/LGD state numbering, which is useful for the geography spine but is
+      NOT a substitute for LGD district codes).
+      WORKING: /employer-service/api/v1/hiring/top-companies?year=&limit= returns
+      employer-level totalVacancies - real demand data, but by COMPANY, with no
+      location, occupation or date dimension.
+      WORKING: /api/jobseeker/profiles/career-timeline/get-skills?keyword= returns
+      an id+keyword job-title/skill dictionary, usable as mapping input, not demand.
+      NOT USABLE: /api/locations returns an ENCRYPTED payload (opaque ciphertext),
+      so the district list cannot be read from it.
+      NO job-search / vacancy-by-location / vacancy-by-occupation endpoint was
+      found on this public surface.
+
+  - source_id: NCS_PARLIAMENTARY_ANSWERS
+    source_name: NCS vacancy statistics in Parliament answers (Lok Sabha / Rajya Sabha)
+    publisher_org: Ministry of Labour & Employment
+    landing_url: https://dge.gov.in/
+    role: demand
+    access_method: PDF
+    licence: Parliament of India / Government of India published answer
+    licence_verified: false
+    geo_level_available: national, state
+    occ_coding_scheme: ncs_sector (22 categories, NOT NCO, NOT the NQR 59 sectors)
+    period_grain: cumulative since inception, as-on a stated date
+    update_cadence: irregular (per question answered)
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      THE BEST REAL OFFICIAL DEMAND DATA LOCATED. Verified by extraction of 4 PDFs.
+      Structure per answer: gender-wise table; STATE-WISE vacancies (39 rows,
+      absolute numbers); SECTOR-WISE vacancies (22 rows, in lakh).
+      Reconciliation PASSED: state rows sum exactly to the published grand total
+      35,275,833 as on 2024-11-15.
+      CRITICAL LIMITATIONS, all verified not assumed:
+      (1) the measure is CUMULATIVE VACANCIES MOBILISED SINCE INCEPTION - a stock,
+          not a monthly flow. A flow can only be derived by differencing two dated
+          snapshots.
+      (2) 20,507,320 of 35,275,833 vacancies (58.1%) are booked to
+          "Multiple States/PAN India" and are therefore NOT attributable to any
+          state. Only 41.9% is state-attributable.
+      (3) state-wise and sector-wise are SEPARATE MARGINAL tables. There is NO
+          joint state x sector cross-tabulation, so state x sector cannot be
+          derived from them.
+      (4) NO district. NO occupation. NO NCO code. NO time series within a document.
+      (5) units differ between tables (absolute for state, lakh for sector).
+      NOTE: URLs use https://dge.gov.in/sites/default/files/<YYYY-MM>/<id>_e.pdf .
+      The /dge/sites/... form reported by web search returns HTTP 404.
+    files:
+      - name: RS_UQ2798_2024-12-19.pdf
+        url: https://dge.gov.in/sites/default/files/2025-05/2798_e.pdf
+        purpose: Rajya Sabha UQ 2798, state-wise + sector-wise vacancies as on 2024-11-15
+      - name: LS_UQ933_2024-12-02.pdf
+        url: https://dge.gov.in/sites/default/files/2025-05/933_e.pdf
+        purpose: Lok Sabha UQ 933, same measures as on 2024-11-15
+      - name: LS_UQ2225_2024-12-09.pdf
+        url: https://dge.gov.in/sites/default/files/2025-05/2225_e.pdf
+        purpose: Lok Sabha UQ 2225
+      - name: NCS_UQ1264.pdf
+        url: https://dge.gov.in/sites/default/files/2025-09/1264_e.pdf
+        purpose: later NCS answer, for differencing to obtain a flow
+
+  - source_id: LGD_DISTRICTS_DATAGOVIN
+    source_name: Local Government Directory - Districts (data.gov.in mirror)
+    publisher_org: Ministry of Panchayati Raj (published via NIC / data.gov.in)
+    landing_url: https://www.data.gov.in/resource/local-government-directory-lgd-districts
+    role: reference
+    access_method: BULK_DOWNLOAD
+    licence: Government Open Data Licence - India (per resource, to confirm)
+    licence_verified: false
+    geo_level_available: state, district, sub_district
+    occ_coding_scheme: not_applicable
+    period_grain: snapshot (2023-11-30 / 2023-12-01 vintages)
+    update_cadence: mirror is static; LGD itself updates monthly
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    files:
+      - name: lgd_states.csv
+        url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_states.csv
+        purpose: 36 states/UTs with LGD + Census-2011 state codes
+      - name: lgd_districts.csv
+        url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_districts.csv
+        purpose: 785 districts with LGD codes and the official Census-2011 crosswalk
+      - name: lgd_subdistricts.csv
+        url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_subdistricts.csv
+        purpose: sub-district tier
+    notes: >-
+      DISCOVERED Step 1.6. This is the route around the LGD CAPTCHA: the
+      data.gov.in resource page embeds a DIRECT, KEYLESS file URL in its Nuxt
+      SSR payload (extracted by scripts/probe_datagovin.py):
+      https://www.data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_districts.csv
+      and an API resource UUID 37231365-78ba-44d5-ac22-3deec40b9197 for use with
+      a registered data.gov.in API key.
+      RESOLVED Step 1.7: the WWW host 403s but the APEX host serves the files.
+      Working base: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/
+      VALIDATED 2026-10-02: lgd_states.csv 36 rows (28 S + 8 U, state_code unique,
+      vintage 2023-12-01); lgd_districts.csv 785 rows (district_code unique, all 36
+      states present, vintage 2023-11-30); lgd_subdistricts.csv 1.27 MB.
+      lgd_districts.csv CARRIES AN OFFICIAL LGD <-> CENSUS-2011 DISTRICT CROSSWALK
+      (district_census2011_code), which is what makes Census B-series joinable.
+      KEY LIMITATION: 125 of 785 districts (15.9%) have district_census2011_code
+      '000' - they post-date Census 2011, so they cannot be joined to any Census
+      table. Pilot states: Maharashtra 36 districts (1 unjoinable), Tamil Nadu 38
+      (6 unjoinable, 15.8%), Uttar Pradesh 75 (4 unjoinable).
+      SECOND LIMITATION: this mirror is a 2023-11-30 snapshot, while LGD itself
+      updates monthly - it is roughly two years stale and is NOT a live feed.
+      THIRD LIMITATION: the CSV does NOT expose split/merge/rename events, parents
+      or effective dates. Absence of a Census-2011 code is the only change evidence
+      it provides, so location_change_event cannot be populated from it.
+
+  - source_id: UDYAM_DISTRICT_MSME
+    source_name: District-wise MSME enterprises registered under Udyam
+    publisher_org: Ministry of Micro, Small and Medium Enterprises
+    landing_url: https://www.data.gov.in/resource/district-wise-total-msme-registered-enterprises-under-udyam-registration-till-last-date
+    role: context
+    access_method: BULK_DOWNLOAD
+    licence: Government Open Data Licence - India (per resource, to confirm)
+    licence_verified: false
+    geo_level_available: district
+    occ_coding_scheme: not_applicable
+    period_grain: cumulative snapshot as on 2023-12-21
+    update_cadence: catalogue claims daily; files are a 2023-12-21 snapshot (claim contradicted)
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    files:
+      - name: district_level_total_Registered_msme.csv
+        url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/district_level_total_Registered_msme.csv?VersionId=105172500341441
+        purpose: all MSMEs by district and size class
+      - name: district_level_service_msme.csv
+        url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/district_level_service_msme.csv?VersionId=105172390466305
+        purpose: service-sector MSMEs by district and size class
+    notes: >-
+      DISCOVERED Step 1.6. The strongest DISTRICT-LEVEL real signal found.
+      Catalogue description (IndiaAI AIKosh): "Daily updated district-wise dataset
+      of total MSMEs (Micro, Small, Medium) registered under UDYAM Registration
+      across India with LG directory codes." The LGD district codes are what make
+      it joinable to our geography spine.
+      ROLE: this is an ESTABLISHMENT / INDUSTRY-STRUCTURE signal, NOT labour
+      demand. Enterprise registrations are not vacancies and must never be
+      labelled as such. Its legitimate use is as an evidence-based district
+      allocation basis and as a context feature.
+      Keyless file URLs extracted from the resource pages:
+      .../datafile/district_level_total_Registered_msme.csv?VersionId=105172500341441
+      .../datafile/district_level_service_msme.csv?VersionId=105172390466305
+      API UUIDs: f8cd85a1-f9b8-4ff1-b195-9f75c10eb338 (total),
+      c3dfe7e6-0cfd-4ddb-8f79-9cb3695d9866 (services).
+      VALIDATED 2026-10-02 via the apex host. Both files: 785 rows, columns
+      state_name, lg_dist_code, district_name, micro, small, medium, total,
+      last_updated. 785/785 lg_dist_code values join to lgd_districts.district_code
+      - a clean 100% join.
+      CONTRADICTION FOUND: the catalogue calls it "daily updated", but the actual
+      files carry last_updated = 2023-12-21 for every row. It is a Dec-2023
+      SNAPSHOT, not a daily feed. The catalogue claim is wrong.
+      MISSINGNESS IS REAL: 'NA' appears in small (30 districts) and medium (123
+      districts). These must stay missing - never zero-filled.
+      MEASURE: cumulative registered enterprise COUNTS by size class, not a flow.
+
+  - source_id: CENSUS_2011_B_SERIES
+    source_name: Census 2011 B-series economic tables (occupational classification of workers)
+    publisher_org: Office of the Registrar General and Census Commissioner, India
+    landing_url: https://censusindia.gov.in/nada/index.php/catalog
+    role: context
+    access_method: BULK_DOWNLOAD
+    licence: Government of India / ORGI published tables; terms to confirm
+    licence_verified: false
+    geo_level_available: national, state, district (urban to city level)
+    occ_coding_scheme: NCO_2004
+    period_grain: Census 2011 (single historical point)
+    update_cadence: decennial; next census not yet published
+    is_authoritative: true
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      DISCOVERED Step 1.6. Tables B-24 and B-27 give occupational classification
+      of main workers by NCO DIVISION and GROUP down to DISTRICT level, as XLSX
+      from the ORGI digital library.
+      WHY THIS MATTERS: it is the only verified route to real DISTRICT x
+      OCCUPATION information, and it is coded in NCO-2004 - for which we already
+      hold an OFFICIAL NCO-2004 -> NCO-2015 concordance
+      (standardized/map_nco2004_to_nco2015.parquet, 3447 rows, authority=OFFICIAL).
+      CLASSIFICATION, not negotiable: this is HISTORICAL WORKFORCE STRUCTURE as at
+      2011. It is NOT current employer demand and must never be relabelled as
+      demand. Legitimate use: district x occupation allocation weights and
+      context features, clearly marked ESTIMATED when used that way.
+
+  - source_id: STATE_EMPLOYMENT_PORTALS
+    source_name: State employment-exchange portals (Maharashtra, Uttar Pradesh, Tamil Nadu)
+    publisher_org: State Directorates of Employment / Skill Development
+    landing_url: https://rojgar.mahaswayam.gov.in/
+    role: demand
+    access_method: UNKNOWN
+    licence: unknown
+    licence_verified: false
+    geo_level_available: district (claimed by portal UI)
+    occ_coding_scheme: unknown
+    period_grain: unknown
+    update_cadence: unknown
+    is_authoritative: true
+    verification_status: UNVERIFIED
+    notes: >-
+      LEAD ONLY, Step 1.6. All three pilot states run employment portals whose UI
+      offers DISTRICT-WISE vacancy search - potentially the district-level demand
+      signal the project needs, for exactly our pilot states.
+      Probe results: rojgar.mahaswayam.gov.in HTTP 200 (21 'vacancy' / 19
+      'district' mentions, JS-driven, 2 table rows);
+      rojgaarsangam.up.gov.in HTTP 200 with a /JobSearch route;
+      tnvelaivaaippu.gov.in HTTP 200, minimal server-rendered content.
+      NOT PURSUED FURTHER because establishing machine access would require
+      deeper interaction with state portals whose terms of use are unknown. This
+      needs (a) a human look in a browser to confirm what is actually published,
+      and (b) a terms-of-use check, before any automated access.
+
+  - source_id: NIC_2008
+    source_name: National Industrial Classification 2008
+    publisher_org: Ministry of Statistics and Programme Implementation (hosted by DGE)
+    landing_url: https://dge.gov.in/nco-2015
+    role: taxonomy
+    access_method: PDF
+    licence: Government of India publication; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: not_applicable
+    period_grain: not_applicable
+    update_cadence: irregular (NIC series revisions)
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      Acquired Step 1.7, formalised Step 2.0. 193 pages. Needed because the NCS
+      vacancy "sector" vocabulary was verified to BE the NIC-2008 section list
+      (20/20 one-to-one name alignment). NIC is an INDUSTRY classification; it is
+      never treated as an occupation classification.
+    files:
+      - name: NIC_2008.pdf
+        url: https://dge.gov.in/sites/default/files/2024-05/NIC_2008.pdf
+        purpose: source of nic_section_master
+
+  - source_id: CENSUS_2011_B24
+    source_name: "Census 2011 Table B-24: occupational classification of main workers"
+    publisher_org: Office of the Registrar General and Census Commissioner, India
+    landing_url: https://censusindia.gov.in/nada/index.php/catalog/13648
+    role: context
+    access_method: BULK_DOWNLOAD
+    licence: Government of India / ORGI published tables; terms to confirm
+    licence_verified: false
+    geo_level_available: state, district
+    occ_coding_scheme: NCO_2004
+    period_grain: Census 2011 (single historical point)
+    update_cadence: decennial
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    tls_intermediate: emSign_SSL_CA_G1.pem
+    notes: >-
+      ACQUIRED Step 3.0. censusindia.gov.in serves only its leaf certificate and
+      omits the emSign intermediate CA, so strict TLS clients fail with
+      "unable to get local issuer certificate". Resolved by fetching that
+      intermediate from the CA repository URL the server's own certificate
+      advertises in its AIA extension, and appending it to the certifi roots.
+      The completed chain verifies to the publicly trusted emSign Root CA - G1
+      (openssl: "Verify return code: 0 (ok)"). Certificate verification remains
+      FULLY ENABLED; verify=False is used nowhere. See config/certs/README.md.
+      STRUCTURE (verified by reading the files): columns are Table name, State
+      code, District code, Area Name, Division, Sub-Division, NCO name,
+      Total/Rural/Urban, Persons, Males, Females. District code '000' denotes the
+      state total; other codes are districts. Occupation is NCO-2004 at DIVISION
+      (1-digit) and SUB-DIVISION (2-digit) level only - NOT the 8-digit codes our
+      official concordance keys on.
+      CLASSIFICATION: HISTORICAL WORKFORCE STRUCTURE as at 2011. It is NOT
+      employer demand and must never be relabelled as demand.
+      SCOPE NOTE: B-24 covers main workers in NON-HOUSEHOLD industry, trade,
+      business, profession or service - it is not all workers.
+      Catalogue numbering: catalog/(13648 + census_state_code).
+    files:
+      - name: DDW-B24-2700-Final.XLSX
+        url: https://censusindia.gov.in/nada/index.php/catalog/13675/download/16788/DDW-B24-2700-Final.XLSX
+        purpose: Maharashtra (census state code 27)
+      - name: DDW-B24-3300-Final.XLSX
+        url: https://censusindia.gov.in/nada/index.php/catalog/13681/download/16794/DDW-B24-3300-Final.XLSX
+        purpose: Tamil Nadu (census state code 33)
+      - name: DDW-B24-0900-Final.XLSX
+        url: https://censusindia.gov.in/nada/index.php/catalog/13657/download/16770/DDW-B24-0900-Final.XLSX
+        purpose: Uttar Pradesh (census state code 09)
+
+  - source_id: ILOSTAT_EMP_ECO_OCU
+    source_name: "ILOSTAT: Employment by economic activity and occupation (India)"
+    publisher_org: International Labour Organization (derived from India's Periodic Labour Force Survey)
+    landing_url: https://rplumber.ilo.org/__docs__/
+    role: context
+    access_method: API
+    licence: "ILO terms of use; ILOSTAT data is published for public reuse with attribution - CONFIRM exact terms before publication"
+    licence_verified: false
+    geo_level_available: national
+    occ_coding_scheme: ISCO_08_MAJOR_GROUP
+    period_grain: year
+    update_cadence: annual (last update 2026-10-02 per ILOSTAT catalogue)
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      RESOLVES the industry->occupation bridge question, at NATIONAL level only.
+      Indicator EMP_TEMP_ECO_OCU_NB_A, "Employment by economic activity and
+      occupation (thousands)", annual, ILO Labour Force Statistics database.
+      PROVENANCE: for India the source code is BA:14121 = "LFS - Periodic Labour
+      Force Survey" - i.e. this IS India's own PLFS, harmonised and published by
+      the ILO as a cross-tabulation that MoSPI does not publish directly.
+      STRUCTURE (verified): classif1 = economic activity (ISIC-Rev.4 section),
+      classif2 = occupation (ISCO-08 major group), obs_value in THOUSANDS of
+      persons. For India, 751 rows at ISIC4-section x ISCO08-major-group level
+      across 2022, 2023, 2024, 2025. For 2025: 20 sections (A-T) + TOTAL x 9
+      major groups, 184 of 189 cells populated.
+      WHY IT BRIDGES: NIC-2008 is the Indian adaptation of ISIC-Rev.4 and its
+      section letters/titles align (verified against the official NIC-2008 PDF);
+      NCO-2015 has a documented ONE-TO-ONE correspondence with ISCO-08 where the
+      first digit is the Division/Major Group (NCVET report, Annexure IX s.3).
+      So ISIC4 section x ISCO08 major group maps to NIC-2008 section x NCO-2015
+      division without inventing anything.
+      KEY LIMITATION: ref_area is IND only. There is NO state dimension, so
+      P(occupation | industry, STATE) is NOT available - only
+      P(occupation | industry) nationally.
+    files:
+      - name: ILOSTAT_EMP_TEMP_ECO_OCU_NB_A_IND.csv
+        url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_ECO_OCU_NB_A&ref_area=IND&format=.csv
+        purpose: India employment by ISIC-Rev.4 section x ISCO-08 major group
+      - name: ILOSTAT_dic_source_en.csv
+        url: https://rplumber.ilo.org/metadata/dic/?var=source&lang=en&format=.csv
+        purpose: source-code dictionary (proves BA:14121 = PLFS)
+      - name: ILOSTAT_toc_indicator_en.csv
+        url: https://rplumber.ilo.org/metadata/toc/indicator?lang=en&format=.csv
+        purpose: indicator catalogue (vintage, coverage, record counts)
+
+  - source_id: MSDE_ANNUAL_REPORT_2023_24
+    source_name: MSDE Annual Report 2023-24 (training annexures)
+    publisher_org: Ministry of Skill Development and Entrepreneurship
+    landing_url: https://www.msde.gov.in/
+    role: training
+    access_method: PDF
+    licence: Government of India published annual report; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: national, state
+    occ_coding_scheme: DGT_TRADE_NSQF (no NCO codes published)
+    period_grain: scheme period / as-on date
+    update_cadence: annual
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      ACQUIRED Step 5.0. 276 pages, 31 annexures. THE FIRST REAL SUPPLY-SIDE DATA
+      in this project, after PMKVY district resources proved inaccessible
+      (PMKVY-210422.csv returns 404 even on the apex data.gov.in host) and the
+      NCVT MIS portal timed out.
+      USABLE ANNEXURES (structures verified by reading the document):
+        Annexure-11 p232  "State wise training details of PMKVY 1.0 (2015-16)"
+                          state x {Enrolled, Trained, Assessed, Certified, Placed}
+                          + a published Grand Total row for reconciliation.
+        Annexure-14 p237  "State wise progress under Short Term Training (STT)
+                          component of CSSM - PMKVY 2.0 (as on 31.03.2024)",
+                          same five measures + a published Total row.
+        Annexure-21 p249  "State wise details of PMKKs (as on 31.03.2024)":
+                          districts, districts having a PMKK, PMKKs allocated,
+                          PMKKs established - TRAINING INFRASTRUCTURE, a different
+                          concept from training outcomes.
+        Annexure-22 p251  "List of 155 NSQF Compliant Trades" with entry
+                          qualification, NSQF level, duration and revision year -
+                          an official TRADE REFERENCE list.
+      GRAIN LIMITATION, stated plainly: these annexures are STATE-level.
+      DISTRICT-level training data remains UNAVAILABLE. Annexure-21 reports a
+      district COUNT per state, which is not district-level training data.
+      OCCUPATION LIMITATION: no annexure publishes an NCO code. Trades carry NSQF
+      level only, so trade -> NCO stays UNMAPPED.
+      Annexures 12/13/16/17/18/20 use nested multi-level headers (STT / RPL /
+      Grand Total sub-columns) and are NOT parsed in this step - deliberately
+      deferred rather than parsed unreliably.
+    files:
+      - name: MSDE_Annual_Report_2023-24.pdf
+        url: https://www.msde.gov.in/static/uploads/2024/11/4f71465f72e9f90ff079f76ca2e374a9.pdf
+        purpose: training annexures 11, 14, 21, 22
+
+  - source_id: DGT_CTS_CURRICULUM
+    source_name: DGT Craftsmen Training Scheme trade curricula (NSQF-compliant)
+    publisher_org: Directorate General of Training, Ministry of Skill Development and Entrepreneurship
+    landing_url: https://dgt.gov.in/CTS
+    role: taxonomy
+    access_method: PDF
+    licence: Government of India published curriculum; terms not explicitly stated
+    licence_verified: false
+    geo_level_available: not_applicable
+    occ_coding_scheme: NCO_2015
+    period_grain: not_applicable
+    update_cadence: per curriculum revision (CTS 2.0 / 3.0)
+    is_authoritative: true
+    verification_status: VERIFIED_URL
+    notes: >-
+      RESOLVES the trade -> NCO linkage in PRINCIPLE (Step 5.2). Each DGT CTS trade
+      curriculum carries a "GENERAL INFORMATION" table with the official fields
+      `Name of the Trade`, `Trade Code` (DGT/nnnn) and `NCO - 2015` (one or more
+      8-digit codes), plus `Reference NOS` codes. A narrative "Reference NCO-2015"
+      block repeats the codes with their NCO titles.
+      THIS IS A DIRECT TRADE -> NCO LINK published by DGT itself, so the
+      Trade -> QP -> NCO chain hypothesised in Step 5.1 is NOT required: the
+      shorter chain Trade Code -> curriculum "NCO - 2015" field -> NCO-2015 is
+      official and sufficient.
+      VERIFIED BY EXTRACTION for the two curricula acquired:
+        Fitter      DGT/1002 -> 7233.0100 (Fitter, General), 7233.0200 (Fitter, Bench)
+        Electrician DGT/1001 -> 7411.0100 (Electrician General), 7412.0200 (Electrical Fitter)
+      All four codes resolve in occupation_master with MATCHING titles.
+      Both are MULTI-NCO cases, and both NCO codes are retained - neither is
+      arbitrarily chosen.
+      ENUMERATION LIMITATION: no official index of CTS curricula was found.
+      dgt.gov.in/CTS lists no curriculum PDFs; bharatskills.gov.in/Home/CTS is
+      client-rendered and exposes none in its HTML; its /robots.txt returns an
+      HTML page rather than a policy. Curriculum URLs therefore cannot be
+      enumerated by any sanctioned route, and URL brute-forcing was not
+      attempted. The remaining 153 trades are MAPPING_UNKNOWN, NOT
+      MAPPING_DOES_NOT_EXIST - the mapping demonstrably exists in DGT documents
+      we cannot list.
+    files:
+      - name: Fitter_CTS3.0_NSQF-4.pdf
+        url: https://dgt.gov.in/sites/default/files/2026-08/Fitter_CTS3.0_NSQF-4.pdf
+        purpose: trade DGT/1002 - official NCO-2015 reference
+      - name: Electrician_CTS2.0_NSQF-4.pdf
+        url: https://dgt.gov.in/sites/default/files/2024-01/Electrician_CTS2.0_NSQF-4.pdf
+        purpose: trade DGT/1001 - official NCO-2015 reference
+
+  - source_id: DATA_GOV_IN_PLATFORM
+    source_name: Open Government Data Platform India (access mechanism, not a dataset)
+    publisher_org: National Informatics Centre
+    landing_url: https://data.gov.in/
+    role: reference
+    access_method: API
+    licence: Government Open Data Licence - India
+    licence_verified: false
+    geo_level_available: varies_by_resource
+    occ_coding_scheme: varies_by_resource
+    period_grain: varies_by_resource
+    update_cadence: varies_by_resource
+    is_authoritative: true
+    verification_status: VERIFIED_EXISTS
+    notes: >-
+      Platform-level datastore API exists and requires a free API key. CRITICAL
+      NUANCE: API availability is PER RESOURCE, and several resources we need
+      report "API does not exist". Ingestion must therefore support both an API
+      path and a manual-snapshot path per source. Exact endpoint pattern
+      REQUIRES VERIFICATION (two conflicting forms observed).

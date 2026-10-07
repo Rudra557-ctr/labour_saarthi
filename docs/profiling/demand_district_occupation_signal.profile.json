@@ -1,0 +1,632 @@
+{
+  "table": "demand_district_occupation_signal",
+  "source_path": "/Users/riyanshukumar/Desktop/LMIS/data/standardized/demand_district_occupation_signal.parquet",
+  "n_rows": 1889,
+  "n_cols": 41,
+  "columns": [
+    {
+      "name": "lgd_code",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 785,
+      "sample_values": [
+        "118",
+        "119",
+        "120",
+        "121",
+        "122"
+      ],
+      "min_value": "1",
+      "max_value": "99"
+    },
+    {
+      "name": "district_name_lgd",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 782,
+      "sample_values": [
+        "Agra",
+        "Aligarh",
+        "Prayagraj",
+        "Ambedkar Nagar",
+        "Auraiya"
+      ],
+      "min_value": "Adilabad",
+      "max_value": "Zunheboto"
+    },
+    {
+      "name": "state_lgd_code",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "9",
+        "27",
+        "33",
+        "1",
+        "8"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "state_name_lgd",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "Uttar Pradesh",
+        "Maharashtra",
+        "Tamil Nadu",
+        "Jammu And Kashmir",
+        "Rajasthan"
+      ],
+      "min_value": "Andaman And Nicobar Islands",
+      "max_value": "West Bengal"
+    },
+    {
+      "name": "census_2011_code",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 125,
+      "pct_null": 6.62,
+      "n_unique": 641,
+      "sample_values": [
+        "146",
+        "143",
+        "175",
+        "178",
+        "162"
+      ],
+      "min_value": "001",
+      "max_value": "NA"
+    },
+    {
+      "name": "relative_demand_signal",
+      "dtype": "Float64",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 784,
+      "sample_values": [
+        "45738.68281097064",
+        "27612.863152480753",
+        "31193.47272348593",
+        "9433.925156425243",
+        "5056.5405219357135"
+      ],
+      "min_value": "1.1109382024414705",
+      "max_value": "999.3900359066428"
+    },
+    {
+      "name": "observed_state_vacancies",
+      "dtype": "Int64",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 36,
+      "sample_values": [
+        "1108648",
+        "1533463",
+        "1715285",
+        "110731",
+        "303716"
+      ],
+      "min_value": "100371",
+      "max_value": "86478"
+    },
+    {
+      "name": "enterprise_share_within_state",
+      "dtype": "Float64",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 783,
+      "sample_values": [
+        "0.04125627143238489",
+        "0.024906790209769696",
+        "0.028136498440881084",
+        "0.008509396270435019",
+        "0.004560997288531358"
+      ],
+      "min_value": "0.00010138818923244677",
+      "max_value": "8.417132690995582e-05"
+    },
+    {
+      "name": "census_district_code",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 138,
+      "sample_values": [
+        "146",
+        "143",
+        "175",
+        "178",
+        "162"
+      ],
+      "min_value": "132",
+      "max_value": "633"
+    },
+    {
+      "name": "nco_2004_division",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 9,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "nco_2015_division",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 9,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "min_value": "1",
+      "max_value": "9"
+    },
+    {
+      "name": "nco_name",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 9,
+      "sample_values": [
+        "LEGISLATORS, SENIOR OFFICIALS AND MANAGERS",
+        "PROFESSIONALS",
+        "TECHNICIANS AND ASSOCIATE PROFESSIONALS",
+        "CLERKS",
+        "SERVICE WORKERS AND SHOP & MARKET SALES WORKERS"
+      ],
+      "min_value": "CLERKS",
+      "max_value": "TECHNICIANS AND ASSOCIATE PROFESSIONALS"
+    },
+    {
+      "name": "occupation_share_of_district",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 1242,
+      "sample_values": [
+        "0.03291116066970675",
+        "0.03155810005658556",
+        "0.057467629730719304",
+        "0.016799254402023765",
+        "0.19659820923343208"
+      ],
+      "min_value": "0.0043222244323312085",
+      "max_value": "0.554105942926957"
+    },
+    {
+      "name": "division_map_confidence",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 9,
+      "sample_values": [
+        "0.975",
+        "0.9977",
+        "0.7888",
+        "0.9451",
+        "0.9612"
+      ],
+      "min_value": "0.7888",
+      "max_value": "0.9977"
+    },
+    {
+      "name": "main_workers",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 1226,
+      "sample_values": [
+        "19775.0",
+        "18962.0",
+        "34530.0",
+        "10094.0",
+        "118128.0"
+      ],
+      "min_value": "100226.0",
+      "max_value": "998.0"
+    },
+    {
+      "name": "district_total_main_workers",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 138,
+      "sample_values": [
+        "600860.0",
+        "418687.0",
+        "606083.0",
+        "136148.0",
+        "83831.0"
+      ],
+      "min_value": "101830.0",
+      "max_value": "99602.0"
+    },
+    {
+      "name": "unclassified_share_not_allocated",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 138,
+      "sample_values": [
+        "0.2188679559298339",
+        "0.16420858541105887",
+        "0.2427109818292214",
+        "0.17408996092487586",
+        "0.14347914256062794"
+      ],
+      "min_value": "0.03315000904728289",
+      "max_value": "0.2901573362605196"
+    },
+    {
+      "name": "district_occupation_signal",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 1242,
+      "sample_values": [
+        "1505.3131388126092",
+        "1443.4259286050417",
+        "2628.4936881516765",
+        "768.3757685549672",
+        "8992.14313333279"
+      ],
+      "min_value": "10012.351205447905",
+      "max_value": "998.0469428014167"
+    },
+    {
+      "name": "rank_within_district",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 9,
+      "sample_values": [
+        "6.0",
+        "7.0",
+        "5.0",
+        "9.0",
+        "1.0"
+      ],
+      "min_value": "1.0",
+      "max_value": "9.0"
+    },
+    {
+      "name": "rank_within_occupation_across_districts",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 138,
+      "sample_values": [
+        "46.0",
+        "50.0",
+        "44.0",
+        "59.0",
+        "16.0"
+      ],
+      "min_value": "1.0",
+      "max_value": "99.0"
+    },
+    {
+      "name": "occupation_prior_status",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 3,
+      "sample_values": [
+        "AVAILABLE",
+        "CENSUS_NOT_ACQUIRED",
+        "NO_CENSUS_2011_CODE"
+      ],
+      "min_value": "AVAILABLE",
+      "max_value": "NO_CENSUS_2011_CODE"
+    },
+    {
+      "name": "observed_or_estimated",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "ESTIMATED",
+        "UNAVAILABLE"
+      ],
+      "min_value": "ESTIMATED",
+      "max_value": "UNAVAILABLE"
+    },
+    {
+      "name": "source_confidence",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "OBSERVED"
+      ],
+      "min_value": "OBSERVED",
+      "max_value": "OBSERVED"
+    },
+    {
+      "name": "mapping_confidence",
+      "dtype": "float64",
+      "n_rows": 1889,
+      "n_null": 647,
+      "pct_null": 34.25,
+      "n_unique": 9,
+      "sample_values": [
+        "0.975",
+        "0.9977",
+        "0.7888",
+        "0.9451",
+        "0.9612"
+      ],
+      "min_value": "0.7888",
+      "max_value": "0.9977"
+    },
+    {
+      "name": "temporal_confidence",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "HISTORICAL"
+      ],
+      "min_value": "HISTORICAL",
+      "max_value": "HISTORICAL"
+    },
+    {
+      "name": "geography_coverage",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "ALLOCATED"
+      ],
+      "min_value": "ALLOCATED",
+      "max_value": "ALLOCATED"
+    },
+    {
+      "name": "occupation_coverage",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "DIVISION_MAPPED",
+        "NOT_AVAILABLE"
+      ],
+      "min_value": "DIVISION_MAPPED",
+      "max_value": "NOT_AVAILABLE"
+    },
+    {
+      "name": "statistical_support",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 2,
+      "sample_values": [
+        "CENSUS",
+        "NONE"
+      ],
+      "min_value": "CENSUS",
+      "max_value": "NONE"
+    },
+    {
+      "name": "transformation_depth",
+      "dtype": "int64",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2"
+      ],
+      "min_value": "2",
+      "max_value": "2"
+    },
+    {
+      "name": "overall_confidence",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "LOW"
+      ],
+      "min_value": "LOW",
+      "max_value": "LOW"
+    },
+    {
+      "name": "baseline_period",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2024-11-15"
+      ],
+      "min_value": "2024-11-15",
+      "max_value": "2024-11-15"
+    },
+    {
+      "name": "geo_level",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "DISTRICT"
+      ],
+      "min_value": "DISTRICT",
+      "max_value": "DISTRICT"
+    },
+    {
+      "name": "occupation_level",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCO_2015_DIVISION"
+      ],
+      "min_value": "NCO_2015_DIVISION",
+      "max_value": "NCO_2015_DIVISION"
+    },
+    {
+      "name": "unit",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "relative_signal_unitless"
+      ],
+      "min_value": "relative_signal_unitless",
+      "max_value": "relative_signal_unitless"
+    },
+    {
+      "name": "methodology",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "C: district relative demand signal (B) x Census-2011 distric"
+      ],
+      "min_value": "C: district relative demand signal (B) x Census-2011 district occupation share (NCO-2004 division mapped to NCO-2015 division). Output A is NOT a factor - using it as well would double-count the occupational signal.",
+      "max_value": "C: district relative demand signal (B) x Census-2011 district occupation share (NCO-2004 division mapped to NCO-2015 division). Output A is NOT a factor - using it as well would double-count the occupational signal."
+    },
+    {
+      "name": "within_district_ranking_caveat",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "within a district this ordering equals the Census-2011 occup"
+      ],
+      "min_value": "within a district this ordering equals the Census-2011 occupation-share ordering; C adds information only across districts",
+      "max_value": "within a district this ordering equals the Census-2011 occupation-share ordering; C adds information only across districts"
+    },
+    {
+      "name": "interpretation",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT"
+      ],
+      "min_value": "RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT",
+      "max_value": "RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT"
+    },
+    {
+      "name": "source_ids",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "NCS_PARLIAMENTARY_ANSWERS; UDYAM_DISTRICT_MSME; CENSUS_2011_"
+      ],
+      "min_value": "NCS_PARLIAMENTARY_ANSWERS; UDYAM_DISTRICT_MSME; CENSUS_2011_B24; LGD_DISTRICTS_DATAGOVIN",
+      "max_value": "NCS_PARLIAMENTARY_ANSWERS; UDYAM_DISTRICT_MSME; CENSUS_2011_B24; LGD_DISTRICTS_DATAGOVIN"
+    },
+    {
+      "name": "flow_available",
+      "dtype": "bool",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "False"
+      ],
+      "min_value": "False",
+      "max_value": "False"
+    },
+    {
+      "name": "flow_unavailable_reason",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "single NCS as-on date; a flow requires two differently dated"
+      ],
+      "min_value": "single NCS as-on date; a flow requires two differently dated snapshots",
+      "max_value": "single NCS as-on date; a flow requires two differently dated snapshots"
+    },
+    {
+      "name": "built_at",
+      "dtype": "str",
+      "n_rows": 1889,
+      "n_null": 0,
+      "pct_null": 0.0,
+      "n_unique": 1,
+      "sample_values": [
+        "2026-10-05T18:31:32+00:00"
+      ],
+      "min_value": "2026-10-05T18:31:32+00:00",
+      "max_value": "2026-10-05T18:31:32+00:00"
+    }
+  ],
+  "duplicate_full_rows": 0,
+  "notes": []
+}

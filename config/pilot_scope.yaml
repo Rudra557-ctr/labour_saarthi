@@ -1,0 +1,51 @@
+# Provisional pilot scope (Step 0 decision D-12).
+# PROVISIONAL: must be validated against actual data coverage in profiling.
+# Changing this file must not require changing code.
+
+schema_version: 1
+
+status: PROVISIONAL_PENDING_COVERAGE_VALIDATION
+
+states:
+  # LGD state codes are filled in by the location_master build, not hand-typed.
+  - name: Maharashtra
+    lgd_state_code: null
+    rationale: industrial west; high manufacturing demand signal expected
+  - name: Tamil Nadu
+    lgd_state_code: null
+    rationale: industrial south; strong ITI density expected
+  - name: Uttar Pradesh
+    lgd_state_code: null
+    rationale: large population; highest expected district churn (validate against location_change_event)
+
+# `provisional_label` is the name as requested; `official_sector_name` is the
+# name as published in the NQR sector listing. They are recorded separately
+# because matching on an unofficial label is exactly the kind of silent
+# normalisation that corrupts joins. Verified against sector_master 2026-10-02.
+candidate_sectors:
+  - provisional_label: Capital Goods / Manufacturing
+    official_sector_name: Capital Goods & Manufacturing
+    nqr_portal_sector_id: 7
+    rationale: strongest ITI trade coverage; cleanest occupation mapping expected
+    validation_required: [demand_signal_present, nqr_qualifications_present, district_training_data_present]
+  - provisional_label: IT-ITeS
+    official_sector_name: IT-ITeS
+    nqr_portal_sector_id: 20
+    rationale: highest online posting volume; weakest long-term training linkage
+    validation_required: [demand_signal_present, nqr_qualifications_present, district_training_data_present]
+  - provisional_label: Healthcare
+    official_sector_name: Healthcare
+    nqr_portal_sector_id: 17
+    rationale: policy-relevant shortage story; training data may span multiple authorities
+    validation_required: [demand_signal_present, nqr_qualifications_present, district_training_data_present]
+
+# Target analytical grain for the DERIVED modelling dataset built in a LATER step.
+# This is NOT an assumption about any source's grain.
+target_derived_grain:
+  period: month
+  geography: district_lgd
+  occupation: nco_family_4digit
+  note: >-
+    No source is assumed to publish at this grain. Each source is stored at its
+    own native grain; this target is reached only by aggregation upward plus
+    explicitly-labelled derivation.

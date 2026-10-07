@@ -1,0 +1,1026 @@
+{
+  "contract_version": "7.3.1",
+  "mode": {
+    "OFFICIAL_ANALYTICAL_MODE": "OPTION_A",
+    "HYBRID_PRESSURE_INDICATOR": "EXPERIMENTAL_ONLY",
+    "NUMERIC_GAP": "NOT_IDENTIFIABLE",
+    "MEASURED_SHORTAGE": false,
+    "FORECASTING": "NOT_SUPPORTED_YET",
+    "DEFAULT_DISTRICT_RANKING": "WITHIN_STATE"
+  },
+  "coverage": {
+    "state_attributable_share": {
+      "value": 0.4186580937720167,
+      "unit": "ratio",
+      "label": "state-attributable share of published NCS vacancies",
+      "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+      "derivation": "value"
+    },
+    "pan_india_residual_share": {
+      "value": 0.5813419062279833,
+      "unit": "ratio",
+      "label": "PAN-India / multiple-state residual, NOT allocated to any state or district",
+      "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+      "derivation": "complement"
+    },
+    "districts_with_relative_signal": {
+      "value": 785.0,
+      "unit": "count",
+      "label": "districts with a relative demand signal",
+      "derived_from": "demand_coverage_summary.districts_with_relative_signal",
+      "derivation": "value"
+    },
+    "districts_with_occupation_signal": {
+      "value": 138.0,
+      "unit": "count",
+      "label": "districts with Census occupation structure",
+      "derived_from": "demand_coverage_summary.districts_with_occupation_signal",
+      "derivation": "value"
+    },
+    "districts_census_not_acquired": {
+      "value": 522.0,
+      "unit": "count",
+      "label": "districts whose state B-24 table is not acquired",
+      "derived_from": "demand_coverage_summary.districts_census_not_acquired",
+      "derivation": "value"
+    },
+    "districts_no_census_2011_code": {
+      "value": 125.0,
+      "unit": "count",
+      "label": "post-2011 districts for which a Census prior can never exist",
+      "derived_from": "demand_coverage_summary.districts_no_census_2011_code",
+      "derivation": "value"
+    }
+  },
+  "outputs": [
+    {
+      "output_id": "analytical_state_demand",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "NCS vacancies mobilised, cumulative since inception, as on 2024-11-15",
+      "grain": {
+        "geo_level": "STATE",
+        "occupation_level": "NONE"
+      },
+      "unit": "count",
+      "measure_basis": "CUMULATIVE_SINCE_INCEPTION",
+      "interpretation": "OFFICIAL_PUBLISHED_COUNT_CUMULATIVE_SINCE_INCEPTION",
+      "prohibited_interpretations": [
+        "CURRENT_VACANCIES",
+        "ANNUAL_VACANCIES",
+        "LABOUR_DEMAND",
+        "OPEN_POSITIONS"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 38,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "residual_handling": {
+        "flag_column": "is_pan_india_residual",
+        "default_filter": "is_pan_india_residual = FALSE",
+        "excluded_from_default_comparison": true,
+        "must_remain_disclosed": true,
+        "allocation": "PROHIBITED",
+        "residual_rows": 1,
+        "default_comparison_rows": 37
+      },
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [
+        "2024-11-15"
+      ],
+      "vintage_source": "analytical_state_demand.snapshot_date",
+      "provenance": {
+        "columns": [
+          "source_id",
+          "source_documents"
+        ],
+        "source_ids": [
+          "LS_UQ2225_2024-12-09.pdf",
+          "LS_UQ933_2024-12-02.pdf",
+          "NCS_PARLIAMENTARY_ANSWERS",
+          "RS_UQ2798_2024-12-19.pdf"
+        ]
+      },
+      "coverage": {
+        "state_attributable_share": {
+          "value": 0.4186580937720167,
+          "unit": "ratio",
+          "label": "state-attributable share of published NCS vacancies",
+          "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+          "derivation": "value"
+        },
+        "pan_india_residual_share": {
+          "value": 0.5813419062279833,
+          "unit": "ratio",
+          "label": "PAN-India / multiple-state residual, NOT allocated to any state or district",
+          "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+          "derivation": "complement"
+        }
+      },
+      "flow_available": false,
+      "flow_unavailable_reason": "measure is a cumulative stock and all acquired snapshots share one as-on date; differencing requires two different dated snapshots"
+    },
+    {
+      "output_id": "analytical_demand_by_industry",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "NCS vacancies by NIC section, cumulative, as on 2024-11-15 (project NCS-to-NIC alignment)",
+      "grain": {
+        "geo_level": "NATIONAL",
+        "occupation_level": "NONE"
+      },
+      "unit": "lakh",
+      "measure_basis": "CUMULATIVE_SINCE_INCEPTION",
+      "interpretation": "OBSERVED_TOTALS_UNDER_PROJECT_NIC_ALIGNMENT",
+      "prohibited_interpretations": [
+        "OFFICIAL_NIC_STATISTIC",
+        "INDUSTRY_EMPLOYMENT",
+        "SECTOR_DEMAND"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 22,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [
+        "2024-11-15"
+      ],
+      "vintage_source": "analytical_demand_by_industry.snapshot_date",
+      "provenance": {
+        "columns": [
+          "source_id",
+          "source_documents"
+        ],
+        "source_ids": [
+          "LS_UQ2225_2024-12-09.pdf",
+          "LS_UQ933_2024-12-02.pdf",
+          "NCS_PARLIAMENTARY_ANSWERS",
+          "RS_UQ2798_2024-12-19.pdf"
+        ],
+        "mapping_authority": [
+          "PROJECT"
+        ]
+      },
+      "coverage": {},
+      "notes": "Counts are observed; the NCS-sector to NIC-section alignment is the project's own."
+    },
+    {
+      "output_id": "demand_national_occupation_composition",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "ESTIMATED",
+      "allowed_label": "Estimated occupation composition of vacancies, national",
+      "grain": {
+        "geo_level": "NATIONAL",
+        "occupation_level": "NCO_2015_DIVISION"
+      },
+      "unit": "lakh_vacancy_equivalent",
+      "measure_basis": "CUMULATIVE_SINCE_INCEPTION_COMPOSITION",
+      "interpretation": "ESTIMATED_OCCUPATION_SPLIT_OF_OBSERVED_INDUSTRY_VACANCIES",
+      "prohibited_interpretations": [
+        "VACANCY_COUNT_BY_OCCUPATION",
+        "OCCUPATION_WISE_VACANCY_COUNT",
+        "DISTRICT_DEMAND"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 175,
+      "evidence_status": [
+        "ESTIMATED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "LOW",
+        "MEDIUM"
+      ],
+      "confidence_source": "demand_national_occupation_composition.overall_confidence",
+      "vintage": [
+        "2024-11-15"
+      ],
+      "vintage_source": "demand_national_occupation_composition.baseline_period",
+      "provenance": {
+        "columns": [
+          "source_ids"
+        ],
+        "source_ids": [
+          "ILOSTAT_EMP_ECO_OCU",
+          "NCS_PARLIAMENTARY_ANSWERS"
+        ],
+        "transformation_depth": [
+          1
+        ]
+      },
+      "coverage": {},
+      "flow_available": false,
+      "flow_unavailable_reason": "single NCS as-on date; a flow requires two differently dated snapshots"
+    },
+    {
+      "output_id": "demand_district_relative_signal",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "ESTIMATED",
+      "allowed_label": "District Relative Demand Allocation Signal",
+      "grain": {
+        "geo_level": "DISTRICT",
+        "occupation_level": "NONE"
+      },
+      "unit": "relative_signal_unitless",
+      "measure_basis": "CUMULATIVE_SINCE_INCEPTION",
+      "interpretation": "RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT",
+      "prohibited_interpretations": [
+        "VACANCY_COUNT",
+        "DEMAND_VOLUME",
+        "JOBS",
+        "SHORTAGE",
+        "SUPPLY_GAP"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 785,
+      "evidence_status": [
+        "ESTIMATED"
+      ],
+      "is_demand_measure": true,
+      "required_caveat": {
+        "column": "within_state_ranking_caveat",
+        "text": [
+          "within a state this ordering equals the Udyam enterprise-share ordering; B adds information only across states"
+        ]
+      },
+      "is_observed_vacancy_ranking": false,
+      "derivation_inputs": [
+        "analytical_state_demand",
+        "analytical_district_structure"
+      ],
+      "derivation_display_role": "DERIVATION_DISCLOSURE_ONLY",
+      "confidence": [
+        "MEDIUM"
+      ],
+      "confidence_source": "demand_district_relative_signal.overall_confidence",
+      "vintage": [
+        "2024-11-15"
+      ],
+      "vintage_source": "demand_district_relative_signal.baseline_period",
+      "provenance": {
+        "columns": [
+          "source_ids"
+        ],
+        "source_ids": [
+          "LGD_DISTRICTS_DATAGOVIN",
+          "NCS_PARLIAMENTARY_ANSWERS",
+          "UDYAM_DISTRICT_MSME"
+        ],
+        "transformation_depth": [
+          1
+        ]
+      },
+      "coverage": {
+        "state_attributable_share": {
+          "value": 0.4186580937720167,
+          "unit": "ratio",
+          "label": "state-attributable share of published NCS vacancies",
+          "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+          "derivation": "value"
+        },
+        "pan_india_residual_share": {
+          "value": 0.5813419062279833,
+          "unit": "ratio",
+          "label": "PAN-India / multiple-state residual, NOT allocated to any state or district",
+          "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+          "derivation": "complement"
+        },
+        "districts_with_relative_signal": {
+          "value": 785.0,
+          "unit": "count",
+          "label": "districts with a relative demand signal",
+          "derived_from": "demand_coverage_summary.districts_with_relative_signal",
+          "derivation": "value"
+        }
+      },
+      "default_ranking": {
+        "mode": "WITHIN_STATE",
+        "column": "rank_within_state",
+        "cross_state_column": "rank_national",
+        "cross_state_caveat": "Cross-state comparison reflects NCS source/registration coverage as well as labour demand and is not directly comparable absolute labour demand. Within-state ranking is the default."
+      },
+      "flow_available": false,
+      "flow_unavailable_reason": "single NCS as-on date; a flow requires two differently dated snapshots"
+    },
+    {
+      "output_id": "demand_district_occupation_signal",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "ESTIMATED",
+      "allowed_label": "District x Occupation Relative Demand Allocation Signal",
+      "grain": {
+        "geo_level": "DISTRICT",
+        "occupation_level": "NCO_2015_DIVISION"
+      },
+      "unit": "relative_signal_unitless",
+      "measure_basis": "CUMULATIVE_SINCE_INCEPTION",
+      "interpretation": "RELATIVE_RANKING_SIGNAL_NOT_A_VACANCY_COUNT",
+      "prohibited_interpretations": [
+        "VACANCY_COUNT",
+        "SHORTAGE",
+        "SUPPLY_GAP",
+        "OCCUPATION_DEMAND_COUNT",
+        "FORECAST"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 1889,
+      "evidence_status": [
+        "ESTIMATED",
+        "UNAVAILABLE"
+      ],
+      "is_demand_measure": true,
+      "required_caveat": {
+        "column": "within_district_ranking_caveat",
+        "text": [
+          "within a district this ordering equals the Census-2011 occupation-share ordering; C adds information only across districts"
+        ]
+      },
+      "is_observed_vacancy_ranking": false,
+      "derivation_inputs": [
+        "demand_district_relative_signal",
+        "analytical_district_occupation_structure"
+      ],
+      "derivation_display_role": "DERIVATION_DISCLOSURE_ONLY",
+      "confidence": [
+        "LOW"
+      ],
+      "confidence_source": "demand_district_occupation_signal.overall_confidence",
+      "vintage": [
+        "2024-11-15"
+      ],
+      "vintage_source": "demand_district_occupation_signal.baseline_period",
+      "provenance": {
+        "columns": [
+          "source_ids"
+        ],
+        "source_ids": [
+          "CENSUS_2011_B24",
+          "LGD_DISTRICTS_DATAGOVIN",
+          "NCS_PARLIAMENTARY_ANSWERS",
+          "UDYAM_DISTRICT_MSME"
+        ],
+        "transformation_depth": [
+          2
+        ]
+      },
+      "coverage": {
+        "districts_with_occupation_signal": {
+          "value": 138.0,
+          "unit": "count",
+          "label": "districts with Census occupation structure",
+          "derived_from": "demand_coverage_summary.districts_with_occupation_signal",
+          "derivation": "value"
+        },
+        "districts_with_relative_signal": {
+          "value": 785.0,
+          "unit": "count",
+          "label": "districts with a relative demand signal",
+          "derived_from": "demand_coverage_summary.districts_with_relative_signal",
+          "derivation": "value"
+        },
+        "districts_census_not_acquired": {
+          "value": 522.0,
+          "unit": "count",
+          "label": "districts whose state B-24 table is not acquired",
+          "derived_from": "demand_coverage_summary.districts_census_not_acquired",
+          "derivation": "value"
+        },
+        "districts_no_census_2011_code": {
+          "value": 125.0,
+          "unit": "count",
+          "label": "post-2011 districts for which a Census prior can never exist",
+          "derived_from": "demand_coverage_summary.districts_no_census_2011_code",
+          "derivation": "value"
+        },
+        "state_attributable_share": {
+          "value": 0.4186580937720167,
+          "unit": "ratio",
+          "label": "state-attributable share of published NCS vacancies",
+          "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+          "derivation": "value"
+        },
+        "pan_india_residual_share": {
+          "value": 0.5813419062279833,
+          "unit": "ratio",
+          "label": "PAN-India / multiple-state residual, NOT allocated to any state or district",
+          "derived_from": "demand_coverage_summary.ncs_state_attributable_share",
+          "derivation": "complement"
+        }
+      },
+      "default_ranking": {
+        "mode": "WITHIN_STATE",
+        "column": "rank_within_district",
+        "cross_state_column": "rank_within_occupation_across_districts",
+        "cross_state_caveat": "Cross-state comparison reflects NCS source/registration coverage as well as labour demand and is not directly comparable absolute labour demand. Within-state ranking is the default."
+      },
+      "flow_available": false,
+      "flow_unavailable_reason": "single NCS as-on date; a flow requires two differently dated snapshots"
+    },
+    {
+      "output_id": "fact_training_outcome",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "Training-system outcomes: candidates enrolled / trained / assessed / certified / placed, by state and scheme",
+      "grain": {
+        "geo_level": "STATE",
+        "occupation_level": "NONE"
+      },
+      "unit": "candidates",
+      "measure_basis": "WITHIN_SCHEME_COHORT",
+      "interpretation": "OFFICIALLY_PUBLISHED_CANDIDATE_COUNTS_WITHIN_A_NAMED_SCHEME_AND_PERIOD",
+      "prohibited_interpretations": [
+        "SUPPLY",
+        "SKILLED_WORKERS_AVAILABLE",
+        "TRAINING_CAPACITY",
+        "WORKFORCE_SUPPLY",
+        "OCCUPATION_SUPPLY"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 350,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [
+        "2024-03-31"
+      ],
+      "vintage_source": "fact_training_outcome.as_on_date",
+      "provenance": {
+        "columns": [
+          "source_id",
+          "snapshot_file"
+        ],
+        "source_ids": [
+          "MSDE_ANNUAL_REPORT_2023_24",
+          "MSDE_Annual_Report_2023-24.pdf"
+        ]
+      },
+      "coverage": {}
+    },
+    {
+      "output_id": "fact_training_infrastructure",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "PMKKs allocated / established and districts with a PMKK, as on 2024-03-31",
+      "grain": {
+        "geo_level": "STATE",
+        "occupation_level": "NONE"
+      },
+      "unit": "count",
+      "measure_basis": "POINT_IN_TIME",
+      "interpretation": "COUNT_OF_CENTRES_AND_DISTRICTS_COVERED",
+      "prohibited_interpretations": [
+        "TRAINING_CAPACITY",
+        "SEATS",
+        "OCCUPATION_SUPPLY",
+        "SUPPLY"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 144,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [
+        "2024-03-31"
+      ],
+      "vintage_source": "fact_training_infrastructure.as_on_date",
+      "provenance": {
+        "columns": [
+          "source_id",
+          "snapshot_file"
+        ],
+        "source_ids": [
+          "MSDE_ANNUAL_REPORT_2023_24",
+          "MSDE_Annual_Report_2023-24.pdf"
+        ]
+      },
+      "coverage": {}
+    },
+    {
+      "output_id": "fact_training_trade_outcome",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "Top-N trades / job roles, national - NOT a complete distribution",
+      "grain": {
+        "geo_level": "NATIONAL",
+        "occupation_level": "TRADE_OR_JOB_ROLE"
+      },
+      "unit": "candidates",
+      "measure_basis": "WITHIN_SCHEME_COHORT_TOP_N_SUBSET",
+      "interpretation": "LARGEST_NAMED_TRADES_AS_PUBLISHED_TOP_N_SUBSET_ONLY",
+      "prohibited_interpretations": [
+        "TRADE_DISTRIBUTION",
+        "TRADE_SHARES",
+        "STATE_TRADE_SUPPLY",
+        "DISTRICT_TRADE_SUPPLY",
+        "OCCUPATION_SUPPLY"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 35,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [],
+      "vintage_source": null,
+      "provenance": {
+        "columns": [
+          "source_id",
+          "snapshot_file"
+        ],
+        "source_ids": [
+          "MSDE_ANNUAL_REPORT_2023_24",
+          "MSDE_Annual_Report_2023-24.pdf"
+        ]
+      },
+      "coverage": {}
+    },
+    {
+      "output_id": "demand_coverage_summary",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "Demand coverage and data quality",
+      "grain": {
+        "geo_level": "NONE",
+        "occupation_level": "NONE"
+      },
+      "unit": "mixed",
+      "measure_basis": null,
+      "interpretation": "WHAT_THE_SYSTEM_DOES_AND_DOES_NOT_COVER",
+      "prohibited_interpretations": [],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 8,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [],
+      "vintage_source": null,
+      "provenance": {
+        "columns": [],
+        "source_ids": []
+      },
+      "coverage": {},
+      "publication_mandatory": true
+    },
+    {
+      "output_id": "supply_coverage_summary",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "Training-evidence coverage and data quality",
+      "grain": {
+        "geo_level": "NONE",
+        "occupation_level": "NONE"
+      },
+      "unit": "mixed",
+      "measure_basis": null,
+      "interpretation": "WHAT_THE_SYSTEM_DOES_AND_DOES_NOT_COVER",
+      "prohibited_interpretations": [],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 10,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [],
+      "vintage_source": null,
+      "provenance": {
+        "columns": [],
+        "source_ids": []
+      },
+      "coverage": {},
+      "publication_mandatory": true
+    },
+    {
+      "output_id": "fact_data_quality",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "OBSERVED",
+      "allowed_label": "Pipeline data-quality checks",
+      "grain": {
+        "geo_level": "NONE",
+        "occupation_level": "NONE"
+      },
+      "unit": "mixed",
+      "measure_basis": null,
+      "interpretation": "PIPELINE_CONTRACT_CHECK_RESULTS",
+      "prohibited_interpretations": [],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 14,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": true,
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [],
+      "vintage_source": null,
+      "provenance": {
+        "columns": [],
+        "source_ids": []
+      },
+      "coverage": {},
+      "publication_mandatory": true
+    },
+    {
+      "output_id": "analytical_labour_market_context",
+      "publication_status": "PRODUCTION",
+      "contract_version": "7.3.1",
+      "implemented": true,
+      "tier": "SUPPORTING",
+      "allowed_label": "Labour-force context (PLFS) - CONTEXT, NOT A DEMAND MEASURE",
+      "grain": {
+        "geo_level": "NATIONAL",
+        "occupation_level": "NONE"
+      },
+      "unit": "percent",
+      "measure_basis": "SAMPLE_SURVEY_CWS",
+      "interpretation": "NATIONAL_LABOUR_FORCE_CONTEXT_NOT_A_DEMAND_MEASURE",
+      "prohibited_interpretations": [
+        "DEMAND",
+        "LABOUR_DEMAND",
+        "VACANCY_DATA",
+        "SUPPLY",
+        "OCCUPATION_LEVEL_SUPPLY",
+        "DEMAND_SUPPLY_GAP",
+        "SHORTAGE",
+        "STATE_DEMAND",
+        "DISTRICT_DEMAND"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "row_count": 81,
+      "evidence_status": [
+        "OBSERVED"
+      ],
+      "is_demand_measure": false,
+      "data_flag": {
+        "not_a_demand_measure": true
+      },
+      "district_estimates_valid": false,
+      "valid_geo_levels": [
+        "NATIONAL"
+      ],
+      "is_observed_vacancy_ranking": false,
+      "confidence": [
+        "OBSERVED"
+      ],
+      "confidence_source": "evidence_status",
+      "vintage": [
+        "M202504"
+      ],
+      "vintage_source": "analytical_labour_market_context.source_vintage",
+      "provenance": {
+        "columns": [
+          "source_id",
+          "snapshot_file"
+        ],
+        "source_ids": [
+          "PLFS",
+          "PLFS_Monthly_Bulletin_April_2025.pdf"
+        ]
+      },
+      "coverage": {},
+      "notes": "PLFS monthly bulletin estimates (LFPR / WPR / UR, CWS). National only - district_estimates_valid is FALSE on every row, so this output may not appear on a state or district surface. No PLFS-derived metric may be created from it."
+    },
+    {
+      "output_id": "hybrid_potential_pressure",
+      "publication_status": "EXPERIMENTAL_ONLY",
+      "contract_version": "7.3.1",
+      "implemented": false,
+      "tier": "ESTIMATED",
+      "allowed_label": "EXPERIMENTAL - NOT AN OFFICIAL OUTPUT",
+      "grain": {
+        "geo_level": "DISTRICT",
+        "occupation_level": "NCO_2015_DIVISION"
+      },
+      "unit": "ordinal_status",
+      "measure_basis": null,
+      "interpretation": "PROMPT_TO_INVESTIGATE_NOT_A_FINDING",
+      "prohibited_interpretations": [
+        "SHORTAGE",
+        "DEFICIT",
+        "SKILL_GAP",
+        "VACANCY_ESTIMATE",
+        "SUPPLY_SHORTAGE",
+        "DEMAND_SUPPLY_GAP",
+        "FORECAST",
+        "WHICH_OCCUPATION_IS_SHORT"
+      ],
+      "is_measured_shortage": false,
+      "forecast_available": false,
+      "forecast_unavailable_reason": "NOT_SUPPORTED_YET: one dated demand observation; see gate G-4",
+      "evidence_status": [
+        "ESTIMATED"
+      ],
+      "confidence": [
+        "LOW"
+      ],
+      "coverage": {},
+      "provenance": {},
+      "row_count": 0,
+      "excluded_from_production_responses": true,
+      "excluded_from_production_exports": true,
+      "required_display_guard": "NOT_MEASURED_SHORTAGE",
+      "allowed_status_values": [
+        "POTENTIAL_PRESSURE",
+        "DEMAND_LED_MONITOR",
+        "TRAINING_SYSTEM_REVIEW",
+        "NO_FLAG",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "promotion_gates": [
+        "G-5",
+        "G-6",
+        "G-7",
+        "G-8"
+      ]
+    }
+  ],
+  "unavailable_capabilities": [
+    {
+      "capability_id": "demand_supply_gap_numeric",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_IDENTIFIABLE",
+      "reason": "SUPPLY[geography x trade] has no observed interior cell; row and column marginals do not determine an interior.",
+      "blocking_gate": "G-1",
+      "unblocking_conditions_url": "/docs/step7.1#g-1",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "district_occupation_supply",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_IDENTIFIABLE",
+      "reason": "No district x trade or district x occupation supply evidence exists.",
+      "blocking_gate": "G-2",
+      "unblocking_conditions_url": "/docs/step7.1#g-2",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "state_occupation_supply",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_IDENTIFIABLE",
+      "reason": "Training data has no occupation dimension; most catalogued trades have no official NCO mapping.",
+      "blocking_gate": "G-3",
+      "unblocking_conditions_url": "/docs/step7.1#g-3",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "district_trade_supply",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_ACQUIRED",
+      "reason": "PMKVY district resource ACCESS_PENDING; NCVT MIS and DGT portals UNAVAILABLE.",
+      "blocking_gate": "G-2",
+      "unblocking_conditions_url": "/docs/step7.1#g-2",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "state_trade_supply",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_IDENTIFIABLE",
+      "reason": "Row marginals plus a Top-N column fragment from a different scheme; raking unavailable.",
+      "blocking_gate": "G-1",
+      "unblocking_conditions_url": "/docs/step7.1#g-1",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "occupation_level_training_supply",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_AVAILABLE",
+      "reason": "Published at national x Top-N trade only; a Top-N subset may not become a distribution.",
+      "blocking_gate": "G-3",
+      "unblocking_conditions_url": "/docs/step7.1#g-3",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "forecast",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_SUPPORTED_YET",
+      "reason": "One dated demand observation; the measure is a cumulative stock and the two PMKVY schemes are not a time series.",
+      "blocking_gate": "G-4",
+      "unblocking_conditions_url": "/docs/step7.1#g-4",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "shortage_or_surplus_count",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_IDENTIFIABLE",
+      "reason": "No supply quantity exists at any occupation or trade grain, so no shortage is defined.",
+      "blocking_gate": "G-1",
+      "unblocking_conditions_url": "/docs/step7.1#g-1",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "district_vacancy_count",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_AVAILABLE",
+      "reason": "NCS publishes state totals; district values are an estimated relative signal, not a count.",
+      "blocking_gate": "G-9",
+      "unblocking_conditions_url": "/docs/step7.1#g-9",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "district_occupation_vacancy_count",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_AVAILABLE",
+      "reason": "Doubly derived; unit is relative_signal_unitless.",
+      "blocking_gate": "G-9",
+      "unblocking_conditions_url": "/docs/step7.1#g-9",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "nco_coded_vacancy_count",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_AVAILABLE",
+      "reason": "NCS vacancies are not NCO-coded; the occupation axis is a Census-2011 prior.",
+      "blocking_gate": "G-9",
+      "unblocking_conditions_url": "/docs/step7.1#g-9",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "pan_india_residual_allocation",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "PROHIBITED",
+      "reason": "The residual is not state-attributable; allocating it would invent geography.",
+      "blocking_gate": "PERMANENT",
+      "unblocking_conditions_url": "/docs/step7.1#permanent",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "district_level_training_value",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "PROHIBITED",
+      "reason": "Training evidence is state level; any district variation would be invented.",
+      "blocking_gate": "G-7",
+      "unblocking_conditions_url": "/docs/step7.1#g-7",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "early_warning_alert_lifecycle",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_SUPPORTED_YET",
+      "reason": "Requires a production indicator and a time dimension; the project has neither.",
+      "blocking_gate": "G-4",
+      "unblocking_conditions_url": "/docs/step7.1#g-4",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "seat_allocation_recommendation",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_SUPPORTED_YET",
+      "reason": "Requires a gap or an elasticity; the project has neither.",
+      "blocking_gate": "G-1",
+      "unblocking_conditions_url": "/docs/step7.1#g-1",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    },
+    {
+      "capability_id": "monthly_or_quarterly_demand_series",
+      "data": null,
+      "publication_status": "UNAVAILABLE",
+      "evidence_status": "UNAVAILABLE",
+      "reason_code": "NOT_SUPPORTED_YET",
+      "reason": "The measure is a cumulative stock at a single as-on date.",
+      "blocking_gate": "G-4",
+      "unblocking_conditions_url": "/docs/step7.1#g-4",
+      "is_measured_shortage": false,
+      "forecast_available": false
+    }
+  ],
+  "barred_fields": [
+    {
+      "field": "dim_training_trade.nco_mapping_status",
+      "reason": "Describes MSDE Annexure-22, which carries no NCO column. Superseded by dim_trade_mapping_status after the Step 5.2 DGT CTS linkage.",
+      "publish_instead": "dim_trade_mapping_status.mapping_status"
+    }
+  ]
+}
