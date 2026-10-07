@@ -546,12 +546,39 @@ def test_csv_export_can_omit_meta_only_on_explicit_request(client):
 
 
 # --- 19. terminology lint passes, including the UI catalogue ------------
+def _flat_labels(lang):
+    """Every translated STRING in a catalogue, including the elements of a list.
+
+    The explanation copy added in the readability pass is authored as lists, and
+    `lint_label_catalogue` skips a non-string value. Flattening is what keeps a
+    list element under the same guardrail as a plain label - otherwise a panel's
+    reading notes would be the one place terminology could drift unchecked.
+    """
+    flat = {}
+    for k, v in json.loads((I18N / f"{lang}.json").read_text()).items():
+        if isinstance(v, str):
+            flat[k] = v
+        elif isinstance(v, list):
+            for i, x in enumerate(v):
+                if isinstance(x, str):
+                    flat[f"{k}[{i}]"] = x
+    return flat
+
+
 @pytest.mark.parametrize("lang", ["en", "hi"])
 def test_ui_label_catalogue_passes_the_terminology_lint(lang):
-    labels = {k: v for k, v in json.loads((I18N / f"{lang}.json").read_text()).items()
-              if isinstance(v, str)}
+    labels = _flat_labels(lang)
     v = lint_label_catalogue(labels, load_contract(), f"i18n/{lang}")
     assert v == [], [str(x) for x in v]
+
+
+def test_list_valued_explanation_copy_is_actually_linted():
+    """Guard on the guard: a forbidden assertion inside a LIST must be caught."""
+    flat = _flat_labels("en")
+    assert any(k.endswith("]") for k in flat), "no list elements were flattened"
+    assert len(flat) > len(
+        {k: v for k, v in json.loads((I18N / "en.json").read_text()).items()
+         if isinstance(v, str)})
 
 
 def test_the_catalogue_lint_still_catches_real_assertions():
@@ -874,3 +901,85 @@ def test_no_global_as_of_date_in_any_rendered_surface():
     assert "No single" in en["methodology.vintagesBody"]
     assert "data as of" in en["methodology.vintagesBody"]
     assert "no trend may be drawn" in en["methodology.vintagesBody"]
+
+
+# ===========================================================================
+# Readability pass - the panel contract. The complaint these pin was that a
+# table arrived with no statement of what it was, so a reader met the numbers
+# first and had to reverse-engineer the meaning. The contract is now: every
+# table is introduced, in a fixed order, by the single helper that renders it.
+# ===========================================================================
+
+def test_navigation_is_a_single_vertical_rail_on_the_left():
+    html = (STATIC / "index.html").read_text()
+    css = (STATIC / "styles.css").read_text()
+    assert 'class="side"' in html or 'class="side" ' in html
+    assert 'aria-label="Main navigation"' in html
+    # the rail is a column, and it is the first grid track
+    assert "grid-template-columns:var(--rail)" in css
+    assert "flex-direction:column" in css
+    # it collapses rather than disappearing on a phone
+    assert ".side-toggle" in css and 'id="side-toggle"' in html
+    assert 'aria-expanded' in html
+
+
+def test_panel_renders_explanation_before_the_table():
+    """Order is the whole point: title, one-line description, reading notes,
+    evidence strip, qualifiers, then the figures."""
+    js = (STATIC / "app.js").read_text()
+    body = js[js.index("function panel(o)"):js.index("function noMatch")]
+    for frag in ("panel-title", "o.explain + '.what'", "points(o.explain + '.points')",
+                 "strip(o.meta)", "o.qualifiers", "o.body"):
+        assert frag in body, frag
+    # the description and the notes must precede the figures in the template
+    assert body.index(".what") < body.index("o.body")
+    assert body.index(".points") < body.index("o.body")
+    assert body.index("o.qualifiers") < body.index("o.body")
+
+
+def test_every_panel_explanation_referenced_by_the_ui_exists_in_english():
+    """A missing key would render the key name, or an empty header."""
+    import re
+    js = (STATIC / "app.js").read_text()
+    en = json.loads((I18N / "en.json").read_text())
+    keys = set(re.findall(r"explain:\s*'([a-zA-Z.]+)'", js))
+    keys |= set(re.findall(r"t\('(explain\.[a-zA-Z.]+)\.what'\)", js))
+    assert len(keys) >= 12, sorted(keys)
+    for k in sorted(keys):
+        assert isinstance(en.get(f"{k}.what"), str) and en[f"{k}.what"], k
+        pts = en.get(f"{k}.points")
+        assert isinstance(pts, list), k
+        assert 2 <= len(pts) <= 3, (k, len(pts))
+        assert all(isinstance(x, str) and x.strip() for x in pts), k
+
+
+def test_reading_notes_are_marked_by_shape_not_only_wording():
+    """A caution point is prefixed '!' in the catalogue and gets its own marker,
+    so the distinction survives for a reader who cannot rely on colour."""
+    js = (STATIC / "app.js").read_text()
+    css = (STATIC / "styles.css").read_text()
+    en = json.loads((I18N / "en.json").read_text())
+    assert "raw.startsWith('!')" in js
+    assert ".points li.warn::before" in css
+    warned = [k for k, v in en.items()
+              if isinstance(v, list) and any(x.startswith("!") for x in v)]
+    assert len(warned) >= 8, warned
+
+
+def test_a_relative_signal_bar_has_a_track_and_no_unit_axis():
+    js = (STATIC / "app.js").read_text()
+    css = (STATIC / "styles.css").read_text()
+    assert 'class="track"' in js and ".track{" in css
+    assert "legend.bar" in js
+    en = json.loads((I18N / "en.json").read_text())
+    assert "no unit" in en["legend.bar"]
+    assert "not a quantity" in en["legend.rank"]
+
+
+def test_every_page_states_what_it_is_before_any_figure():
+    js = (STATIC / "app.js").read_text()
+    en = json.loads((I18N / "en.json").read_text())
+    assert "function pageHead" in js
+    for page in ("national", "state", "district", "occupation",
+                 "methodology", "coverage"):
+        assert isinstance(en.get(f"{page}.lede"), str) and en[f"{page}.lede"], page

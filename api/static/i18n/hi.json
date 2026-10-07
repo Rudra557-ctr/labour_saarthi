@@ -26,5 +26,12 @@
   "district.select": "ज़िला चुनें",
   "loading": "लोड हो रहा है…",
   "source.label": "स्रोत",
-  "rows.label": "पंक्तियाँ"
+  "rows.label": "पंक्तियाँ",
+  "nav.landing": "यहाँ से शुरू करें",
+  "nav.methodology": "कार्यप्रणाली एवं साक्ष्य",
+  "nav.coverage": "कवरेज एवं सीमाएँ",
+  "nav.unavailable": "अनुपलब्ध क्षमताएँ",
+  "side.menu": "अनुभाग",
+  "side.modeHeading": "सिस्टम मोड",
+  "app.subtitle": "साक्ष्य-आधारित श्रम-बाज़ार माँग आसूचना"
 }

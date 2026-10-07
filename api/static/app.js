@@ -1,10 +1,14 @@
 /* LMIS dashboard — dependency-free, so the demo runs offline.
  *
- * Three invariants this file must never break:
+ * Four invariants this file must never break:
  *  1. No value is computed here. Everything shown comes from an API response.
  *  2. Outputs B and C are rendered as ALLOCATION SIGNALS, with meta.limitations
  *     printed directly above the ranking they qualify.
  *  3. Evidence status is text + glyph + position — never colour alone.
+ *  4. Every panel renders in one fixed order: what it is, how to read it, what
+ *     qualifies it, then the figures. A table here is not self-explanatory, and a
+ *     reader who meets the numbers first will misread them. `panel()` is the only
+ *     way a table reaches the screen, so the order cannot drift per page.
  */
 'use strict';
 
@@ -32,6 +36,12 @@ const t = (k, vars) => {
   if (vars) for (const [n, v] of Object.entries(vars)) s = s.split(`{${n}}`).join(esc(v));
   return s;
 };
+/* An explanation is authored as a list. Missing or part-translated lists fall
+ * back to English rather than rendering an empty panel header. */
+const tl = k => {
+  const v = (Array.isArray(S.t[k]) ? S.t[k] : null) || S.fallback[k];
+  return Array.isArray(v) ? v : [];
+};
 
 /* ------------------------------------------------------------- helpers ---- */
 /* Escapes for BOTH element and attribute context. The single quote and backtick
@@ -41,9 +51,9 @@ const esc = v => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/`/g, '&#96;');
 
-/* Route arguments come from location.hash, which anyone can set. Only the shapes
- * the API actually accepts are allowed through; anything else is dropped rather
- * than forwarded or rendered. */
+/* Route arguments reach a URL and an attribute. Only the shapes the API actually
+ * accepts are allowed through; anything else is dropped rather than forwarded or
+ * rendered. */
 const ROUTE_ARG = /^[A-Za-z0-9][A-Za-z0-9 ._-]{0,63}$/;
 const safeArg = a => (a != null && ROUTE_ARG.test(String(a))) ? String(a) : null;
 const get = async (p, q) => {
@@ -118,6 +128,50 @@ function coverageNotes(meta) {
     ${Object.entries(c).map(([k, v]) => row(k, v)).join('')}</div>`;
 }
 
+/* ------------------------------------------------- explanation + panel ---- */
+/* The reading guide. Each point is authored as "Label — sentence"; the label is
+ * split out so the eye can scan the labels alone. A point beginning with "!" is
+ * a caution and is marked by shape, not only by wording. */
+function points(key) {
+  const items = tl(key);
+  if (!items.length) return '';
+  return `<ul class="points">${items.map(raw => {
+    const warn = raw.startsWith('!');
+    const txt = warn ? raw.slice(1).trim() : raw;
+    const i = txt.indexOf('—');
+    const lab = i > 0 ? txt.slice(0, i).trim() : '';
+    const rest = i > 0 ? txt.slice(i + 1).trim() : txt;
+    return `<li class="${warn ? 'warn' : ''}">${
+      lab ? `<span><b>${esc(lab)}</b> — ${esc(rest)}</span>` : `<span>${esc(rest)}</span>`
+    }</li>`;
+  }).join('')}</ul>`;
+}
+
+/* A page heading with its own one-sentence explanation. */
+function pageHead(titleKey, ledeKey) {
+  return `<div class="page-head"><h2>${esc(t(titleKey))}</h2>
+    <p class="lede">${esc(t(ledeKey))}</p></div>`;
+}
+
+/* The ONLY route from data to screen. Fixed order:
+ *   title + evidence badge -> what it is -> how to read it -> evidence strip
+ *   -> qualifiers -> table -> export
+ * `explain` names an i18n pair: `<explain>.what` and `<explain>.points`. */
+function panel(o) {
+  const head = `<div class="panel-head">
+    <p class="panel-title">${o.tier ? badge(o.tier) : ''}
+      <span>${esc(t(o.titleKey))}</span></p>
+    ${o.explain ? `<p class="lede">${esc(t(o.explain + '.what'))}</p>` : ''}
+  </div>`;
+  return `<section class="panel">${head}
+    ${o.explain ? points(o.explain + '.points') : ''}
+    ${o.meta ? strip(o.meta) : ''}
+    ${o.qualifiers || ''}
+    ${o.body || ''}
+    ${o.meta ? prohibited(o.meta) : ''}
+    ${o.exportId ? exportBar(o.exportId) : ''}</section>`;
+}
+
 /* Accessible table: real caption, scoped headers, caveat linked by aria-describedby. */
 /* An available output that matched nothing is NOT the same as an unavailable one.
  * It says so, so the three states stay distinct on screen as well as in the API. */
@@ -136,16 +190,29 @@ function table(cols, rows, captionText, describedBy) {
     const v = c.get ? c.get(r) : r[c.key];
     return `<td class="${c.num ? 'num' : ''} ${c.cls || ''}">${c.html ? v : esc(v)}</td>`;
   }).join('') + '</tr>').join('');
-  return `<div class="scroll"><table aria-describedby="${describedBy || ''} ${id}">
+  /* The legend explains only the devices this table actually uses. */
+  const hasBar = cols.some(c => c.cls === 'barcell');
+  const hasRank = cols.some(c => c.cls === 'rank');
+  const legend = (hasBar || hasRank) ? `<div class="legend">${
+    hasBar ? `<span class="k"><span class="swatch" aria-hidden="true"></span>${
+      esc(t('legend.bar'))}</span>` : ''}${
+    hasRank ? `<span class="k">${esc(t('legend.rank'))}</span>` : ''}</div>` : '';
+  return `<div class="tablewrap"><div class="scroll">
+    <table aria-describedby="${describedBy || ''} ${id}">
     <caption id="${id}">${esc(captionText)}</caption>
-    <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+    <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+    ${legend}</div>`;
 }
+/* A track behind the fill, so the eye reads a proportion of the largest row in
+ * view. There is no axis and no unit: it is not a quantity of anything. */
 const barCell = (v, max) =>
-  `<span class="bar" style="width:${max ? Math.max(2, (v / max) * 100) : 2}%"
-     role="img" aria-label="relative signal ${sig(v)}"></span>`;
+  `<span class="track"><span class="bar" style="width:${
+    max ? Math.max(2, (v / max) * 100) : 2}%"
+     role="img" aria-label="relative signal ${sig(v)}"></span></span>`;
+const rankCell = v => `<span>${esc(v == null ? '—' : v)}</span>`;
 
 function exportBar(outputId) {
-  return `<div class="controls" style="margin:12px 0 0">
+  return `<div class="controls" style="margin:16px 0 0">
     <a class="btn" href="/api/export/${outputId}.csv">${esc(t('export.csv'))}</a>
     <a class="btn" href="/api/export/${outputId}.json">${esc(t('export.json'))}</a>
     <span class="plain">${esc(t('export.note'))}</span></div>`;
@@ -159,10 +226,10 @@ async function pageLanding() {
   const cov = await get('/coverage', { domain: 'demand' });
   const d = cov.meta.derived_disclosures || {};
   const g = k => d[k] ? d[k].value : null;
-  return `<div class="card">
-    <h2>${esc(t('landing.heading'))}</h2>
-    <p>${esc(t('landing.whatItIs'))}</p>
-    <p>${esc(t('landing.whatItIsNot'))}</p>
+  return `${pageHead('landing.heading', 'landing.whatItIs')}
+  <section class="panel">
+    <p class="lede">${esc(t('landing.whatItIsNot'))}</p>
+    ${points('landing.points')}
     <div class="notice"><strong>${esc(t('coverage.label'))}</strong>
       <div>${esc(t('coverage.residual', { pct: pct(g('pan_india_residual_share')) }))}</div>
       <div>${esc(t('coverage.attributable', { pct: pct(g('state_attributable_share')) }))}</div>
@@ -170,11 +237,20 @@ async function pageLanding() {
         n: count(g('districts_with_occupation_signal')),
         total: count(g('districts_with_relative_signal')) }))}</div></div>
     <div class="caveat"><strong>${esc(t('landing.noTotal'))}</strong></div>
+  </section>
+
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('landing.howToRead'))}</span></p>
+    <ol class="steps">${tl('landing.steps').map((s, i) =>
+      `<li><span class="n">${i + 1}</span><span>${esc(s)}</span></li>`).join('')}</ol>
+    <div class="strip">${['OBSERVED', 'ESTIMATED', 'SUPPORTING', 'UNAVAILABLE']
+      .map(k => badge(k)).join('')}</div>
     <p class="plain">${esc(t('evidence.vsUnavailable'))}</p>
-    <div class="controls" style="margin-top:14px">
+    <div class="controls" style="margin:16px 0 0">
       <button class="btn primary" onclick="go('national')">${esc(t('landing.enter'))}</button>
       <button class="btn" onclick="go('unavailable')">${esc(t('nav.unavailable'))}</button>
-    </div></div>`;
+    </div>
+  </section>`;
 }
 
 async function pageNational() {
@@ -188,7 +264,7 @@ async function pageNational() {
   const res = (st.meta.residual_disclosure || [])[0] || {};
 
   const indTbl = table([
-    { label: 'NCS sector', key: 'ncs_sector_name' },
+    { label: 'NCS sector', key: 'ncs_sector_name', cls: 'name' },
     { label: 'NIC section', key: 'nic_section_code',
       get: r => r.nic_section_code == null ? '— (no NIC mapping)' : r.nic_section_code },
     { label: 'Vacancies (lakh)', num: true, get: r => sig(r.vacancies_cumulative) },
@@ -201,7 +277,7 @@ async function pageNational() {
   const occRows = occ.data.slice().sort((a, b) =>
     (b.estimated_occupation_demand || 0) - (a.estimated_occupation_demand || 0)).slice(0, 40);
   const occTbl = table([
-    { label: 'NCO-2015 division', key: 'nco_2015_division' },
+    { label: 'NCO-2015 division', key: 'nco_2015_division', cls: 'name' },
     { label: 'NIC section', get: r => r.nic_section_code || '—' },
     { label: 'NCS sector', key: 'ncs_sector_name' },
     { label: 'Est. (lakh equiv.)', num: true, get: r => sig(r.estimated_occupation_demand) },
@@ -211,39 +287,41 @@ async function pageNational() {
   ], occRows, 'Estimated occupation composition by NIC section (top 40 rows by estimate)');
 
   const plfsTbl = table([
-    { label: 'Indicator', key: 'indicator' }, { label: 'Area', key: 'area' },
+    { label: 'Indicator', key: 'indicator', cls: 'name' }, { label: 'Area', key: 'area' },
     { label: 'Sex', key: 'sex' }, { label: 'Age group', key: 'age_group' },
     { label: 'Value (%)', num: true, get: r => sig(r.value_percent) },
     { label: 'Approach', key: 'approach' },
   ], plfs.data, 'PLFS labour-force participation rate — national, supporting context');
 
-  return `
-  <div class="card"><h2>${esc(t('national.heading'))}</h2>
-    <div class="caveat"><strong>${esc(t('landing.noTotal'))}</strong></div></div>
+  return `${pageHead('national.heading', 'national.lede')}
+  <section class="panel">
+    <div class="caveat"><strong>${esc(t('landing.noTotal'))}</strong></div></section>
 
-  <div class="card"><h2>${badge('OBSERVED')} ${esc(t('national.observed'))}</h2>
-    ${strip(ind.meta)}
-    <p class="plain">${esc(t('national.observedNote'))}</p>
-    <p class="plain">Filter key: <code>${esc(ind.meta.filter_key)}</code> —
-      ${esc(ind.meta.filter_key_note)}</p>
-    ${indTbl}${prohibited(ind.meta)}${exportBar('analytical_demand_by_industry')}</div>
+  ${panel({ tier: 'OBSERVED', titleKey: 'national.observed', explain: 'explain.industry',
+    meta: ind.meta, exportId: 'analytical_demand_by_industry',
+    qualifiers: `<p class="plain">${esc(t('national.observedNote'))}</p>
+      <p class="plain">Filter key: <code>${esc(ind.meta.filter_key)}</code> —
+        ${esc(ind.meta.filter_key_note)}</p>`,
+    body: indTbl })}
 
-  <div class="card"><h2>${badge('ESTIMATED')} ${esc(t('national.estimated'))}</h2>
-    ${strip(occ.meta)}
-    <p class="plain">${esc(t('national.estimatedNote'))}</p>
-    ${occTbl}${prohibited(occ.meta)}
-    ${exportBar('demand_national_occupation_composition')}</div>
+  ${panel({ tier: 'ESTIMATED', titleKey: 'national.estimated', explain: 'explain.occcomp',
+    meta: occ.meta, exportId: 'demand_national_occupation_composition',
+    qualifiers: `<p class="plain">${esc(t('national.estimatedNote'))}</p>`,
+    body: occTbl })}
 
-  <div class="card"><h2>${badge('SUPPORTING')} ${esc(t('national.context'))}</h2>
-    ${strip(plfs.meta)}
-    <div class="notice"><strong>${esc(plfs.meta.display_banner)}</strong>
-      <div>${esc(plfs.meta.state_or_district_breakdown)}</div></div>
-    ${plfsTbl}${prohibited(plfs.meta)}</div>
+  ${panel({ tier: 'SUPPORTING', titleKey: 'national.context', explain: 'explain.plfs',
+    meta: plfs.meta,
+    qualifiers: `<div class="notice"><strong>${esc(plfs.meta.display_banner)}</strong>
+      <div>${esc(plfs.meta.state_or_district_breakdown)}</div></div>`,
+    body: plfsTbl })}
 
-  <div class="card"><h2>${esc(t('national.residual'))}</h2>
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('national.residual'))}</span></p>
+    <p class="lede">${esc(t('explain.residual.what'))}</p>
+    ${points('explain.residual.points')}
     <div class="unavail"><strong>${esc(res.state_name_as_source || '')} —
       ${count(res.vacancies_cumulative)} (${pct(res.share_of_published_total)})</strong>
-      <div>${esc(st.meta.residual_note)}</div></div></div>`;
+      <div>${esc(st.meta.residual_note)}</div></div></section>`;
 }
 
 async function pageState(stateCode) {
@@ -260,8 +338,9 @@ async function pageState(stateCode) {
       ? 'selected' : ''}>${esc(s.state_name_lgd)}</option>`).join('');
 
   const distTbl = table([
-    { label: t('district.rankWithinState'), num: true, key: 'rank_within_state' },
-    { label: 'District', html: true, get: r =>
+    { label: t('district.rankWithinState'), cls: 'rank', html: true,
+      get: r => rankCell(r.rank_within_state) },
+    { label: 'District', html: true, cls: 'name', get: r =>
       `<a href="#district/${esc(r.lgd_code)}">${esc(r.district_name_lgd)}</a>` },
     { label: 'LGD', key: 'lgd_code' },
     { label: 'Allocation signal', num: true, get: r => sig(r.relative_demand_signal) },
@@ -273,7 +352,8 @@ async function pageState(stateCode) {
   ], dist.data, t('table.caption.districts'), 'district-caveat');
 
   const trTbl = table([
-    { label: 'Scheme', key: 'scheme' }, { label: 'Period', key: 'scheme_period' },
+    { label: 'Scheme', key: 'scheme', cls: 'name' },
+    { label: 'Period', key: 'scheme_period' },
     { label: 'Measure', key: 'measure' },
     { label: 'Candidates', num: true,
       get: r => r.value_status === 'NO_DATA' ? 'NO_DATA' : count(r.value) },
@@ -281,8 +361,8 @@ async function pageState(stateCode) {
     { label: 'As on', get: r => r.as_on_date || '—' },
   ], tr.data, 'Training-system outcomes for this state, by scheme and measure');
 
-  return `
-  <div class="card"><h2>${esc(t('state.heading'))}</h2>
+  return `${pageHead('state.heading', 'state.lede')}
+  <section class="panel">
     <div class="controls"><div class="field">
       <label for="state-sel">${esc(t('state.select'))}</label>
       <select id="state-sel" onchange="go('state', this.value)">${options}</select>
@@ -294,27 +374,25 @@ async function pageState(stateCode) {
       <span class="chip">share of published ${pct(row && row.share_of_published_total)}</span>
     </div>
     <p class="plain">${esc(t('state.observed'))} — ${esc(row && row.measure_basis)}</p>
-    <div class="notice">${esc(t('state.residualExcluded'))}</div></div>
+    <div class="notice">${esc(t('state.residualExcluded'))}</div></section>
 
-  <div class="card"><h2>${badge('ESTIMATED')} ${esc(t('state.districts'))}</h2>
-    ${strip(dist.meta)}
-    <div class="caveat" id="district-caveat">
+  ${panel({ tier: 'ESTIMATED', titleKey: 'state.districts', explain: 'explain.districts',
+    meta: dist.meta, exportId: 'demand_district_relative_signal',
+    qualifiers: `<div class="caveat" id="district-caveat">
       <strong>${esc(dist.meta.allowed_label)} — ${esc(t('notAVacancyCount'))}</strong>
       ${(dist.meta.limitations || []).map(x => `<div>${esc(x)}</div>`).join('')}</div>
-    ${coverageNotes(dist.meta)}
-    ${distTbl}${prohibited(dist.meta)}
-    <details><summary>${esc(t('derivation.heading'))}</summary>
-      <p class="plain">${esc(t('derivation.note'))}</p>
-      <ul class="reasons">${(dist.meta.derivation_inputs || [])
-        .map(i => `<li><code>${esc(i)}</code></li>`).join('')}</ul>
-      <p class="plain">${esc(dist.meta.methodology ? '' : '')}</p></details>
-    ${exportBar('demand_district_relative_signal')}</div>
+      ${coverageNotes(dist.meta)}`,
+    body: `${distTbl}
+      <details><summary>${esc(t('derivation.heading'))}</summary>
+        <p class="plain">${esc(t('derivation.note'))}</p>
+        <ul class="reasons">${(dist.meta.derivation_inputs || [])
+          .map(i => `<li><code>${esc(i)}</code></li>`).join('')}</ul></details>` })}
 
-  <div class="card"><h2>${badge('OBSERVED')} ${esc(t('state.training'))}</h2>
-    ${strip(tr.meta)}
-    <div class="notice">${esc(t('state.trainingNote'))}
-      <div>${esc(tr.meta.no_data_note)}</div></div>
-    ${trTbl}${prohibited(tr.meta)}${exportBar('fact_training_outcome')}</div>`;
+  ${panel({ tier: 'OBSERVED', titleKey: 'state.training', explain: 'explain.training',
+    meta: tr.meta, exportId: 'fact_training_outcome',
+    qualifiers: `<div class="notice">${esc(t('state.trainingNote'))}
+      <div>${esc(tr.meta.no_data_note)}</div></div>`,
+    body: trTbl })}`;
 }
 
 async function pageDistrict(lgd) {
@@ -323,25 +401,26 @@ async function pageDistrict(lgd) {
     lgd = d.data[0].lgd_code;
   }
   const r = await get(`/demand/districts/${lgd}`);
-  const row = r.data[0], panel = r.meta.occupation_panel;
+  const row = r.data[0], panelData = r.meta.occupation_panel;
 
   let occBlock;
-  if (panel.status === 'AVAILABLE') {
-    const max = Math.max(0, ...panel.rows.map(x => x.district_occupation_signal || 0));
+  if (panelData.status === 'AVAILABLE') {
+    const max = Math.max(0, ...panelData.rows.map(x => x.district_occupation_signal || 0));
     occBlock = `${strip({ tier: 'ESTIMATED', evidence_status: ['ESTIMATED'],
                           confidence: ['LOW'], unit: 'relative_signal_unitless',
-                          returned_rows: panel.divisions })}
+                          returned_rows: panelData.divisions })}
       <div class="caveat" id="occ-caveat">
         <strong>${esc(t('district.occupation'))} — ${esc(t('notAVacancyCount'))}</strong>
-        <div>${esc(panel.rows[0].within_district_ranking_caveat)}</div>
+        <div>${esc(panelData.rows[0].within_district_ranking_caveat)}</div>
         <div>Census occupation structure is 2011; the demand baseline is
           ${esc(row.baseline_period)}.</div>
         <div>Unclassified share excluded, not redistributed:
-          ${pct(panel.rows[0].unclassified_share_not_allocated)}</div></div>
+          ${pct(panelData.rows[0].unclassified_share_not_allocated)}</div></div>
       ${table([
-        { label: 'Rank in district', num: true, key: 'rank_within_district' },
+        { label: 'Rank in district', cls: 'rank', html: true,
+          get: x => rankCell(x.rank_within_district) },
         { label: 'NCO-2015 division', key: 'nco_2015_division' },
-        { label: 'Division title', key: 'nco_name' },
+        { label: 'Division title', key: 'nco_name', cls: 'name' },
         { label: 'Allocation signal', num: true,
           get: x => sig(x.district_occupation_signal) },
         { label: '', html: true, cls: 'barcell',
@@ -349,20 +428,27 @@ async function pageDistrict(lgd) {
         { label: 'Census occupation share', num: true,
           get: x => pct(x.occupation_share_of_district) },
         { label: 'Main workers (2011)', num: true, get: x => count(x.main_workers) },
-      ], panel.rows, t('table.caption.occupation'), 'occ-caveat')}
+      ], panelData.rows, t('table.caption.occupation'), 'occ-caveat')}
       ${exportBar('demand_district_occupation_signal')}`;
   } else {
     /* Explicit NOT_AVAILABLE with its reason. Never a zero, never a blank. */
     occBlock = `<div class="unavail">
-      ${badge('UNAVAILABLE', panel.status)}
-      <p><strong>${esc(t('district.notAvailable'))} — ${esc(panel.reason_code)}</strong></p>
-      <p>${esc(panel.reason)}</p>
+      ${badge('UNAVAILABLE', panelData.status)}
+      <p><strong>${esc(t('district.notAvailable'))} — ${esc(panelData.reason_code)}</strong></p>
+      <p>${esc(panelData.reason)}</p>
       <p class="plain">${esc(t('evidence.vsUnavailable'))}</p></div>`;
   }
 
   return `
-  <div class="card"><h2>${esc(t('district.heading'))}: ${esc(row.district_name_lgd)}
+  <div class="page-head"><h2>${esc(t('district.heading'))}: ${esc(row.district_name_lgd)}
       <span class="sub">(${esc(row.state_name_lgd)})</span></h2>
+    <p class="lede">${esc(t('district.lede'))}</p></div>
+
+  <section class="panel">
+    <p class="panel-title">${badge('ESTIMATED')}
+      <span>${esc(t('district.signal'))}</span></p>
+    <p class="lede">${esc(t('explain.districtdetail.what'))}</p>
+    ${points('explain.districtdetail.points')}
     ${strip(r.meta)}
     <div class="strip"><span class="stat">${sig(row.relative_demand_signal)}</span>
       <span class="chip">${esc(t('district.signal'))}</span>
@@ -382,9 +468,13 @@ async function pageDistrict(lgd) {
     <details><summary>${esc(t('derivation.heading'))}</summary>
       <p class="plain">${esc(t('derivation.note'))}</p>
       <p class="plain">${esc(row.methodology)}</p></details>
-    ${prohibited(r.meta)}</div>
+    ${prohibited(r.meta)}</section>
 
-  <div class="card"><h2>${esc(t('district.occupation'))}</h2>${occBlock}</div>`;
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('district.occupation'))}</span></p>
+    <p class="lede">${esc(t('explain.districtocc.what'))}</p>
+    ${points('explain.districtocc.points')}
+    ${occBlock}</section>`;
 }
 
 async function pageOccupation(div) {
@@ -403,8 +493,8 @@ async function pageOccupation(div) {
     `<option value="${esc(s.state_lgd_code)}" ${String(s.state_lgd_code) === String(state)
       ? 'selected' : ''}>${esc(s.state_name_lgd)}</option>`).join('');
 
-  return `
-  <div class="card"><h2>${esc(t('occupation.heading'))}</h2>
+  return `${pageHead('occupation.heading', 'occupation.lede')}
+  <section class="panel">
     <div class="controls">
       <div class="field"><label for="occ-sel">${esc(t('occupation.select'))}</label>
         <select id="occ-sel" onchange="go('occupation', this.value)">${options}</select></div>
@@ -415,31 +505,30 @@ async function pageOccupation(div) {
         <span id="occ-state-note" class="plain">Occupation detail exists for these states only.</span></div>
     </div>
     <p class="plain">NCO-2015 division codes and titles are shown as published and are never translated.</p>
-  </div>
+  </section>
 
-  <div class="card"><h2>${badge('ESTIMATED')} ${esc(t('occupation.national'))}</h2>
-    ${strip(nat.meta)}
-    ${table([
+  ${panel({ tier: 'ESTIMATED', titleKey: 'occupation.national', explain: 'explain.occnat',
+    meta: nat.meta,
+    body: table([
       { label: 'NIC section', get: r => r.nic_section_code || '—' },
-      { label: 'NCS sector', key: 'ncs_sector_name' },
+      { label: 'NCS sector', key: 'ncs_sector_name', cls: 'name' },
       { label: 'Est. (lakh equiv.)', num: true, get: r => sig(r.estimated_occupation_demand) },
       { label: 'Conditional share', num: true, get: r => pct(r.occupation_conditional_share) },
       { label: 'Share of division', num: true, get: r => pct(r.occupation_share_of_total) },
       { label: 'Confidence', key: 'overall_confidence' },
-    ], nat.data, `Estimated national composition for NCO-2015 division ${d}`)}
-    ${prohibited(nat.meta)}</div>
+    ], nat.data, `Estimated national composition for NCO-2015 division ${d}`) })}
 
-  <div class="card"><h2>${badge('ESTIMATED')} ${esc(t('occupation.districts'))}</h2>
-    ${strip(dist.meta)}
-    <div class="caveat" id="occd-caveat">
+  ${panel({ tier: 'ESTIMATED', titleKey: 'occupation.districts', explain: 'explain.occdist',
+    meta: dist.meta, exportId: 'demand_district_occupation_signal',
+    qualifiers: `<div class="caveat" id="occd-caveat">
       <strong>${esc(dist.meta.allowed_label)} — ${esc(t('notAVacancyCount'))}</strong>
       ${(dist.meta.limitations || []).map(x => `<div>${esc(x)}</div>`).join('')}</div>
-    <div class="notice">${esc(t('occupation.informative'))}</div>
-    ${coverageNotes(dist.meta)}
-    ${table([
-      { label: 'Rank across districts', num: true,
-        key: 'rank_within_occupation_across_districts' },
-      { label: 'District', html: true, get: r =>
+      <div class="notice">${esc(t('occupation.informative'))}</div>
+      ${coverageNotes(dist.meta)}`,
+    body: table([
+      { label: 'Rank across districts', cls: 'rank', html: true,
+        get: r => rankCell(r.rank_within_occupation_across_districts) },
+      { label: 'District', html: true, cls: 'name', get: r =>
         `<a href="#district/${esc(r.lgd_code)}">${esc(r.district_name_lgd)}</a>` },
       { label: 'Allocation signal', num: true, get: r => sig(r.district_occupation_signal) },
       { label: '', html: true, cls: 'barcell',
@@ -447,8 +536,7 @@ async function pageOccupation(div) {
       { label: 'Census occupation share', num: true,
         get: r => pct(r.occupation_share_of_district) },
       { label: 'Confidence', key: 'overall_confidence' },
-    ], avail, `Districts in the selected state for NCO-2015 division ${d}`, 'occd-caveat')}
-    ${prohibited(dist.meta)}${exportBar('demand_district_occupation_signal')}</div>`;
+    ], avail, `Districts in the selected state for NCO-2015 division ${d}`, 'occd-caveat') })}`;
 }
 
 async function pageMethodology() {
@@ -471,67 +559,80 @@ async function pageMethodology() {
       </dl>
       ${prohibited(o)}</details>`).join('');
 
-  return `<div class="card"><h2>${esc(t('methodology.heading'))}</h2>
-    <h3>${esc(t('methodology.measures'))}</h3>
-    <p>${esc(t('landing.whatItIs'))}</p>
+  return `${pageHead('methodology.heading', 'methodology.lede')}
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('methodology.measures'))}</span></p>
+    <p class="lede">${esc(t('landing.whatItIs'))}</p>
     <div class="strip">${['OBSERVED', 'ESTIMATED', 'SUPPORTING', 'UNAVAILABLE']
       .map(k => badge(k)).join('')}</div>
     <ul class="reasons">${['OBSERVED', 'ESTIMATED', 'SUPPORTING', 'UNAVAILABLE']
       .map(k => `<li><strong>${esc(t('evidence.' + k))}</strong> — ${
         esc(t('evidence.' + k + '.plain'))}</li>`).join('')}</ul>
     <div class="notice">${esc(t('evidence.vsUnavailable'))}</div>
-    <p class="plain">${esc(t('confidence.notNumeric'))}</p>
+    <p class="plain">${esc(t('confidence.notNumeric'))}</p></section>
 
-    <h3>${esc(t('methodology.gap'))}</h3>
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('methodology.gap'))}</span></p>
     <div class="unavail"><strong>NUMERIC_GAP: ${esc(mode.NUMERIC_GAP)}</strong>
       <p>${esc(t('methodology.gapBody'))}</p></div>
-
-    <h3>${esc(t('methodology.hybrid'))}</h3>
+    <p class="panel-title" style="margin-top:14px">
+      <span>${esc(t('methodology.hybrid'))}</span></p>
     <div class="notice"><strong>HYBRID_PRESSURE_INDICATOR:
       ${esc(mode.HYBRID_PRESSURE_INDICATOR)}</strong>
-      <p>${esc(t('methodology.hybridBody'))}</p></div>
+      <p>${esc(t('methodology.hybridBody'))}</p></div></section>
 
-    <h3>${esc(t('methodology.vintages'))}</h3>
-    <p class="plain">${esc(t('methodology.vintagesBody'))}</p>
-    ${table([{ label: 'Output', get: r => r.output || r.input },
-             { label: 'Vintage column', key: 'vintage_column' }],
+  ${panel({ titleKey: 'methodology.vintages', explain: 'explain.vintages',
+    qualifiers: `<p class="plain">${esc(t('methodology.vintagesBody'))}</p>`,
+    body: table([{ label: 'Output', get: r => r.output || r.input, cls: 'name' },
+                 { label: 'Vintage column', key: 'vintage_column' }],
       (c.data.vintage_policy || {}).known_vintages || [],
-      'Each output carries its own vintage column; no global date applies')}
+      'Each output carries its own vintage column; no global date applies') })}
 
-    <h3>Derivation inputs</h3>
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('methodology.derivation'))}</span></p>
+    <p class="lede">${esc(t('explain.derivation.what'))}</p>
+    ${points('explain.derivation.points')}
     <div class="notice">${esc(t('derivation.note'))}</div>
     ${(c.data.derivation_inputs || []).map(d => `<details>
       <summary><code>${esc(d.input)}</code> → ${esc(d.is_input_to.join(', '))}</summary>
       <p class="plain">${esc(d.note)}</p>
       <p class="plain">May be shown under: ${esc(d.permitted_section_labels.join(' · '))}</p>
       <p class="prohibited">Must not be labelled: ${esc(d.prohibited_labels.join(' · '))}</p>
-      </details>`).join('')}
+      </details>`).join('')}</section>
 
-    <h3>Per-output methodology</h3>${rows}</div>`;
+  <section class="panel">
+    <p class="panel-title"><span>${esc(t('methodology.perOutput'))}</span></p>
+    <p class="lede">${esc(t('explain.peroutput.what'))}</p>
+    ${points('explain.peroutput.points')}
+    ${rows}</section>`;
 }
 
 async function pageCoverage() {
   const [cov, q] = await Promise.all([get('/coverage'), get('/quality')]);
   const d = cov.meta.derived_disclosures || {};
-  return `<div class="card"><h2>${esc(t('coverage.heading'))}</h2>
-    <div class="notice"><strong>${esc(t('coverage.label'))} — derived from the warehouse</strong>
+  return `${pageHead('coverage.heading', 'coverage.lede')}
+  ${panel({ titleKey: 'coverage.metrics', explain: 'explain.coverage',
+    exportId: 'demand_coverage_summary',
+    qualifiers: `<div class="notice"><strong>${esc(t('coverage.label'))} — derived from the warehouse</strong>
       ${Object.entries(d).map(([k, v]) => `<div>${esc(v.label)}:
         <strong>${v.unit === 'ratio' ? pct(v.value) : count(v.value)}</strong>
-        <span class="plain">(${esc(v.derived_from)})</span></div>`).join('')}</div>
-    ${table([{ label: 'Domain', get: r => r.domain_label || r.domain },
+        <span class="plain">(${esc(v.derived_from)})</span></div>`).join('')}</div>`,
+    body: `${table([{ label: 'Domain', get: r => r.domain_label || r.domain, cls: 'name' },
              { label: 'Metric', key: 'metric' },
              { label: 'Value', num: true, get: r => count(r.value) },
              { label: 'Unit', key: 'unit' }, { label: 'Note', key: 'note' }],
       cov.data, 'Coverage metrics as published by the pipeline')}
-    <h3 style="margin-top:18px">Barred from publication</h3>
-    <ul class="reasons">${(cov.meta.barred_fields || [])
-      .map(f => `<li><code>${esc(f)}</code></li>`).join('')}</ul>
-    <h3 style="margin-top:18px">Data quality</h3>
-    ${table([{ label: 'Table', key: 'table_name' }, { label: 'Check', key: 'check_name' },
+      <h3 style="margin-top:20px">${esc(t('coverage.barred'))}</h3>
+      <p class="plain">${esc(t('coverage.barredNote'))}</p>
+      <ul class="reasons">${(cov.meta.barred_fields || [])
+        .map(f => `<li><code>${esc(f)}</code></li>`).join('')}</ul>` })}
+
+  ${panel({ titleKey: 'coverage.quality', explain: 'explain.quality',
+    body: table([{ label: 'Table', key: 'table_name', cls: 'name' },
+             { label: 'Check', key: 'check_name' },
              { label: 'Status', key: 'status' }, { label: 'Observed', key: 'observed' },
              { label: 'Expected', key: 'expected' }, { label: 'Severity', key: 'severity' }],
-      q.data, 'Pipeline contract checks')}
-    ${exportBar('demand_coverage_summary')}</div>`;
+      q.data, 'Pipeline contract checks') })}`;
 }
 
 async function pageUnavailable() {
@@ -539,18 +640,23 @@ async function pageUnavailable() {
   const grouped = c.meta.grouped_by_reason_code || {};
   const meaning = c.meta.reason_code_meaning || {};
   const byId = Object.fromEntries(c.data.map(r => [r.capability_id, r]));
-  return `<div class="card"><h2>${esc(t('unavailable.heading'))}</h2>
-    <p>${esc(t('unavailable.intro'))}</p>
-    ${Object.entries(grouped).map(([code, ids]) => `
-      <h3 style="margin-top:18px">${badge('UNAVAILABLE', code)}</h3>
-      <p class="plain">${esc(meaning[code] || t('reason.' + code))}</p>
+  return `${pageHead('unavailable.heading', 'unavailable.intro')}
+  <section class="panel">
+    <p class="lede">${esc(t('explain.unavailable.what'))}</p>
+    ${points('explain.unavailable.points')}</section>
+  ${Object.entries(grouped).map(([code, ids]) => `
+    <section class="panel">
+      <p class="panel-title">${badge('UNAVAILABLE', code)}
+        <span>${esc(ids.length === 1 ? t('unavailable.groupOne')
+          : t('unavailable.group', { n: count(ids.length) }))}</span></p>
+      <p class="lede">${esc(meaning[code] || t('reason.' + code))}</p>
       ${ids.map(id => { const r = byId[id]; return `<div class="unavail">
         <strong>${esc(r.capability_id)}</strong>
         <p>${esc(r.reason)}</p>
         <dl class="kv"><dt>${esc(t('unavailable.reason'))}</dt><dd>${esc(r.reason_code)}</dd>
           <dt>${esc(t('unavailable.gate'))}</dt><dd>${esc(r.blocking_gate)}</dd>
           <dt>is_measured_shortage</dt><dd>${esc(r.is_measured_shortage)}</dd></dl></div>`;
-      }).join('')}`).join('')}</div>`;
+      }).join('')}</section>`).join('')}`;
 }
 
 /* ---------------------------------------------------------------- shell ---- */
@@ -567,6 +673,12 @@ async function go(page, arg) {
   location.hash = arg ? `${page}/${arg}` : page;
   document.querySelectorAll('#nav button').forEach(b =>
     b.setAttribute('aria-current', b.dataset.page === page ? 'page' : 'false'));
+  const side = document.getElementById('side');
+  const tog = document.getElementById('side-toggle');
+  if (side && side.classList.contains('open')) {
+    side.classList.remove('open');
+    if (tog) tog.setAttribute('aria-expanded', 'false');
+  }
   const view = document.getElementById('view');
   view.setAttribute('aria-busy', 'true');
   view.innerHTML = `<div class="card">${esc(t('loading'))}</div>`;
@@ -587,10 +699,12 @@ function applyStatic() {
   document.title = t('app.title');
 }
 
+/* The rail is numbered so its order reads as a route through the system. */
 function buildNav() {
-  document.getElementById('nav').innerHTML = PAGES.map(p =>
+  document.getElementById('nav').innerHTML = PAGES.map((p, i) =>
     `<li><button data-page="${p}" onclick="go('${p}')"
-      aria-current="${p === S.page ? 'page' : 'false'}">${esc(t('nav.' + p))}</button></li>`
+      aria-current="${p === S.page ? 'page' : 'false'}"><span class="n"
+      aria-hidden="true">${i + 1}</span><span>${esc(t('nav.' + p))}</span></button></li>`
   ).join('');
 }
 
@@ -609,6 +723,13 @@ async function boot() {
     applyStatic(); buildNav();
     const [p, a] = (location.hash.slice(1) || 'landing').split('/');
     go(p, a);
+  };
+
+  const tog = document.getElementById('side-toggle');
+  tog.onclick = () => {
+    const side = document.getElementById('side');
+    const open = side.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open ? 'true' : 'false');
   };
 
   const c = await get('/meta/contract');

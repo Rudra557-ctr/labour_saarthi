@@ -110,5 +110,122 @@
   "vintage.label": "As on",
   "rows.label": "Rows",
   "table.noMatch": "No matching observation",
-  "table.noMatchVsUnavailable": "This output is available, but nothing matched the current selection. That is different from the data being unavailable — see Unavailable capabilities."
+  "table.noMatchVsUnavailable": "This output is available, but nothing matched the current selection. That is different from the data being unavailable — see Unavailable capabilities.",
+  "side.modeHeading": "System mode",
+  "side.menu": "Sections",
+  "legend.bar": "Bar length is relative to the largest row in view; it carries no unit.",
+  "legend.rank": "Rank is a position, not a quantity.",
+  "landing.howToRead": "How to read this system",
+  "landing.points": [
+    "Every figure is labelled — observed, estimated or context, so the label tells you how far it sits from a source document.",
+    "Coverage is published — you can see how much of the base a figure rests on before you act on it.",
+    "!What is missing is listed too — each blocked capability appears with its reason and the condition that would unblock it."
+  ],
+  "landing.steps": [
+    "Pick a level in the left rail: national, state, district or occupation.",
+    "Read the panel's one-line description and its reading notes before the table.",
+    "Check the evidence strip above each table: tier, confidence, as-on date and source.",
+    "Export the rows if you need them; the export carries the same qualifiers as the screen."
+  ],
+  "national.lede": "Observed sector figures, an estimated occupation split, and the labour-force context that frames them.",
+  "state.lede": "One state's observed figure, the relative ordering of its districts, and its training-system outcomes.",
+  "district.lede": "One district's relative signal, its position inside its own state, and its occupation detail where Census data exists.",
+  "occupation.lede": "One NCO-2015 division: its estimated national composition, and the relative ordering of districts inside a chosen state.",
+  "methodology.lede": "What each output measures, how it was derived, and why some capabilities are not published.",
+  "methodology.derivation": "Derivation inputs",
+  "methodology.perOutput": "Per-output methodology",
+  "coverage.lede": "How much of the published base each figure rests on, and which fields are withheld.",
+  "coverage.metrics": "Coverage metrics",
+  "coverage.quality": "Data quality checks",
+  "coverage.barred": "Barred from publication",
+  "coverage.barredNote": "These fields are withheld because the evidence does not support publishing them.",
+  "unavailable.group": "{n} capabilities blocked for this reason",
+  "explain.industry.what": "Vacancy registrations on the NCS portal, counted by sector exactly as the source publishes them.",
+  "explain.industry.points": [
+    "Measure — Cumulative registrations since the portal's inception, not a monthly flow and not a stock of open posts.",
+    "Sector alignment — The NCS sector to NIC section match is the project's own; a blank NIC section means no match was published.",
+    "!Rows do not add to a national figure — rows flagged heterogeneous or residual span more than one sector."
+  ],
+  "explain.occcomp.what": "An estimated split of the observed sector figures across NCO-2015 occupation divisions.",
+  "explain.occcomp.points": [
+    "Measure — Lakh-equivalent estimates, derived from the observed sector totals rather than counted directly.",
+    "Method — The split applies an ILOSTAT/PLFS industry by occupation structure, so the structure is borrowed from elsewhere.",
+    "!Confidence varies by row — each row carries its own category, and a LOW row rests on more than one transformation."
+  ],
+  "explain.plfs.what": "Labour-force participation from the Periodic Labour Force Survey, shown to frame the panels above.",
+  "explain.plfs.points": [
+    "Role — Real observed survey data, included for context only. It is not a demand measure.",
+    "Grain — Published for India as a whole; no state or district breakdown is valid at this vintage.",
+    "!Not comparable with the sector panel — a different source, period and statistical basis."
+  ],
+  "explain.residual.what": "Vacancies the source publishes without a single state, because the posting covers PAN-India or several states at once.",
+  "explain.residual.points": [
+    "Why it stands alone — it is never divided among states or districts; doing so would invent a location the source does not give.",
+    "What it means for the rest — every state figure on this site is drawn from the remainder, so this share is the part no geography can claim."
+  ],
+  "explain.districts.what": "A relative signal that orders the districts inside one state. It is not a count of anything.",
+  "explain.districts.points": [
+    "Measure — Unitless and relative. The number answers 'which districts sit higher', never 'how many'.",
+    "How it is built — The observed state figure is distributed by each district's Udyam enterprise share, so the ordering inside a state is the Udyam ordering.",
+    "!Compare only inside one state — the signal is not comparable across state borders, and each bar is drawn against the largest row in view."
+  ],
+  "explain.training.what": "Candidate counts inside one named scheme and period: enrolled, trained, assessed, certified and placed.",
+  "explain.training.points": [
+    "Measure — Five distinct stages, kept apart. Certified is not the same as placed, and placed records the point of report only.",
+    "No occupation or trade dimension — these figures are not an occupation-level supply figure and cannot be set against the demand panels.",
+    "!NO_DATA is not zero — a dash in the source stays NO_DATA, because a dash does not state that nobody was counted."
+  ],
+  "explain.districtdetail.what": "This district's relative signal, with the position it holds inside its own state.",
+  "explain.districtdetail.points": [
+    "Rank — A position among the districts of this state only, out of that state's own count. It is not a national position.",
+    "Inputs — The observed state figure and the district's Udyam enterprise share; the panel below lists every factor used."
+  ],
+  "explain.districtocc.what": "A relative signal ordering NCO-2015 occupation divisions inside this one district.",
+  "explain.districtocc.points": [
+    "Measure — Relative within this district. It does not say how many people work in a division.",
+    "Structure borrowed from 2011 — occupation shares come from Census 2011 while the demand baseline is far more recent, so the two vintages do not line up.",
+    "!Unclassified workers are excluded, not redistributed — the excluded share is printed, so the rows do not account for the whole district."
+  ],
+  "explain.occnat.what": "For the chosen NCO-2015 division, its estimated composition across NIC sections and NCS sectors.",
+  "explain.occnat.points": [
+    "Conditional share — The share within this division, answering how the division is spread rather than how large it is.",
+    "!Estimated, not counted — the figures inherit the borrowed industry by occupation structure described on the methodology page."
+  ],
+  "explain.occdist.what": "For one division and one state, a relative signal ordering that state's districts.",
+  "explain.occdist.points": [
+    "Why this ordering is informative — it combines the enterprise structure with the occupation structure, so it restates neither input on its own.",
+    "!Districts without Census occupation data are left out of the list, never shown as zero."
+  ],
+  "explain.vintages.what": "Each output carries its own as-on date, because the sources behind them were published years apart.",
+  "explain.vintages.points": [
+    "Why no single date applies — the figures come from five sources whose as-on dates span more than a decade.",
+    "What to do with it — quote the vintage of the row you are reading, and never draw a trend across two sources."
+  ],
+  "explain.derivation.what": "A derivation input is a dataset used as a factor inside a signal, not a second reading of the same thing.",
+  "explain.derivation.points": [
+    "Example — The Udyam enterprise share is what distributes a state figure across districts, so it is a factor in that signal.",
+    "!Why the distinction matters — a factor cannot also be read as proof of the result it helped produce."
+  ],
+  "explain.peroutput.what": "One entry per published output, read from the publication contract and the warehouse rather than written into this page.",
+  "explain.peroutput.points": [
+    "Open any row — for its method, limitations, unit, measure basis, sources and prohibited readings.",
+    "Tier and status differ — the tier is the role an output plays; the evidence status is read from the data itself."
+  ],
+  "explain.coverage.what": "How much of the published base each figure actually rests on, derived from the warehouse when this page loads.",
+  "explain.coverage.points": [
+    "Why it is published — a figure without its coverage can be quoted far beyond what it supports.",
+    "Two domains — demand evidence and training evidence are counted separately and are not added together."
+  ],
+  "explain.quality.what": "The pipeline's own contract checks, with the observed and expected value for each.",
+  "explain.quality.points": [
+    "What a check is — an assertion the build must satisfy, such as a total reconciling to the figure its source prints.",
+    "Why it is on screen — a figure whose checks are not visible cannot be audited by the person using it."
+  ],
+  "explain.unavailable.what": "Capabilities this system cannot compute are published here with their reasons, rather than hidden or shown as zero.",
+  "explain.unavailable.points": [
+    "Reason code — says whether the block is structural, or only that a source has not been acquired yet.",
+    "Unblocking condition — names the gate that would have to be met; where the reason is structural, more of the same data would not change it.",
+    "!A blocked capability is not a zero — and not an empty table either; those three states are kept distinct everywhere."
+  ],
+  "unavailable.groupOne": "1 capability blocked for this reason"
 }

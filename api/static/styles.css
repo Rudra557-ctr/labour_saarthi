@@ -1,62 +1,125 @@
 /* LMIS dashboard styles.
    Evidence status is carried by TEXT + SHAPE + POSITION, never colour alone, so a
-   colour-blind reader distinguishes observed from estimated from unavailable. */
+   colour-blind reader distinguishes observed from estimated from unavailable.
+
+   Layout: a fixed left rail holds every destination vertically, so the shape of
+   the whole system is visible before anything is clicked. Each panel then reads
+   top to bottom in one fixed order - what it is, how to read it, what qualifies
+   it, then the figures - because a table here is not self-explanatory and a
+   reader who meets the numbers first will misread them. */
 :root{
-  --bg:#fbfbfd; --surface:#fff; --ink:#15171c; --muted:#5a6070; --line:#dfe2ea;
-  --accent:#1a4fa0; --accent-soft:#eaf0fa;
+  --bg:#f6f7fa; --surface:#fff; --raise:#fcfcfe;
+  --ink:#14161b; --ink-soft:#3c4250; --muted:#5f6675; --line:#e2e5ec; --line-soft:#eef0f5;
+  --accent:#1a4fa0; --accent-soft:#eaf0fa; --accent-ink:#123f82;
   --observed:#15543a; --observed-bg:#e8f3ee;
   --estimated:#6b4e00; --estimated-bg:#fdf3dc;
   --supporting:#3c4a63; --supporting-bg:#eef1f7;
   --unavailable:#6a2a2a; --unavailable-bg:#f7eaea;
-  --radius:10px; --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  --radius:12px; --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  --rail:264px;
+  --shadow:0 1px 2px rgba(18,22,31,.05),0 6px 18px -10px rgba(18,22,31,.14);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0e1014; --surface:#171a21; --ink:#eef0f5; --muted:#a3abbd; --line:#2a2f3a;
-    --accent:#7aa6f0; --accent-soft:#1b2436;
+    --bg:#0d0f14; --surface:#161920; --raise:#1b1f28;
+    --ink:#eef0f5; --ink-soft:#ccd2e0; --muted:#9aa3b5; --line:#282d38; --line-soft:#1f242e;
+    --accent:#7aa6f0; --accent-soft:#1b2436; --accent-ink:#a8c4f7;
     --observed:#8fd9b6; --observed-bg:#14281f;
     --estimated:#e8c56b; --estimated-bg:#2a2314;
     --supporting:#b3c0da; --supporting-bg:#1b2130;
     --unavailable:#efa8a8; --unavailable-bg:#2c1a1a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 22px -12px rgba(0,0,0,.6);
   }
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
-  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased}
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:8px;top:8px;z-index:100;background:var(--surface);padding:10px 14px;
   border:2px solid var(--accent);border-radius:6px}
-header.top{background:var(--surface);border-bottom:1px solid var(--line);padding:12px 16px}
-.wrap{max-width:1180px;margin:0 auto}
-.brand{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between}
-h1{font-size:1.15rem;margin:0}
-h2{font-size:1.05rem;margin:0 0 10px}
-h3{font-size:.95rem;margin:0 0 8px}
-.sub{color:var(--muted);font-size:.85rem}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.chip{font-size:.74rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);
-  background:var(--bg);color:var(--muted);font-family:var(--mono)}
-nav.main{background:var(--surface);border-bottom:1px solid var(--line);
-  padding:0 16px;overflow-x:auto}
-nav.main ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
-nav.main button{background:none;border:0;border-bottom:3px solid transparent;
-  padding:13px;min-height:44px;font:inherit;font-size:.88rem;color:var(--muted);
-  cursor:pointer;white-space:nowrap}
-nav.main button:hover{color:var(--ink)}
-nav.main button[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
-nav.main button:focus-visible,select:focus-visible,a:focus-visible,button:focus-visible{
+a{color:var(--accent-ink)}
+select:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{
   outline:3px solid var(--accent);outline-offset:2px}
-main{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:16px;margin-bottom:16px}
-.grid{display:grid;gap:16px}
-@media(min-width:900px){.grid.two{grid-template-columns:1fr 1fr}}
-/* Evidence strip: the second element of every panel, above the fold. */
+
+/* ----------------------------------------------------------- app shell ---- */
+.app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);min-height:100vh}
+.side{background:var(--surface);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:18px;padding:18px 14px;
+  position:sticky;top:0;height:100vh;overflow-y:auto}
+.side-brand{display:flex;gap:10px;align-items:flex-start}
+.side-brand .mark{flex:0 0 34px;height:34px;border-radius:9px;background:var(--accent);
+  color:#fff;font:700 13px/34px var(--mono);text-align:center;letter-spacing:.04em}
+.side h1{font-size:.9rem;line-height:1.35;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:.74rem;margin:3px 0 0;line-height:1.4}
+
+/* The rail: one vertical list, numbered, so order reads as a route through the
+   system rather than a bag of tabs. */
+.side-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.side-nav button{width:100%;display:flex;align-items:center;gap:10px;
+  background:none;border:0;border-radius:9px;padding:9px 10px;min-height:44px;
+  font:inherit;font-size:.855rem;color:var(--ink-soft);cursor:pointer;text-align:left}
+.side-nav .n{flex:0 0 22px;height:22px;border-radius:6px;background:var(--bg);
+  border:1px solid var(--line);color:var(--muted);
+  font:600 .68rem/20px var(--mono);text-align:center}
+.side-nav button:hover{background:var(--accent-soft);color:var(--ink)}
+.side-nav button[aria-current="page"]{background:var(--accent-soft);color:var(--accent-ink);
+  font-weight:650}
+.side-nav button[aria-current="page"] .n{background:var(--accent);color:#fff;
+  border-color:var(--accent)}
+.side-foot{margin-top:auto;border-top:1px solid var(--line-soft);padding-top:14px;
+  display:flex;flex-direction:column;gap:10px}
+.side-h{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--muted);margin:0}
+.side-toggle{display:none}
+
+.content{display:flex;flex-direction:column;min-width:0}
+main{flex:1;max-width:1120px;width:100%;margin:0 auto;padding:26px 26px 64px}
+
+/* -------------------------------------------------------------- panels ---- */
+.card,.panel{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.page-head{margin-bottom:18px}
+.page-head h2{font-size:1.4rem;letter-spacing:-.02em;margin:0 0 6px}
+.page-head .lede{font-size:.95rem;color:var(--ink-soft);margin:0;max-width:74ch}
+h2{font-size:1.06rem;margin:0 0 10px;letter-spacing:-.01em}
+h3{font-size:.95rem;margin:0 0 8px}
+
+/* Panel header: the badge sits with the title, so the evidence tier is read at
+   the same moment as the name of the thing. */
+.panel-head{display:flex;flex-direction:column;gap:7px;
+  padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line-soft)}
+.panel-title{display:flex;flex-wrap:wrap;gap:9px;align-items:center;
+  font-size:1.06rem;font-weight:650;margin:0;letter-spacing:-.01em}
+/* "What this is" - one sentence, before any number. */
+.lede{font-size:.9rem;color:var(--ink-soft);margin:0;max-width:74ch}
+
+.panel > .panel-title{margin:0 0 7px}
+.panel > .lede{margin:0 0 14px}
+/* "How to read it" - two or three points, each a labelled line. */
+.points{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.points li{display:grid;grid-template-columns:18px 1fr;gap:9px;
+  font-size:.85rem;color:var(--ink-soft);line-height:1.5}
+.points li::before{content:"";width:7px;height:7px;margin:8px 0 0 4px;
+  border-radius:2px;background:var(--accent);opacity:.75}
+.points li.warn::before{background:var(--estimated);border-radius:50%}
+.points li b{color:var(--ink);font-weight:650}
+
+.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{display:grid;grid-template-columns:26px 1fr;gap:11px;font-size:.88rem;
+  color:var(--ink-soft)}
+.steps .n{height:22px;border-radius:6px;background:var(--accent-soft);
+  color:var(--accent-ink);font:650 .7rem/22px var(--mono);text-align:center}
+
+/* --------------------------------------------------------- evidence ------- */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.72rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);
+  background:var(--bg);color:var(--muted);font-family:var(--mono);line-height:1.5}
 .strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  padding:9px 11px;border-radius:8px;background:var(--bg);
-  border:1px solid var(--line);margin:0 0 12px;font-size:.78rem}
+  padding:10px 12px;border-radius:9px;background:var(--bg);
+  border:1px solid var(--line);margin:0 0 14px;font-size:.78rem}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:6px;
-  font-weight:600;font-size:.74rem;border:1px solid currentColor}
+  font-weight:650;font-size:.73rem;border:1px solid currentColor;white-space:nowrap}
 .badge .glyph{font-family:var(--mono);font-weight:700}
 .badge.observed{color:var(--observed);background:var(--observed-bg)}
 .badge.estimated{color:var(--estimated);background:var(--estimated-bg)}
@@ -64,43 +127,98 @@ main{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
 .badge.unavailable{color:var(--unavailable);background:var(--unavailable-bg);
   border-style:dashed}
 .caveat{border-left:4px solid var(--estimated);background:var(--estimated-bg);
-  color:var(--estimated);padding:10px 12px;border-radius:0 8px 8px 0;
-  font-size:.82rem;margin:0 0 12px}
+  color:var(--estimated);padding:11px 13px;border-radius:0 9px 9px 0;
+  font-size:.82rem;margin:0 0 14px}
 .caveat strong{display:block;margin-bottom:3px}
 .notice{border-left:4px solid var(--supporting);background:var(--supporting-bg);
-  color:var(--supporting);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.82rem;margin:0 0 12px}
+  color:var(--supporting);padding:11px 13px;border-radius:0 9px 9px 0;
+  font-size:.82rem;margin:0 0 14px}
 .unavail{border-left:4px solid var(--unavailable);background:var(--unavailable-bg);
-  color:var(--unavailable);padding:12px 14px;border-radius:0 8px 8px 0;margin:0 0 12px}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-caption{text-align:left;color:var(--muted);font-size:.8rem;padding-bottom:8px}
-th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
-th{font-size:.73rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
-  background:var(--bg);position:sticky;top:0}
-td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
-tbody tr:hover{background:var(--accent-soft)}
-.scroll{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:8px}
-/* Relative-signal bar: no count axis, no unit suffix. */
-.bar{display:block;height:9px;border-radius:5px;background:var(--accent);min-width:2px}
-.barcell{min-width:110px}
-.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:14px}
-.field{display:flex;flex-direction:column;gap:4px}
-.field label{font-size:.76rem;color:var(--muted);font-weight:600}
-select,.btn{font:inherit;font-size:.85rem;padding:10px 12px;border:1px solid var(--line);
-  border-radius:7px;background:var(--surface);color:var(--ink);min-height:44px}
-.btn{cursor:pointer}.btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.82rem}
-.kv dt{color:var(--muted)}.kv dd{margin:0;font-family:var(--mono);font-size:.8rem}
-.stat{font-size:1.5rem;font-weight:700;font-variant-numeric:tabular-nums}
-.stat .unit{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:5px}
-.plain{color:var(--muted);font-size:.8rem;margin:6px 0 0}
-details{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:12px;
-  background:var(--bg)}
-summary{cursor:pointer;font-weight:600;font-size:.85rem;min-height:44px;
-  display:flex;align-items:center}
-.prohibited{font-size:.76rem;color:var(--unavailable);font-family:var(--mono)}
+  color:var(--unavailable);padding:13px 15px;border-radius:0 9px 9px 0;margin:0 0 14px}
+.prohibited{font-size:.76rem;color:var(--unavailable);font-family:var(--mono);
+  margin:10px 0 0}
 ul.reasons{margin:8px 0 0;padding-left:20px;font-size:.82rem}
+
+/* --------------------------------------------------------------- tables --- */
+.tablewrap{border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  background:var(--raise)}
+.tablehead{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;
+  justify-content:space-between;padding:10px 13px;border-bottom:1px solid var(--line);
+  background:var(--bg)}
+.tablehead .what{font-size:.79rem;color:var(--muted);max-width:68ch}
+.scroll{max-height:560px;overflow:auto}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.855rem}
+caption{text-align:left;color:var(--muted);font-size:.79rem;padding:10px 13px;
+  border-bottom:1px solid var(--line-soft);background:var(--bg)}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line-soft)}
+th{font-size:.7rem;text-transform:uppercase;letter-spacing:.055em;color:var(--muted);
+  background:var(--bg);position:sticky;top:0;z-index:2;font-weight:700;
+  border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--bg) 55%,transparent)}
+tbody tr:hover{background:var(--accent-soft)}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.name{font-weight:600}
+/* Rank reads as a position, not a quantity, so it is set as a marker. */
+td.rank{font-family:var(--mono);text-align:center;width:1%;color:var(--muted)}
+td.rank span{display:inline-block;min-width:26px;padding:2px 6px;border-radius:6px;
+  background:var(--bg);border:1px solid var(--line);font-size:.76rem;color:var(--ink-soft)}
+/* Relative-signal bar: a track plus a fill, so the eye reads proportion.
+   No count axis and no unit suffix - it is not a quantity of anything. */
+.barcell{width:150px;min-width:120px}
+.track{display:block;height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+.bar{display:block;height:8px;border-radius:5px;background:var(--accent);min-width:2px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;padding:9px 13px;
+  border-top:1px solid var(--line-soft);background:var(--bg);
+  font-size:.74rem;color:var(--muted)}
+.legend .k{display:inline-flex;align-items:center;gap:6px}
+.legend .swatch{width:22px;height:8px;border-radius:5px;background:var(--accent)}
+
+/* ------------------------------------------------------------- controls --- */
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:.74rem;color:var(--muted);font-weight:650}
+select,.btn{font:inherit;font-size:.85rem;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;background:var(--surface);color:var(--ink);min-height:44px}
+.btn{cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:650}
+.btn.primary:hover{color:#fff}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:.82rem;margin:0}
+.kv dt{color:var(--muted)}.kv dd{margin:0;font-family:var(--mono);font-size:.8rem}
+.stat{font-size:1.6rem;font-weight:700;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em}
+.stat .unit{font-size:.74rem;font-weight:400;color:var(--muted);margin-left:5px;
+  font-variant-numeric:normal}
+.plain{color:var(--muted);font-size:.8rem;margin:7px 0 0}
+details{border:1px solid var(--line);border-radius:9px;padding:4px 13px;
+  margin-bottom:12px;background:var(--bg)}
+summary{cursor:pointer;font-weight:650;font-size:.85rem;min-height:44px;
+  display:flex;align-items:center}
+code{font-family:var(--mono);font-size:.82em;background:var(--bg);
+  border:1px solid var(--line-soft);border-radius:4px;padding:1px 5px}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-footer{border-top:1px solid var(--line);padding:16px;color:var(--muted);font-size:.76rem;
-  text-align:center}
-@media(max-width:600px){ main{padding:14px 16px 48px} .stat{font-size:1.25rem} }
+footer{border-top:1px solid var(--line);padding:18px 26px;color:var(--muted);
+  font-size:.76rem}
+
+/* ------------------------------------------------------------ responsive -- */
+@media(max-width:900px){
+  /* minmax(0,1fr), not 1fr: a bare 1fr track keeps min-width:auto, so a wide
+     table pushes the whole column past the viewport instead of scrolling. */
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);
+    display:none}
+  .side.open{display:flex}
+  .side-toggle{display:inline-flex;align-items:center;margin:14px 16px 0;
+    min-height:44px;padding:10px 14px;font:inherit;font-size:.86rem;font-weight:650;
+    background:var(--surface);color:var(--ink);border:1px solid var(--line);
+    border-radius:8px;cursor:pointer}
+  main{padding:16px 16px 48px}
+  footer{padding:16px}
+}
+@media(max-width:600px){
+  .page-head h2{font-size:1.2rem} .stat{font-size:1.3rem}
+  .card,.panel{padding:15px 16px}
+  th,td{padding:9px 10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

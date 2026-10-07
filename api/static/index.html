@@ -10,38 +10,48 @@
 <body>
 <a class="skip" href="#main" data-i18n="app.skipToContent">Skip to main content</a>
 
-<header class="top">
-  <div class="wrap">
-    <div class="brand">
+<div class="app">
+
+  <!-- Every destination lives here, in one vertical column, so the whole
+       system is legible as a list before anything is clicked. -->
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <span class="mark" aria-hidden="true">LM</span>
       <div>
         <h1 data-i18n="app.title">LMIS — Labour Market Intelligence System</h1>
         <p class="sub" data-i18n="app.subtitle">Evidence-qualified labour-market demand intelligence</p>
       </div>
+    </div>
+
+    <nav class="side-nav" aria-label="Main navigation">
+      <ul id="nav"></ul>
+    </nav>
+
+    <div class="side-foot">
       <div class="field">
         <label for="lang" data-i18n="lang.label">Language</label>
         <select id="lang" aria-describedby="lang-note"></select>
         <span id="lang-note" class="visually-hidden">Official codes such as NCO, NIC and LGD are never translated.</span>
       </div>
+      <h2 class="side-h" data-i18n="side.modeHeading">System mode</h2>
+      <div class="chips" id="mode-chips"></div>
     </div>
-    <div class="chips" id="mode-chips" aria-label="System mode"></div>
+  </aside>
+
+  <div class="content">
+    <button class="side-toggle" id="side-toggle" aria-expanded="false"
+            aria-controls="side" data-i18n="side.menu">Sections</button>
+    <main id="main" tabindex="-1">
+      <div id="view" aria-live="polite" aria-busy="false"></div>
+    </main>
+    <footer>
+      <span id="footer-contract"></span> ·
+      <a href="/docs">OpenAPI</a> ·
+      <span data-i18n="baseline.notLive">This is not a live feed. Each figure carries its own as-on date.</span>
+    </footer>
   </div>
-</header>
 
-<nav class="main" aria-label="Main navigation">
-  <div class="wrap">
-    <ul id="nav"></ul>
-  </div>
-</nav>
-
-<main id="main" tabindex="-1">
-  <div id="view" aria-live="polite" aria-busy="false"></div>
-</main>
-
-<footer>
-  <span id="footer-contract"></span> ·
-  <a href="/docs">OpenAPI</a> ·
-  <span data-i18n="baseline.notLive">This is not a live feed. Each figure carries its own as-on date.</span>
-</footer>
+</div>
 
 <script src="/static/app.js"></script>
 </body>
