@@ -2,29 +2,58 @@
 
 Demand–supply gap intelligence for MSDE skilling capacity planning. SIH 2026.
 
-**Current state: Step 1 complete, Steps 1.5–1.7 (demand-data investigation and validation) complete — verified sources, immutable snapshots, master/reference tables,
-profiling, tests and documentation.** No index, forecast, gap score, API or dashboard yet; those are
-later steps by design.
+**Current state: Steps 0 through 8.3 complete** — verified sources, immutable
+snapshots, master/reference tables, observed facts, the derived analytical layer,
+the approved demand estimates, the OBSERVED supply side, the publication
+contract, and a working API + dashboard. There is deliberately **no gap score and
+no forecast**: the demand–supply gap is not identifiable from the official data
+that is actually obtainable, and this repository says so rather than estimating
+it. See [docs/limitations.md](docs/limitations.md).
 
-## Quickstart
+## Run it
+
+Three commands from a fresh clone. Needs Python 3.12+ and network only for `pip`.
 
 ```bash
 make setup      # venv + dependencies
+make warehouse  # apply DDL, load db/lmis.duckdb from data/standardized
+make serve      # http://127.0.0.1:8000 — dashboard, and /docs for OpenAPI
+```
+
+`data/standardized/` (40 Parquet tables, 1.6 MB) is committed, so the warehouse
+builds offline without re-fetching anything. `db/lmis.duckdb` is derived and is
+not committed — `make warehouse` is what creates it, and it is the one step you
+cannot skip before `make serve`.
+
+Optional, and worth running to confirm the clone is sound:
+
+```bash
+make test       # 479 tests
+```
+
+## Full rebuild from the original sources
+
+The pipeline above starts from committed Parquet. To rebuild that Parquet from
+the government sources themselves, re-acquire the raw snapshots first. This
+reaches out to a dozen official portals, some slow or form-driven, and downloads
+roughly 52 MB:
+
+```bash
 make sources    # list the source registry
 make acquire    # fetch immutable raw snapshots (never overwrites)
 make verify     # re-hash every snapshot against its manifest
-make masters    # build master/reference tables
-make profile    # profile every table -> docs/profiling/
-make pilot      # validate provisional pilot scope against acquired data
-make facts      # build observed fact tables
-make validate   # enforce Pandera contracts -> fact_data_quality
-make analytical # build the derived analytical layer
-make warehouse  # apply DDL, load db/lmis.duckdb
-make demand     # build the three approved demand estimates
-make supply     # build the OBSERVED supply-side tables
-make test       # 285 tests
-make reproduce  # verify -> masters -> facts -> analytical -> validate -> warehouse -> profile -> test
+make reproduce  # verify -> masters -> facts -> analytical -> demand -> supply
+                # -> validate -> warehouse -> publish -> lint -> profile -> test
 ```
+
+Individual stages, in dependency order: `masters`, `facts`, `validate`,
+`analytical`, `demand`, `supply`, `warehouse`, `publish`, `lint-terminology`,
+`profile`, `pilot`, `report`.
+
+The raw snapshots are the system of record. They are gitignored for size and
+licence, but every snapshot's `manifest.json` **is** committed — source URL,
+sha256, HTTP status, licence and retrieval time — so `make acquire` followed by
+`make verify` reconstructs them and proves byte-for-byte that it did.
 
 ## What exists
 

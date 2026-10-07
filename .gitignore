@@ -15,9 +15,15 @@ data/raw/**
 !data/raw/.gitkeep
 
 data/staging/**
-data/standardized/**
 data/external/**
 !data/**/.gitkeep
+
+# data/standardized IS committed (1.6 MB of Parquet). It is derived, but it is
+# what `make warehouse` loads, so committing it is what lets a fresh clone build
+# the warehouse and serve the dashboard without re-fetching 52 MB of source PDFs
+# from a dozen government portals - several of which are slow, form-driven, or
+# liable to move. The raw snapshots remain the system of record; every row here
+# still carries its source_id, snapshot_file and ingested_at.
 
 # Profiling reports ARE committed (they are evidence, see docs/profiling/)
 

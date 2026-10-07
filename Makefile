@@ -7,9 +7,18 @@ help:
 	@grep -E '^[a-z-]+:.*?##' $(MAKEFILE_LIST) | sed 's/:.*##/\t/'
 
 setup:  ## create venv and install dependencies
-	/opt/homebrew/bin/python3.14 -m venv .venv || python3 -m venv .venv
+	@PY_BIN=""; \
+	for c in python3.14 python3.13 python3.12 python3; do \
+	  if command -v $$c >/dev/null 2>&1 && \
+	     $$c -c 'import sys; sys.exit(0 if sys.version_info >= (3,12) else 1)' 2>/dev/null; \
+	  then PY_BIN=$$c; break; fi; \
+	done; \
+	if [ -z "$$PY_BIN" ]; then \
+	  echo "ERROR: need Python >= 3.12 on PATH (pyproject requires-python = >=3.12)"; exit 1; \
+	fi; \
+	echo "creating .venv with $$PY_BIN"; $$PY_BIN -m venv .venv
 	$(PY) -m pip install -q --upgrade pip
-	$(PY) -m pip install -q -e '.[dev]' pyarrow
+	$(PY) -m pip install -q -e '.[dev]'
 
 sources:  ## list the source registry
 	$(PY) -m lmis.cli sources
