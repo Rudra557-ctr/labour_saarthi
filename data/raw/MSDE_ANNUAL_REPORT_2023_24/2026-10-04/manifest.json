@@ -1,0 +1,24 @@
+{
+  "source_id": "MSDE_ANNUAL_REPORT_2023_24",
+  "retrieved_at": "2026-10-04T09:53:32+00:00",
+  "schema_version": 1,
+  "access_method": "PDF",
+  "licence": "Government of India published annual report; terms not explicitly stated",
+  "publisher_org": "Ministry of Skill Development and Entrepreneurship",
+  "landing_url": "https://www.msde.gov.in/",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "MSDE_Annual_Report_2023-24.pdf",
+      "url": "https://www.msde.gov.in/static/uploads/2024/11/4f71465f72e9f90ff079f76ca2e374a9.pdf",
+      "sha256": "472c780cd49991af0a43280786f27c19a7ba0f4ba0087cf3c72f3c401db58b5a",
+      "size_bytes": 7836874,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "training annexures 11, 14, 21, 22"
+    }
+  ],
+  "notes": null
+}

@@ -1,0 +1,24 @@
+{
+  "source_id": "NIC_2008",
+  "retrieved_at": "2026-10-04T08:37:45+00:00",
+  "schema_version": 1,
+  "access_method": "PDF",
+  "licence": "Government of India publication; terms not explicitly stated",
+  "publisher_org": "Ministry of Statistics and Programme Implementation (hosted by DGE)",
+  "landing_url": "https://dge.gov.in/nco-2015",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "NIC_2008.pdf",
+      "url": "https://dge.gov.in/sites/default/files/2024-05/NIC_2008.pdf",
+      "sha256": "238951d3867b5766cec47d94e476211223c258066583f1653276e487ee8ac533",
+      "size_bytes": 1342085,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "source of nic_section_master"
+    }
+  ],
+  "notes": null
+}

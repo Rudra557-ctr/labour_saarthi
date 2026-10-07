@@ -1,0 +1,24 @@
+{
+  "source_id": "NQR_QUALIFICATIONS",
+  "retrieved_at": "2026-10-02T08:17:05+00:00",
+  "schema_version": 1,
+  "access_method": "PORTAL_REPORT",
+  "licence": "Government of India publication; terms not explicitly stated",
+  "publisher_org": "NCVET",
+  "landing_url": "https://nqr.gov.in/",
+  "verification_status": "VERIFIED_EXISTS",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "QF_SSC2212_Domestic_Data_Entry_Operator_V3.pdf",
+      "url": "https://nqr.gov.in/qualification/file/QF_SSC2212_Domestic%20Data%20Entry%20Operator_V3.pdf",
+      "sha256": "78f8b334663b211ac4d5a1fa3125ccdfacd2a5157464d63edfe7c455c065f44a",
+      "size_bytes": 461362,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "sample Q-File, to test for an NCO code field"
+    }
+  ],
+  "notes": null
+}

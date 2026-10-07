@@ -7,6 +7,10 @@ __pycache__/
 # Raw snapshots are immutable but NOT committed (size + licence).
 # Manifests ARE committed: they are the provenance record.
 data/raw/**
+# `!...manifest.json` alone never matches: `data/raw/**` excludes the directories
+# too, so git stops descending before it ever sees the manifest. Re-including the
+# directories is what lets the negation below apply.
+!data/raw/**/
 !data/raw/**/manifest.json
 !data/raw/.gitkeep
 

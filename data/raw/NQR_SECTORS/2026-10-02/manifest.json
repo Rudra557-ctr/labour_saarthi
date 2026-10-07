@@ -1,0 +1,24 @@
+{
+  "source_id": "NQR_SECTORS",
+  "retrieved_at": "2026-10-02T08:24:52+00:00",
+  "schema_version": 1,
+  "access_method": "PORTAL_REPORT",
+  "licence": "Government of India portal; terms not explicitly stated",
+  "publisher_org": "NCVET",
+  "landing_url": "https://nqr.gov.in/sectors",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "nqr_sectors.html",
+      "url": "https://nqr.gov.in/sectors",
+      "sha256": "3d42cc387b18e67def63379d7ad78802605a9f4b95cf7714ca6370463fc38cff",
+      "size_bytes": 80377,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "seed sector_master"
+    }
+  ],
+  "notes": null
+}

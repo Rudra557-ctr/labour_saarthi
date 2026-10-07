@@ -1,0 +1,44 @@
+{
+  "source_id": "LGD_DISTRICTS_DATAGOVIN",
+  "retrieved_at": "2026-10-02T11:58:26+00:00",
+  "schema_version": 1,
+  "access_method": "BULK_DOWNLOAD",
+  "licence": "Government Open Data Licence - India (per resource, to confirm)",
+  "publisher_org": "Ministry of Panchayati Raj (published via NIC / data.gov.in)",
+  "landing_url": "https://www.data.gov.in/resource/local-government-directory-lgd-districts",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "lgd_states.csv",
+      "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_states.csv",
+      "sha256": "df9d3f601d59b81e42fe1fb7fe0b0b9b56ce4b5bfe74385233d45951adec75ff",
+      "size_bytes": 3103,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "36 states/UTs with LGD + Census-2011 state codes"
+    },
+    {
+      "name": "lgd_districts.csv",
+      "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_districts.csv",
+      "sha256": "bfddac8703dff76bc9bbf1a1a006e60909c5e08f21553a3f308f7493fd7562a4",
+      "size_bytes": 109919,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "785 districts with LGD codes and the official Census-2011 crosswalk"
+    },
+    {
+      "name": "lgd_subdistricts.csv",
+      "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/lgd_subdistricts.csv",
+      "sha256": "8092ce4a314923426c1888def088cbec4ead935fdbc3d13d4208f3f7131081dc",
+      "size_bytes": 1272292,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "sub-district tier"
+    }
+  ],
+  "notes": null
+}

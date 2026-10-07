@@ -1,0 +1,24 @@
+{
+  "source_id": "DATAMEET_DISTRICT_ATTRS",
+  "retrieved_at": "2026-10-02T08:24:53+00:00",
+  "schema_version": 1,
+  "access_method": "BULK_DOWNLOAD",
+  "licence": "repository licence MIT; project site states CC-BY 2.5 India - DISCREPANCY, see notes",
+  "publisher_org": "DataMeet (community) - derived from Census of India 2011",
+  "landing_url": "https://github.com/datameet/maps/tree/master/Districts/Census_2011",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "2011_Dist.dbf",
+      "url": "https://raw.githubusercontent.com/datameet/maps/master/Districts/Census_2011/2011_Dist.dbf",
+      "sha256": "2c7b03578fdf41a4c4e29941a564fa90bf0b0e4f865f5e54481ef7ac8494eb7d",
+      "size_bytes": 54678,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "district attribute table (names + Census 2011 codes), no geometry"
+    }
+  ],
+  "notes": null
+}

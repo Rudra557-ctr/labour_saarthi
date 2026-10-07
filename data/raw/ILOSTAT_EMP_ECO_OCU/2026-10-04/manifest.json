@@ -1,0 +1,44 @@
+{
+  "source_id": "ILOSTAT_EMP_ECO_OCU",
+  "retrieved_at": "2026-10-04T09:20:50+00:00",
+  "schema_version": 1,
+  "access_method": "API",
+  "licence": "ILO terms of use; ILOSTAT data is published for public reuse with attribution - CONFIRM exact terms before publication",
+  "publisher_org": "International Labour Organization (derived from India's Periodic Labour Force Survey)",
+  "landing_url": "https://rplumber.ilo.org/__docs__/",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "ILOSTAT_EMP_TEMP_ECO_OCU_NB_A_IND.csv",
+      "url": "https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_ECO_OCU_NB_A&ref_area=IND&format=.csv",
+      "sha256": "6161bd5f71f476a24f242fcf45700461fe79963c995b7533c87c148828c3473e",
+      "size_bytes": 412116,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "India employment by ISIC-Rev.4 section x ISCO-08 major group"
+    },
+    {
+      "name": "ILOSTAT_dic_source_en.csv",
+      "url": "https://rplumber.ilo.org/metadata/dic/?var=source&lang=en&format=.csv",
+      "sha256": "f0fe6308df810781ff4e71d27f90247f4cc879850d74b6343cb456a017dbf101",
+      "size_bytes": 214163,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "source-code dictionary (proves BA:14121 = PLFS)"
+    },
+    {
+      "name": "ILOSTAT_toc_indicator_en.csv",
+      "url": "https://rplumber.ilo.org/metadata/toc/indicator?lang=en&format=.csv",
+      "sha256": "ec234ef6d6bd06c4662f4b15e09769ded120a28b4fbbe2f093fa37110af6cecf",
+      "size_bytes": 740741,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "indicator catalogue (vintage, coverage, record counts)"
+    }
+  ],
+  "notes": null
+}

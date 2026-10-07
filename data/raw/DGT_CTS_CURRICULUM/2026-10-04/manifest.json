@@ -1,0 +1,34 @@
+{
+  "source_id": "DGT_CTS_CURRICULUM",
+  "retrieved_at": "2026-10-04T17:24:17+00:00",
+  "schema_version": 1,
+  "access_method": "PDF",
+  "licence": "Government of India published curriculum; terms not explicitly stated",
+  "publisher_org": "Directorate General of Training, Ministry of Skill Development and Entrepreneurship",
+  "landing_url": "https://dgt.gov.in/CTS",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "Fitter_CTS3.0_NSQF-4.pdf",
+      "url": "https://dgt.gov.in/sites/default/files/2026-08/Fitter_CTS3.0_NSQF-4.pdf",
+      "sha256": "5dac1db08a8c09ba0785a24c10051b9746b8fc06a3fc18964ec001082dccbb83",
+      "size_bytes": 1091660,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "trade DGT/1002 - official NCO-2015 reference"
+    },
+    {
+      "name": "Electrician_CTS2.0_NSQF-4.pdf",
+      "url": "https://dgt.gov.in/sites/default/files/2024-01/Electrician_CTS2.0_NSQF-4.pdf",
+      "sha256": "77ee530b7041bb56c39094be7fdc5797a0297dc0a8cc92f2f257ceca69ab29a8",
+      "size_bytes": 1797086,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "trade DGT/1001 - official NCO-2015 reference"
+    }
+  ],
+  "notes": null
+}

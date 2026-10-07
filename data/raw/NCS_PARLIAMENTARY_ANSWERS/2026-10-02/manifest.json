@@ -1,0 +1,54 @@
+{
+  "source_id": "NCS_PARLIAMENTARY_ANSWERS",
+  "retrieved_at": "2026-10-02T09:32:47+00:00",
+  "schema_version": 1,
+  "access_method": "PDF",
+  "licence": "Parliament of India / Government of India published answer",
+  "publisher_org": "Ministry of Labour & Employment",
+  "landing_url": "https://dge.gov.in/",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "RS_UQ2798_2024-12-19.pdf",
+      "url": "https://dge.gov.in/sites/default/files/2025-05/2798_e.pdf",
+      "sha256": "099a43cce60567f28db6b1d0ef86d6bb8fee58c7e910790b0992830559556f05",
+      "size_bytes": 90370,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "Rajya Sabha UQ 2798, state-wise + sector-wise vacancies as on 2024-11-15"
+    },
+    {
+      "name": "LS_UQ933_2024-12-02.pdf",
+      "url": "https://dge.gov.in/sites/default/files/2025-05/933_e.pdf",
+      "sha256": "db42268b04871a33c443f589993131fbc5faf5ff9563523897aa7cdf7283981a",
+      "size_bytes": 89492,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "Lok Sabha UQ 933, same measures as on 2024-11-15"
+    },
+    {
+      "name": "LS_UQ2225_2024-12-09.pdf",
+      "url": "https://dge.gov.in/sites/default/files/2025-05/2225_e.pdf",
+      "sha256": "d1fa419d6de84e62222d5f0b94859d4bcac1fc86b9e660ff6c5390cec7213d14",
+      "size_bytes": 82497,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "Lok Sabha UQ 2225"
+    },
+    {
+      "name": "NCS_UQ1264.pdf",
+      "url": "https://dge.gov.in/sites/default/files/2025-09/1264_e.pdf",
+      "sha256": "c6c10759235ad32fc388a2eabd7dca016ca78887dd9dca708a0b966d654eda81",
+      "size_bytes": 75990,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "later NCS answer, for differencing to obtain a flow"
+    }
+  ],
+  "notes": null
+}

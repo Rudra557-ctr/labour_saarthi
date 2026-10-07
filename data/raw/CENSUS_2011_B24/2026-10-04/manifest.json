@@ -1,0 +1,44 @@
+{
+  "source_id": "CENSUS_2011_B24",
+  "retrieved_at": "2026-10-04T09:04:17+00:00",
+  "schema_version": 1,
+  "access_method": "BULK_DOWNLOAD",
+  "licence": "Government of India / ORGI published tables; terms to confirm",
+  "publisher_org": "Office of the Registrar General and Census Commissioner, India",
+  "landing_url": "https://censusindia.gov.in/nada/index.php/catalog/13648",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "DDW-B24-2700-Final.XLSX",
+      "url": "https://censusindia.gov.in/nada/index.php/catalog/13675/download/16788/DDW-B24-2700-Final.XLSX",
+      "sha256": "1df7c75ae02540e5aea0475508fa69928b64ba2036675297ae8e2f43a821a6e7",
+      "size_bytes": 569998,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "Maharashtra (census state code 27)"
+    },
+    {
+      "name": "DDW-B24-3300-Final.XLSX",
+      "url": "https://censusindia.gov.in/nada/index.php/catalog/13681/download/16794/DDW-B24-3300-Final.XLSX",
+      "sha256": "b59409c4a754b5fcc5965598a033ae491ab5c849007e18091da03b81d3b25d31",
+      "size_bytes": 531886,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "Tamil Nadu (census state code 33)"
+    },
+    {
+      "name": "DDW-B24-0900-Final.XLSX",
+      "url": "https://censusindia.gov.in/nada/index.php/catalog/13657/download/16770/DDW-B24-0900-Final.XLSX",
+      "sha256": "76b1835dfa2f61feaf6293d9567d706574975ae071347cadf4b389f1f7163bbc",
+      "size_bytes": 1096835,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "Uttar Pradesh (census state code 09)"
+    }
+  ],
+  "notes": null
+}

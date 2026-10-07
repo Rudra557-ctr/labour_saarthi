@@ -1,0 +1,34 @@
+{
+  "source_id": "UDYAM_DISTRICT_MSME",
+  "retrieved_at": "2026-10-02T11:58:27+00:00",
+  "schema_version": 1,
+  "access_method": "BULK_DOWNLOAD",
+  "licence": "Government Open Data Licence - India (per resource, to confirm)",
+  "publisher_org": "Ministry of Micro, Small and Medium Enterprises",
+  "landing_url": "https://www.data.gov.in/resource/district-wise-total-msme-registered-enterprises-under-udyam-registration-till-last-date",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "district_level_total_Registered_msme.csv",
+      "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/district_level_total_Registered_msme.csv?VersionId=105172500341441",
+      "sha256": "a4dff6ea940b88afb1020c4128c4f69448cb9d5538e459cde4dd0933bf9abc5b",
+      "size_bytes": 54621,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "all MSMEs by district and size class"
+    },
+    {
+      "name": "district_level_service_msme.csv",
+      "url": "https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/district_level_service_msme.csv?VersionId=105172390466305",
+      "sha256": "6fc82f2385fa38a7a138539e2efc36392be2ff469d115ed93ce07bb5a8bc8a84",
+      "size_bytes": 54141,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": "service-sector MSMEs by district and size class"
+    }
+  ],
+  "notes": null
+}

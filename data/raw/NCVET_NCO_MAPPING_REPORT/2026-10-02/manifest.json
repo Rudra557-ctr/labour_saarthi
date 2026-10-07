@@ -1,0 +1,24 @@
+{
+  "source_id": "NCVET_NCO_MAPPING_REPORT",
+  "retrieved_at": "2026-10-02T08:17:05+00:00",
+  "schema_version": 1,
+  "access_method": "PDF",
+  "licence": "Government of India publication; terms not explicitly stated",
+  "publisher_org": "National Council for Vocational Education and Training (NCVET)",
+  "landing_url": "https://ncvet.gov.in/whats-new/",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "Report_on_Mapping_of_Qualifications_with_NCO_Codes.pdf",
+      "url": "https://ncvet.gov.in/wp-content/uploads/2025/05/Report-on-Mapping-of-Qualifications-with-NCO-Codes.pdf",
+      "sha256": "576301bc4b72b971ec619630991641c13dc9d7b95a49cb9f7ef03e6e36c959c8",
+      "size_bytes": 1165809,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    }
+  ],
+  "notes": null
+}

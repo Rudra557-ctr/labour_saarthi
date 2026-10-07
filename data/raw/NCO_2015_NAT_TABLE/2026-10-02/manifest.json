@@ -1,0 +1,84 @@
+{
+  "source_id": "NCO_2015_NAT_TABLE",
+  "retrieved_at": "2026-10-02T08:20:49+00:00",
+  "schema_version": 1,
+  "access_method": "PORTAL_REPORT",
+  "licence": "Government of India portal; terms not explicitly stated",
+  "publisher_org": "Directorate General of Employment, Ministry of Labour & Employment",
+  "landing_url": "https://dge.gov.in/nat",
+  "verification_status": "VERIFIED_URL",
+  "retrieved_by": "lmis.ingest.acquire",
+  "files": [
+    {
+      "name": "nat_page_0.html",
+      "url": "https://dge.gov.in/nat?page=0",
+      "sha256": "e13f557e4523fc4e1ce1153019a5a92a43c3d26b741d7962e5695706a9a56c77",
+      "size_bytes": 1082884,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    },
+    {
+      "name": "nat_page_1.html",
+      "url": "https://dge.gov.in/nat?page=1",
+      "sha256": "85a86f7bec24ca8f94a9b561f2f32ba62b8889df9d62d1813dedd8451af72114",
+      "size_bytes": 1080817,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    },
+    {
+      "name": "nat_page_2.html",
+      "url": "https://dge.gov.in/nat?page=2",
+      "sha256": "875854c6797fd5d05deb8ef399ec29b8d49007f8ac35e7473eff51daedc69e8f",
+      "size_bytes": 1056552,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    },
+    {
+      "name": "nat_page_3.html",
+      "url": "https://dge.gov.in/nat?page=3",
+      "sha256": "bbb439893dbb003f5f9dcf2b4586e82fca7261baab814a47ce888d0ddf9b91c0",
+      "size_bytes": 1057209,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    },
+    {
+      "name": "nat_page_4.html",
+      "url": "https://dge.gov.in/nat?page=4",
+      "sha256": "d4150c16f41a06662a0cd90f2aa167074aa6d6d3c7ef4b94a60d42eede898996",
+      "size_bytes": 1086055,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    },
+    {
+      "name": "nat_page_5.html",
+      "url": "https://dge.gov.in/nat?page=5",
+      "sha256": "cc07705af9041760a70c63e86966526e847c1ab1b101908121756674d146198c",
+      "size_bytes": 1078579,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    },
+    {
+      "name": "nat_page_6.html",
+      "url": "https://dge.gov.in/nat?page=6",
+      "sha256": "187258f095f82abe91da2d2e4fbafb2a4e1c359c2314203e5fdc26711f8f93aa",
+      "size_bytes": 990156,
+      "content_type": null,
+      "http_status": 200,
+      "publication_vintage": null,
+      "notes": null
+    }
+  ],
+  "notes": null
+}
