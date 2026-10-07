@@ -983,3 +983,74 @@ def test_every_page_states_what_it_is_before_any_figure():
     for page in ("national", "state", "district", "occupation",
                  "methodology", "coverage"):
         assert isinstance(en.get(f"{page}.lede"), str) and en[f"{page}.lede"], page
+
+
+# ===========================================================================
+# Two-level navigation. Level 1 is the left rail (which part of the system);
+# level 2 is the sub-tab strip (which section of that part). Previously every
+# section of a page rendered in one column, so "National" meant scrolling past
+# four panels to reach the one you wanted.
+# ===========================================================================
+
+def test_the_active_rail_item_is_filled_solid_not_tinted():
+    """A pale tint on a pale surface is not a selection anyone can see."""
+    css = (STATIC / "styles.css").read_text()
+    assert "--active-bg" in css and "--active-ink" in css
+    block = css[css.index('.side-nav button[aria-current="page"]'):]
+    block = block[:block.index("}")]
+    assert "var(--active-bg)" in block and "var(--active-ink)" in block
+
+
+def test_the_palette_is_neutral_so_colour_is_left_to_the_evidence_tiers():
+    """Chrome must not compete with the tier colours, which carry meaning."""
+    import re
+    css = (STATIC / "styles.css").read_text()
+    root = css[css.index(":root{"):css.index("@media (prefers-color-scheme:dark)")]
+    tier = ("--observed", "--estimated", "--supporting", "--unavailable")
+    for name, value in re.findall(r"(--[a-z-]+):\s*(#[0-9a-f]{6})", root):
+        if name.startswith(tier):
+            continue
+        r, g, b = (int(value[i:i + 2], 16) for i in (1, 3, 5))
+        assert max(r, g, b) - min(r, g, b) <= 24, (name, value)
+
+
+def test_a_page_section_is_reachable_as_a_sub_tab():
+    js = (STATIC / "app.js").read_text()
+    assert "function subtabs(" in js
+    assert 'role="tablist"' in js and 'role="tab"' in js
+    assert 'aria-selected=' in js
+    assert 'role="tabpanel"' in js
+    # the tab id travels in a data attribute, never inside the handler text
+    assert 'data-tab="${esc(x.id)}"' in js
+    assert 'onclick="goTab(this.dataset.tab)"' in js
+
+
+def test_every_sub_tab_label_exists_in_english():
+    import re
+    js = (STATIC / "app.js").read_text()
+    en = json.loads((I18N / "en.json").read_text())
+    keys = set(re.findall(r"label:\s*t\('(tab\.[a-zA-Z]+)'\)", js))
+    assert len(keys) >= 17, sorted(keys)
+    for k in sorted(keys):
+        assert isinstance(en.get(k), str) and en[k], k
+    assert en["tabs.label"]
+
+
+def test_an_arg_page_never_emits_a_lone_tab_segment_in_the_hash():
+    """`#district/signal` would be re-read as a district whose code is 'signal'.
+    A page that takes an argument reports the one it resolved."""
+    js = (STATIC / "app.js").read_text()
+    assert "const PAGES_WITH_ARG" in js
+    assert "function hashFor" in js
+    body = js[js.index("function hashFor"):js.index("function parseHash")]
+    assert "if (tab && (!needsArg || arg)) parts.push(tab);" in body
+    assert "if (out.arg != null) S.arg = safeArg(out.arg) || S.arg;" in js
+    # all three arg-taking pages report their resolved argument
+    assert js.count("return { arg:") == 3
+
+
+def test_the_hash_listener_ignores_the_write_the_router_just_made():
+    """The resolved tab is only known after render, so go() writes the hash at
+    the end. Without this guard that write would re-enter go()."""
+    js = (STATIC / "app.js").read_text()
+    assert "if (location.hash.slice(1) === S.hash) return;" in js

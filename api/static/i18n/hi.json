@@ -33,5 +33,9 @@
   "nav.unavailable": "अनुपलब्ध क्षमताएँ",
   "side.menu": "अनुभाग",
   "side.modeHeading": "सिस्टम मोड",
-  "app.subtitle": "साक्ष्य-आधारित श्रम-बाज़ार माँग आसूचना"
+  "app.subtitle": "साक्ष्य-आधारित श्रम-बाज़ार माँग आसूचना",
+  "tabs.label": "इस दृश्य के अनुभाग",
+  "tab.districts": "ज़िले",
+  "tab.training": "प्रशिक्षण परिणाम",
+  "tab.quality": "डेटा गुणवत्ता"
 }

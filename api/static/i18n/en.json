@@ -227,5 +227,29 @@
     "Unblocking condition — names the gate that would have to be met; where the reason is structural, more of the same data would not change it.",
     "!A blocked capability is not a zero — and not an empty table either; those three states are kept distinct everywhere."
   ],
-  "unavailable.groupOne": "1 capability blocked for this reason"
+  "unavailable.groupOne": "1 capability blocked for this reason",
+  "tabs.label": "Sections of this view",
+  "tab.observed": "Observed sectors",
+  "tab.estimated": "Estimated occupations",
+  "tab.context": "Labour-force context",
+  "tab.residual": "PAN-India residual",
+  "tab.total": "State total",
+  "tab.districts": "Districts",
+  "tab.training": "Training outcomes",
+  "tab.signal": "Demand signal",
+  "tab.occupation": "Occupation detail",
+  "tab.natcomp": "National composition",
+  "tab.occdistricts": "Districts in a state",
+  "tab.tiers": "Evidence tiers",
+  "tab.gap": "Why no gap is published",
+  "tab.vintages": "Vintages",
+  "tab.derivation": "Derivation inputs",
+  "tab.outputs": "Per-output methodology",
+  "tab.metrics": "Coverage metrics",
+  "tab.quality": "Data quality",
+  "explain.statetotal.what": "This state's share of the published NCS vacancy registrations, as the source reports it.",
+  "explain.statetotal.points": [
+    "Measure — A cumulative count since the portal's inception, attributed to this state by the source itself.",
+    "!The PAN-India remainder is not included — it is disclosed separately and never divided among states."
+  ]
 }
