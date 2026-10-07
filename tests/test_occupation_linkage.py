@@ -223,6 +223,8 @@ def test_only_curricula_actually_acquired_produced_mappings(tmap):
     from lmis.common.paths import RAW
 
     acquired = {p.name for p in (RAW / "DGT_CTS_CURRICULUM").rglob("*.pdf")}
+    if not acquired:
+        pytest.skip("raw snapshot absent (gitignored); run `make acquire` to check this")
     assert set(tmap.snapshot_file) <= acquired
 
 

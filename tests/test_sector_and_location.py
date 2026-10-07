@@ -1,6 +1,7 @@
 import pandas as pd
+import pytest
 
-from lmis.common.paths import standardized_path
+from lmis.common.paths import RAW, ROOT, standardized_path
 from lmis.conform.location import (
     LOCATION_ALIAS_COLUMNS,
     LOCATION_CHANGE_EVENT_COLUMNS,
@@ -106,11 +107,14 @@ def test_merged_union_territory_aliases_both_resolve_to_one_code():
 
 def test_udyam_joins_cleanly_to_location_master():
     """100% join is what makes Udyam usable as a district allocation basis."""
-    import glob
     lm = pd.read_parquet(standardized_path("location_master"))
     districts = set(lm[lm.level == "DISTRICT"].lgd_code)
-    path = sorted(glob.glob("data/raw/UDYAM_DISTRICT_MSME/*/district_level_total_Registered_msme.csv"))[-1]
-    ud = pd.read_csv(path, dtype=str, keep_default_na=False)
+    found = sorted(
+        (RAW / "UDYAM_DISTRICT_MSME").glob("*/district_level_total_Registered_msme.csv")
+    )
+    if not found:
+        pytest.skip("raw snapshot absent (gitignored); run `make acquire` to check this")
+    ud = pd.read_csv(found[-1], dtype=str, keep_default_na=False)
     codes = set(ud["lg_dist_code"].str.strip())
     assert codes <= districts, sorted(codes - districts)[:10]
 
@@ -118,6 +122,9 @@ def test_udyam_joins_cleanly_to_location_master():
 def test_census_candidates_are_not_treated_as_lgd():
     """The Census-2011 candidate district set must be flagged non-authoritative
     and must live in staging, never in location_master."""
-    cand = pd.read_parquet("data/staging/census2011_district_candidates.parquet")
+    staged = ROOT / "data" / "staging" / "census2011_district_candidates.parquet"
+    if not staged.exists():
+        pytest.skip("staging table absent (gitignored); run `make facts` to check this")
+    cand = pd.read_parquet(staged)
     assert len(cand) > 500
     assert (cand["is_authoritative_for_lgd"] == False).all()  # noqa: E712
